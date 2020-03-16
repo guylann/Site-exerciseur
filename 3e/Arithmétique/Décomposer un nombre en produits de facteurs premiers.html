@@ -1,0 +1,49 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Décomposer un nombre en produits de facteurs premiers
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var nombre = CreateDecompBetween(100, 1000);
+
+        function recommencer() {
+            nombre = CreateDecompBetween(100, 1000);
+            document.getElementById("TextQuestion").innerHTML = nombre[0];
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+
+        function testReponse() {
+            var txt = document.getElementById("fname").value;
+            console.log(txt);
+            if (nombre[1] == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+            }
+            document.getElementById("TextReponse").innerHTML = nombre[1];
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Consigne : Décomposer le nombre suivant en produits de facteurs premiers puis indiquer
+        votre réponse dans la case correspondante. Veillez à ordonner les nombres dans l'ordre croisant pour la corrrection.
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(nombre[0])</script>
+    </p>
+    <input type="text" id="fname"><br>
+    <input type="button" value="Valider" onclick="testReponse()"><br><br>
+    <p id="Resultat"></p>
+    <p id="TextReponse"></p>
+    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
+
+</body>

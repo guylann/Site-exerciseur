@@ -1,0 +1,48 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Additionner et soustraire des nombres relatifs
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var nombre = CreateAdd();
+
+        function recommencer() {
+            nombre = CreateAdd();
+            document.getElementById("TextQuestion").innerHTML = nombre[0];
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+
+        function testReponse() {
+            var txt = document.getElementById("fname").value;
+            console.log(txt);
+            if (nombre[1] == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+            }
+            document.getElementById("TextReponse").innerHTML = nombre[1];
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Consigne : Réaliser l'opération suivante. La calculatrice est FORTEMENT déconseillée.
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(nombre[0])</script>
+    </p>
+    <input type="text" id="fname"><br><br>
+    <input type="button" value="Valider" onclick="testReponse()"><br><br>
+    <p id="Resultat"></p>
+    <p id="TextReponse"></p>
+    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
+
+</body>

@@ -1,0 +1,47 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Réduire une expression littérale
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var values = CreateReductionExpression(7, -10, 10);
+
+         function recommencer() {
+            values = CreateReductionExpression(7, -10, 10);
+            document.getElementById("TextQuestion").innerHTML = values[0];
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+
+        function testReponse() {
+            var txt = document.getElementById("fname").value;
+            if (values[1] == txt || "+" + values[1] == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+            }
+            document.getElementById("TextReponse").innerHTML = "Réponse : " + values[1];
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Consigne : Réduire et ordonner l'expression littérale suivante :
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(values[0])</script>
+    </p><br>
+    <input type="text" id="fname">
+    <p id="Resultat"></p>
+    <p id="TextReponse"></p>
+    <input type="button" value="Valider" onclick="testReponse()">
+    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
+
+</body>

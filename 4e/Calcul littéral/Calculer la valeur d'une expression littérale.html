@@ -1,0 +1,48 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Calculer la valeur d'une expression littérale
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var nombre = CreateExprLitt();
+
+        function recommencer() {
+            nombre = CreateExprLitt();
+            document.getElementById("TextQuestion").innerHTML = nombre[0] + "  pour x = " + nombre[1];
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+
+        function testReponse() {
+            var txt = document.getElementById("fname").value;
+            console.log(txt);
+            if (nombre[2] == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+            }
+            document.getElementById("TextReponse").innerHTML = nombre[2];
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Consigne : Calculer la valeur de l'expression littérale suivante pour la valeur de x indiquée.
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(nombre[0] + "  pour x = " + nombre[1])</script>
+    </p>
+    <input type="text" id="fname"><br><br>
+    <input type="button" value="Valider" onclick="testReponse()"><br><br>
+    <p id="Resultat"></p>
+    <p id="TextReponse"></p>
+    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
+
+</body>

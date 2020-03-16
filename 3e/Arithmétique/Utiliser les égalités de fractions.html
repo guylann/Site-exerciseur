@@ -1,0 +1,327 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Utiliser les égalités de fractions
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var nbr = 4;
+        var nbr2 = 4;
+
+        var values2 = [];
+        for (j = 0; j < nbr; j++) {
+            values2.push(CreateFractionProche(nbr2, 50, 200));
+        }
+
+
+        function Valider() {
+            var frac1 = [];
+            var frac2 = [];
+            var frac3 = [];
+            var frac4 = [];
+            frac1.push(document.getElementById("Rep1_F1").checked);
+            frac1.push(document.getElementById("Rep1_F2").checked);
+            frac1.push(document.getElementById("Rep1_F3").checked);
+            frac1.push(document.getElementById("Rep1_F4").checked);
+
+            frac2.push(document.getElementById("Rep2_F1").checked);
+            frac2.push(document.getElementById("Rep2_F2").checked);
+            frac2.push(document.getElementById("Rep2_F3").checked);
+            frac2.push(document.getElementById("Rep2_F4").checked);
+            
+            frac3.push(document.getElementById("Rep3_F1").checked);
+            frac3.push(document.getElementById("Rep3_F2").checked);
+            frac3.push(document.getElementById("Rep3_F3").checked);
+            frac3.push(document.getElementById("Rep3_F4").checked);
+            
+            frac4.push(document.getElementById("Rep4_F1").checked);
+            frac4.push(document.getElementById("Rep4_F2").checked);
+            frac4.push(document.getElementById("Rep4_F3").checked);
+            frac4.push(document.getElementById("Rep4_F4").checked);
+
+            if (frac1[values2[0][1][0]])
+                document.getElementById("Rep1").innerHTML = "C'est correct !";
+            else
+                document.getElementById("Rep1").innerHTML = "C'est incorrect !";
+
+            if (frac2[values2[1][1][0]])
+                document.getElementById("Rep2").innerHTML = "C'est correct !";
+            else
+                document.getElementById("Rep2").innerHTML = "C'est incorrect !";
+            
+            if (frac3[values2[2][1][0]])
+                document.getElementById("Rep3").innerHTML = "C'est correct !";
+            else
+                document.getElementById("Rep3").innerHTML = "C'est incorrect !";
+
+            if (frac4[values2[3][1][0]])
+                document.getElementById("Rep4").innerHTML = "C'est correct !";
+            else
+                document.getElementById("Rep4").innerHTML = "C'est incorrect !";
+
+            
+            var name1 = "Rep1_numerateur"   + (values2[0][1][0] + 1).toString()
+            var name2 = "Rep1_denominateur" + (values2[0][1][0] + 1).toString()
+            document.getElementById(name1).style.color = "green";
+            document.getElementById(name2).style.color = "green";
+            name1 = "Rep2_numerateur"   + (values2[1][1][0] + 1).toString()
+            name2 = "Rep2_denominateur" + (values2[1][1][0] + 1).toString()
+            document.getElementById(name1).style.color = "green";
+            document.getElementById(name2).style.color = "green";
+            name1 = "Rep3_numerateur"   + (values2[2][1][0] + 1).toString()
+            name2 = "Rep3_denominateur" + (values2[2][1][0] + 1).toString()
+            document.getElementById(name1).style.color = "green";
+            document.getElementById(name2).style.color = "green";
+            name1 = "Rep4_numerateur"   + (values2[3][1][0] + 1).toString()
+            name2 = "Rep4_denominateur" + (values2[3][1][0] + 1).toString()
+            document.getElementById(name1).style.color = "green";
+            document.getElementById(name2).style.color = "green";
+
+        }
+
+        function Annuler() {
+            for (j = 0; j < nbr; j++) {
+                for (i = 0; i < nbr2; i++) {
+                    var name = "Rep" + (j + 1).toString() + "_F" + (i + 1).toString();
+                    document.getElementById(name).checked = false;
+                    var name1 = "Rep" + (j + 1).toString() + "_numerateur"   + (i + 1).toString();
+                    var name2 = "Rep" + (j + 1).toString() + "_denominateur"   + (i + 1).toString();
+                    document.getElementById(name1).style.color = "black";
+                    document.getElementById(name2).style.color = "black";
+                }
+                document.getElementById("Rep" + (j + 1).toString()).innerHTML = "";
+            }
+        }
+
+
+        function Recommencer() {
+            Annuler();
+            values2 = [];
+
+            for (j = 0; j < nbr; j++) {
+                values2.push(CreateFractionProche(nbr2, 50, 500));
+                var values = values2[j]
+                document.getElementById("numerateur" + (j+1).toString()).innerHTML = values[0][0].toString();
+                document.getElementById("denominateur" + (j+1).toString()).innerHTML = values[0][1].toString();
+                var offset = 0;
+                for (i = 0; i < nbr2; i++) {
+                    if (i === values[1][0]) {
+                        document.getElementById("Rep" + (j + 1).toString() + "_numerateur" + (i + 1).toString()).innerHTML = values[2][0].toString();
+                        document.getElementById("Rep" + (j + 1).toString() + "_denominateur" + (i + 1).toString()).innerHTML = values[2][1].toString();
+                        offset = -1;
+                    }
+                    else {
+                        document.getElementById("Rep" + (j + 1).toString() + "_numerateur" + (i + 1).toString()).innerHTML = values[3 + i + offset][0].toString();
+                        document.getElementById("Rep" + (j + 1).toString() + "_denominateur" + (i + 1).toString()).innerHTML = values[3 + i + offset][1].toString();
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="Recommencer();">
+    <p> 
+        Consigne : Sélectionner la fraction égale dans chaque cas. 
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td style="text-align:center">
+                    <label id="numerateur1">
+                        <script>document.write(values2[0][0][0])</script>
+                    </label>
+                </td>
+                <td rowspan="11" width="40"></td>
+                <td rowspan="2"> <input type="radio" name="frac1" id="Rep1_F1" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep1_numerateur1" style="text-align:center"></label>
+                </td>
+                <td rowspan="11" width="20"></td>
+                <td rowspan="2"> <input type="radio" name="frac1" id="Rep1_F2" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep1_numerateur2" style="text-align:center"></label>
+                </td>
+                <td rowspan="11" width="20"></td>
+                <td rowspan="2"> <input type="radio" name="frac1" id="Rep1_F3" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep1_numerateur3" style="text-align:center"></label>
+                </td>
+                <td rowspan="11" width="20"></td>
+                <td rowspan="2"> <input type="radio" name="frac1" id="Rep1_F4" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep1_numerateur4" style="text-align:center"></label>
+                </td>
+                <td rowspan="11" width="20"></td>
+                <td rowspan="2">
+                    <label id="Rep1" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="denominateur1">
+                        <script>document.write(values2[0][0][1])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep1_denominateur1" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep1_denominateur2" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep1_denominateur3" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep1_denominateur4" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr style="height:30px;"></tr>
+            <tr>
+                <td style="text-align:center">
+                    <label id="numerateur2">
+                        <script>document.write(values2[1][0][0])</script>
+                    </label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac2" id="Rep2_F1" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep2_numerateur1" style="text-align:center" />
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac2" id="Rep2_F2" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep2_numerateur2" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac2" id="Rep2_F3" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep2_numerateur3" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac2" id="Rep2_F4" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep2_numerateur4" style="text-align:center"></label>
+                </td>
+                <td rowspan="2">
+                    <label id="Rep2" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="denominateur2" style="text-align:center">
+                        <script>document.write(values2[1][0][1])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep2_denominateur1" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep2_denominateur2" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep2_denominateur3" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep2_denominateur4" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr style="height:30px;"></tr>
+            <tr>
+                <td style="text-align:center">
+                    <label id="numerateur3">
+                        <script>document.write(values2[2][0][0])</script>
+                    </label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac3" id="Rep3_F1" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep3_numerateur1" style="text-align:center" />
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac3" id="Rep3_F2" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep3_numerateur2" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac3" id="Rep3_F3" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep3_numerateur3" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac3" id="Rep3_F4" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep3_numerateur4" style="text-align:center"></label>
+                </td>
+                <td rowspan="2">
+                    <label id="Rep3" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="denominateur3" style="text-align:center">
+                        <script>document.write(values2[2][0][1])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep3_denominateur1" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep3_denominateur2" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep3_denominateur3" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep3_denominateur4" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr style="height:30px;"></tr>
+            <tr>
+                <td style="text-align:center">
+                    <label id="numerateur4">
+                        <script>document.write(values2[3][0][0])</script>
+                    </label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac4" id="Rep4_F1" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep4_numerateur1" style="text-align:center" />
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac4" id="Rep4_F2" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep4_numerateur2" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac4" id="Rep4_F3" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep4_numerateur3" style="text-align:center"></label>
+                </td>
+                <td rowspan="2"> <input type="radio" name="frac4" id="Rep4_F4" /> </td>
+                <td style="text-align:center">
+                    <label id="Rep4_numerateur4" style="text-align:center"></label>
+                </td>
+                <td rowspan="2">
+                    <label id="Rep4" style="text-align:center"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="denominateur4" style="text-align:center">
+                        <script>document.write(values2[3][0][1])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep4_denominateur1" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep4_denominateur2" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep4_denominateur3" style="text-align:center"></label>
+                </td>
+                <td style="border-style: solid none none none; text-align:center">
+                    <label id="Rep4_denominateur4" style="text-align:center"></label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <label id="correctionGlobal"></label><br>
+    <FORM>
+        <INPUT TYPE="button" VALUE=" Valider " onclick="Valider()">
+        <INPUT TYPE="button" VALUE=" Annuler " onclick="Annuler()">
+        <INPUT TYPE="button" VALUE=" Recommencer " onclick="Recommencer()">
+    </FORM>
+</body>

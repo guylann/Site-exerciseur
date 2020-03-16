@@ -1,0 +1,127 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Multiplier et diviser des fractions
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var values = CreateMult();
+
+
+        function Valider() {
+            console.log(values);
+            var nbr1 = document.getElementById("Rep_numerateurs").value;
+            var nbr2 = document.getElementById("Rep_denominateurs").value;
+            document.getElementById("Cor_numerateur").innerHTML = "";
+            document.getElementById("Cor_denominateur").innerHTML = "";
+            if ((nbr1 == values[4] || nbr1 == values[7]) && (nbr2 == values[5] || nbr2 == values[8]))
+                document.getElementById("correctionGlobal").innerHTML = "Bravo c'est correct";
+            else {
+                document.getElementById("Cor_numerateur").innerHTML = (values[4]).toString();
+				document.getElementById("Cor_numerateurSimp").innerHTML = (values[7]).toString();
+                document.getElementById("Cor_denominateur").innerHTML = (values[5]).toString();
+				document.getElementById("Cor_denominateurSimp").innerHTML = (values[8]).toString();
+                document.getElementById("correctionGlobal").innerHTML = "Oups, ce n'est pas la réponse attendue ...";
+            }
+        }
+
+        function Annuler() {
+            document.getElementById("Rep_numerateurs").value = 0;
+            document.getElementById("Rep_denominateurs").value = 0;
+            document.getElementById("Cor_numerateur").innerHTML = "";
+            document.getElementById("Cor_denominateur").innerHTML = "";
+			document.getElementById("Cor_numerateurSimp").innerHTML = "";
+            document.getElementById("Cor_denominateurSimp").innerHTML = "";
+        }
+
+
+        function Recommencer() {
+            Annuler();
+            values = CreateMult();
+            document.getElementById("numerateur").innerHTML = values[0].toString();
+            document.getElementById("denominateur").innerHTML = values[1].toString();
+            document.getElementById("numerateur2").innerHTML = values[2].toString();
+            document.getElementById("denominateur2").innerHTML = values[3].toString();
+			document.getElementById("operation").innerHTML = values[6].toString();
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <p>
+        <label>
+            Consigne : Réaliser l'opération suivante. La calculatrice est FORTEMENT déconseillée.
+            Indiquer le numérateur et le dénominateur dans les cases correspondantes pour la corrrection.
+        </label>
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td style="text-align: center;">
+                    <label id="numerateur">
+                        <script>document.write(values[0])</script>
+                    </label>
+                </td>
+				<td style="text-align : center;" rowspan="2">
+					<label id="operation">
+						<script>document.write(values[6])</script>
+					</label>
+				</td>
+				<td style="text-align: center;">
+                    <label id="numerateur2">
+                        <script>document.write(values[2])</script>
+                    </label>
+                </td>
+                <td rowspan="2">=</td>
+                <td>
+                    <input type="number" id="Rep_numerateurs"><br>
+                </td>
+                <td rowspan="2" width="30"></td>
+                <td style="text-align: center;">
+                    <label id="Cor_numerateur" style="color:red">
+                    </label>
+                </td>
+                <td rowspan="2">=</td>
+				<td style="text-align: center;">
+                    <label id="Cor_numerateurSimp" style="color:red">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <label id="denominateur">
+                        <script>document.write(values[1])</script>
+                    </label>
+                </td>
+				<td style="border-style: solid none none none; text-align: center;">
+                    <label id="denominateur2">
+                        <script>document.write(values[3])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <input type="number" id="Rep_denominateurs"><br>
+                </td>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <label id="Cor_denominateur" style="color:red">
+                    </label>
+                </td>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <label id="Cor_denominateurSimp" style="color:red">
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <label id="correctionGlobal"></label><br>
+    <FORM>
+        <INPUT TYPE="button" VALUE=" Valider " onclick="Valider()">
+        <INPUT TYPE="button" VALUE=" Annuler " onclick="Annuler()">
+        <INPUT TYPE="button" VALUE=" Recommencer " onclick="Recommencer()">
+    </FORM>
+</body>

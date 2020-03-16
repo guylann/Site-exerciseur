@@ -1,0 +1,97 @@
+﻿<head>
+    <p>
+        <b>
+            <u>
+                Simplifier une  fraction
+            </u>
+        </b>
+    </p>
+    <script src="script.js"></script>
+    <script>
+        var values = GenererExerciceProblème(10, 100);
+
+
+        function Valider() {
+            console.log(values);
+            var nbr1 = document.getElementById("Rep_numerateurs").value;
+            var nbr2 = document.getElementById("Rep_denominateurs").value;
+            document.getElementById("Cor_numerateur").innerHTML = "";
+            document.getElementById("Cor_denominateur").innerHTML = "";
+            if (nbr1 == values[0] / values[2] &&
+                nbr2 == values[1] / values[2])
+                document.getElementById("correctionGlobal").innerHTML = "Bravo c'est correct";
+            else {
+                document.getElementById("Cor_numerateur").innerHTML = (values[0] / values[2]).toString();
+                document.getElementById("Cor_denominateur").innerHTML = (values[1] / values[2]).toString();
+                document.getElementById("correctionGlobal").innerHTML = "Oups, ce n'est pas la réponse attendue ...";
+            }
+        }
+
+        function Annuler() {
+            document.getElementById("Rep_numerateurs").value = 0;
+            document.getElementById("Rep_denominateurs").value = 0;
+            document.getElementById("Cor_numerateur").innerHTML = "";
+            document.getElementById("Cor_denominateur").innerHTML = "";
+        }
+
+
+        function Recommencer() {
+            Annuler();
+            values = GenererExerciceProblème(10, 100);
+            document.getElementById("numerateur").innerHTML = values[0].toString();
+            document.getElementById("denominateur").innerHTML = values[1].toString();
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <p>
+        <label>
+            Consigne : Simplifier la fraction suivante pour la rendre irréductible.
+            Indiquer le numérateur et le dénominateur dans les cases correspondantes pour la corrrection.
+        </label>
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td style="text-align: center;">
+                    <label id="numerateur">
+                        <script>document.write(values[0])</script>
+                    </label>
+                </td>
+                <td rowspan="2">=</td>
+                <td>
+                    <input type="number" id="Rep_numerateurs"><br>
+                </td>
+                <td rowspan="2" width="30"></td>
+                <td style="text-align: center;">
+                    <label id="Cor_numerateur" style="color:red">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <label id="denominateur">
+                        <script>document.write(values[1])</script>
+                    </label>
+                </td>
+                <td style="border-style: solid none none none">
+                    <input type="number" id="Rep_denominateurs"><br>
+                </td>
+                <td style="border-style: solid none none none; text-align: center;">
+                    <label id="Cor_denominateur" style="color:red">
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <label id="correctionGlobal"></label><br>
+    <FORM>
+        <INPUT TYPE="button" VALUE=" Valider " onclick="Valider()">
+        <INPUT TYPE="button" VALUE=" Annuler " onclick="Annuler()">
+        <INPUT TYPE="button" VALUE=" Recommencer " onclick="Recommencer()">
+    </FORM>
+</body>
