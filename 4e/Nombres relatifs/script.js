@@ -21,7 +21,7 @@ function CreateAdd() {
 	if (calc === 0)
 		var sol = x1+x0;
 	else 
-		var sol = x0-x1
+		var sol = x1-x0
 	return [CreateCalc(calc,x1,x0), sol.toString()];
 
 }
