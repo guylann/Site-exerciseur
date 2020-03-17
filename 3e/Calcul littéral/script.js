@@ -94,22 +94,22 @@ function CreatePolynôme(a,b,c){
 		txt += a.toString() + "x²";
 	
 	if (a !== 0 && b > 0)
-		txt +="+";
+		txt +=" + ";
 	else if (a !== 0 && b === 0 && c > 0)
-		txt +="+";
+		txt +=" + ";
 	
 	if(b === 1)
 		txt += "x";
 	else if (b === -1)
-		txt += "-x";
+		txt += " - x";
 	else if (b !== 0)
-		txt += b.toString() + "x";
+		txt += " " + b.toString() + "x";
 	
 	if (b !== 0 && c > 0)
-		txt +="+";
+		txt +=" +";
 	
 	if (c !== 0)
-		txt += c.toString();
+		txt += " " + c.toString();
 	
 	return txt;
 }
@@ -186,9 +186,9 @@ function AssemblerMultipleX(array) {
     txt = array[0];
     for (i = 1; i < array.length; i++) {
         if (array[i][0] === '-')
-            txt += array[i];
+            txt += " " + array[i];
         else
-            txt += "+" + array[i];
+            txt += " + " + array[i];
     }
 
     return txt;
