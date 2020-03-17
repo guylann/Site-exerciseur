@@ -24,46 +24,43 @@ function Floor(value){
 
 //Calcul littéral
 
-function CreateThales(){
+function CreateThales(forme){
     var inconnue1 = Randint(0,2);
     var inconnue2 = Randint(0,2);
     while (inconnue1 == inconnue2)
         inconnue2 = Randint(0,2);
+
+    return [inconnue1, inconnue2, CreateThalesEgalité()];
+}
+
+function CreateReciproque(){
+    var erreur = Randint(0,1);
+    var line = Randint(0,2);
+    if (erreur == 0)
+        return [line, 0, CreateThalesEgalité()];
+    else{
+        var ar = CreateThalesEgalité();
+        var e = Randint(0,5);
+        while((e - e%2) == line*2)
+            e = Randint(0,5);
+        ar[e] = Round(ar[e] + 0.1 + Rand(0,2,1));
+        return [line, 1, ar];
+    }
+}
+
+
+
+function CreateThalesEgalité(){
     var AC = 0;var BC = 0;var EC = 0;var DC = 0;var AE = 0; var BD = 0;
-    if (inconnue1 != 0)
-        BC = Floor(Rand(2, 8, 1));
-    if (inconnue1 != 1)
-        DC = Floor(Rand(2, 8, 1));
-    if (inconnue1 != 2)
-        BD = Floor(Rand(2, 8, 1));
-    if (inconnue2 != 0)
-        AC = Floor(BC + 0.1 + Rand(0, 3, 1));
-    if (inconnue2 != 1)
-        EC = Floor(DC + 0.1 + Rand(0, 3, 1));
-    if (inconnue2 != 2)
-        AE = Floor(BD + 0.1 + Rand(0, 3, 1));
-    var rapport;
-    if ((inconnue1 + inconnue2) == 1)
-        rapport = BD/AE;
-    if ((inconnue1 + inconnue2) == 2)
-        rapport = DC/EC;
-    if ((inconnue1 + inconnue2) == 3)
-        rapport = BC/AC;
+    BC = Round(Rand(2, 8, 1));
+    DC = Round(Rand(2, 8, 1));
+    BD = Round(Rand(2, 8, 1));
+    AC = Round(BC + 0.1 + Rand(0, 3, 1));
+    var coef = AC/BC;
+    EC = Round(DC * coef);
+    AE = Round(BD * coef);
 
-    if (inconnue1 == 0)
-        BC = Floor(AC * rapport);
-    if (inconnue1 == 1)
-        DC = Floor(EC * rapport);
-    if (inconnue1 == 2)
-        BD = Floor(AE * rapport);
-    if (inconnue2 == 0)
-        AC = Floor(BC / rapport);
-    if (inconnue2 == 1)
-        EC = Floor(DC / rapport);
-    if (inconnue2 == 2)
-        AE = Floor(BD / rapport);
-
-    return [inconnue1, inconnue2, [AC, BC, DC, EC, AE, BD]];
+    return [AC, BC, DC, EC, AE, BD];
 }
 
 
