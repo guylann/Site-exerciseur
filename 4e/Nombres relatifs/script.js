@@ -49,17 +49,17 @@ function CreateCalc(a,b,c){
 	var txt = "";
 	txt += b.toString();
 	if(a === 0) 
-		txt += "+"
+		txt += " + "
 	else if (a === 1)
-		txt +="-"
+		txt +=" - "
 	else if (a === 2)
-		txt += "*"
+		txt += " * "
 	else if (a === 3)
-		txt +="/"
+		txt +=" / "
 	if (c < 0)
 		txt +="("+c.toString()+")";
 	else 
 		txt += c.toString();	
-	txt +="=";
+	txt +=" = ";
 	return txt;
 }

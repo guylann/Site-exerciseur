@@ -1,11 +1,5 @@
 ﻿<head>
-    <p>
-        <b>
-            <u>
-                Réduire une expression littérale
-            </u>
-        </b>
-    </p>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <script src="script.js"></script>
     <script>
         var values = CreateReductionExpression(7, -10, 10);
@@ -25,23 +19,31 @@
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
-                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
-            }
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
             document.getElementById("TextReponse").innerHTML = "Réponse : " + values[1];
+            }
         }
     </script>
 </head>
 <body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Réduire une expression littérale.
+    </h1></b></u>
     <p>
         Consigne : Réduire et ordonner l'expression littérale suivante :
     </p>
     <p id="TextQuestion">
         <script>document.write(values[0])</script>
-    </p><br>
-    <input type="text" id="fname">
-    <p id="Resultat"></p>
-    <p id="TextReponse"></p>
-    <input type="button" value="Valider" onclick="testReponse()">
-    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
-<input type="button" value="Retour" onclick="history.go(-1)">
+    </p>
+    <p>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
+    </p>
+    <p>
+        <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+        <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+    </p>
 </body>

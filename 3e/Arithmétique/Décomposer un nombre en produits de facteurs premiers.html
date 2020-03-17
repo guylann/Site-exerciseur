@@ -1,11 +1,6 @@
-﻿<head>
-    <p>
-        <b>
-            <u>
-                Décomposer un nombre en produits de facteurs premiers
-            </u>
-        </b>
-    </p>
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <script src="script.js"></script>
     <script>
         var nombre = CreateDecompBetween(100, 1000);
@@ -18,7 +13,6 @@
             document.getElementById("fname").value = "";
         }
 
-
         function testReponse() {
             var txt = document.getElementById("fname").value;
             console.log(txt);
@@ -26,13 +20,17 @@
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
-                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
+                document.getElementById("TextReponse").innerHTML = nombre[1];
             }
-            document.getElementById("TextReponse").innerHTML = nombre[1];
         }
     </script>
 </head>
 <body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Décomposer un nombre en produits de facteurs premiers.
+    </h1></b></u>
     <p>
         Consigne : Décomposer le nombre suivant en produits de facteurs premiers puis indiquer
         votre réponse dans la case correspondante. Veillez à ordonner les nombres dans l'ordre croisant pour la corrrection.
@@ -40,11 +38,14 @@
     <p id="TextQuestion">
         <script>document.write(nombre[0])</script>
     </p>
-    <input type="text" id="fname"><br>
-    <input type="button" value="Valider" onclick="testReponse()"><br><br>
-    <p id="Resultat"></p>
-    <p id="TextReponse"></p>
-    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
-<input type="button" value="Retour" onclick="history.go(-1)">
+    <p>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
+    </p>
+    <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+    <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
 
 </body>
+</html>

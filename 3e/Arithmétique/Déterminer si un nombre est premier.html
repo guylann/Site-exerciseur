@@ -1,11 +1,6 @@
-﻿<head>
-    <p>
-        <b>
-            <u>
-                Déterminer si un nombre est premier
-            </u>
-        </b>
-    </p>
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <script src="script.js"></script>
     <script>
         var nombre = CreerListNbrPremierOuNon(4, 50, 150);
@@ -39,7 +34,7 @@
             else if (!nombre[1] && !nombre[3] && !nombre[5] && !nombre[7])
                 document.getElementById("TextReponse").innerHTML = "Oups ! il n'a avait pas de nombre premier ici ...";
             else if (c1 != nombre[1] && c2 != nombre[3] && c3 != nombre[5] && c4 != nombre[7]) {
-                var txt = "C'est loupé dommage, le ou les nombres premiers étaient : ";
+                var txt = "C'est loupé dommage, le(s) nombre(s) premier(s) était-ent : ";
                 var ar = []
                 if (nombre[1] == true) ar.push(nombre[0]);
                 if (nombre[3] == true) ar.push(nombre[2]);
@@ -49,7 +44,7 @@
                 document.getElementById("TextReponse").innerHTML = txt;
             }
             else {
-                var txt = "Tu y étais presque, le ou les nombres premiers étaient : ";
+                var txt = "Tu y étais presque, le(s) nombre(s) premier(s) était-ent : ";
                 var ar = []
                 if (nombre[1] == true) ar.push(nombre[0]);
                 if (nombre[3] == true) ar.push(nombre[2]);
@@ -63,34 +58,36 @@
     </script>
 </head>
 <body>
-<p> Consigne : Parmis la liste de nombre suivant, cocher la, les ou aucune cases correspondants à un nombre premier.
-</p>
-<p>
-    <input id="check1" type="checkbox">
-    <label id="check1label" for="check1">
-        <script>document.write(nombre[0])</script>
-    </label><br>
-    <input id="check2" type="checkbox">
-    <label id="check2label" for="check2">
-        <script>document.write(nombre[2])</script>
-    </label><br>
-    <input id="check3" type="checkbox">
-    <label id="check3label" for="check3">
-        <script>document.write(nombre[4])</script>
-    </label><br>
-    <input id="check4" type="checkbox">
-    <label id="check4label" for="check4">
-        <script>document.write(nombre[6])</script>
-    </label><br>
-    <label id="TextReponse">
-    </label><br>
-    <FORM>
-        <INPUT TYPE="button" NAME="nom" VALUE=" Valider " onclick="testReponse()">
-        <INPUT TYPE="button" NAME="nom" VALUE=" Annuler " onclick="annuler()">
-        <INPUT TYPE="button" NAME="nom" VALUE=" Recommencer " onclick="recommencer()">
-    </FORM>
-</p>
-<input type="button" value="Retour" onclick="history.go(-1)">
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Déterminer si un nombre est premier.
+    </h1></b></u>
+    <p> Consigne : Parmis la liste de nombre suivant, cocher la, les ou aucune cases correspondants à un nombre premier.
+    </p>
+    <p>
+        <input id="check1" type="checkbox">
+        <label id="check1label" for="check1">
+            <script>document.write(nombre[0])</script>
+        </label><br>
+        <input id="check2" type="checkbox">
+        <label id="check2label" for="check2">
+            <script>document.write(nombre[2])</script>
+        </label><br>
+        <input id="check3" type="checkbox">
+        <label id="check3label" for="check3">
+            <script>document.write(nombre[4])</script>
+        </label><br>
+        <input id="check4" type="checkbox">
+        <label id="check4label" for="check4">
+            <script>document.write(nombre[6])</script>
+        </label><br>
+        <input class="backbutton" TYPE="button" NAME="nom" VALUE=" Valider " onclick="testReponse()">
+        <input class="backbutton" TYPE="button" NAME="nom" VALUE=" Annuler " onclick="annuler()"><br>
+        <label id="TextReponse">
+        </label><br>
+    </p>
+    <input class="backbutton" TYPE="button" NAME="nom" VALUE=" Recommencer " onclick="recommencer()">
+    <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
 </body>
-
+</html>
 

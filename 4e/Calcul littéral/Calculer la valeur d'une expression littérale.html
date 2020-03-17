@@ -1,11 +1,5 @@
 ﻿<head>
-    <p>
-        <b>
-            <u>
-                Calculer la valeur d'une expression littérale
-            </u>
-        </b>
-    </p>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <script src="script.js"></script>
     <script>
         var nombre = CreateExprLitt();
@@ -26,23 +20,29 @@
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
-                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
-            }
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
             document.getElementById("TextReponse").innerHTML = nombre[2];
+            }
         }
     </script>
 </head>
 <body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Calculer la valeur d'une expression littérale
+    </h1></b></u>
     <p>
         Consigne : Calculer la valeur de l'expression littérale suivante pour la valeur de x indiquée.
     </p>
     <p id="TextQuestion">
         <script>document.write(nombre[0] + "  pour x = " + nombre[1])</script>
     </p>
-    <input type="text" id="fname"><br><br>
-    <input type="button" value="Valider" onclick="testReponse()"><br><br>
-    <p id="Resultat"></p>
-    <p id="TextReponse"></p>
-    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
-<input type="button" value="Retour" onclick="history.go(-1)">
+    <p>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
+    </p>
+    <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+    <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
 </body>

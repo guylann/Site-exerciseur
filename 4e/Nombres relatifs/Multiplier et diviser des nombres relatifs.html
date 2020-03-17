@@ -1,11 +1,5 @@
 ﻿<head>
-    <p>
-        <b>
-            <u>
-                Multiplier et diviser des nombres relatifs
-            </u>
-        </b>
-    </p>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <script src="script.js"></script>
     <script>
         var nombre = CreateMult();
@@ -21,28 +15,35 @@
 
         function testReponse() {
             var txt = document.getElementById("fname").value;
+            document.getElementById("TextReponse").innerHTML = "";
             console.log(txt);
             if (nombre[1] == txt) {
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
-                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois";
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
+                document.getElementById("TextReponse").innerHTML = Math.round(nombre[1]*1000)/1000;
             }
-            document.getElementById("TextReponse").innerHTML = nombre[1];
         }
     </script>
 </head>
 <body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Multiplier et diviser des nombres relatifs.
+    </h1></b></u>
     <p>
         Consigne : Réaliser l'opération suivante. La calculatrice est FORTEMENT déconseillée sauf pour les divisions difficiles.
     </p>
-    <p id="TextQuestion">
-        <script>document.write(nombre[0])</script>
+    <p>
+        <label id="TextQuestion"><script>document.write(nombre[0])</script></label>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
     </p>
-    <input type="text" id="fname"><br><br>
-    <input type="button" value="Valider" onclick="testReponse()"><br><br>
-    <p id="Resultat"></p>
-    <p id="TextReponse"></p>
-    <input type="button" value="Recommencer ?" onclick="recommencer()"><br><br>
-<input type="button" value="Retour" onclick="history.go(-1)">
+    <p>
+        <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+        <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+    </p>
 </body>
