@@ -1,6 +1,6 @@
 body{
 
-    width: 80%;
+    max-width: 80%;
     text-align: center;
     margin: auto;
 }
@@ -17,9 +17,24 @@ h1{
     margin-top: 0px;
 }
 
-.soustitre{
+p{
     color: white;
-    margin-bottom: 0px;
+    font-size: 14pt;
+}
+
+label{
+    color: white;
+    font-size: 14pt;
+}
+
+td{
+    text-align:center;
+}
+
+table{
+    text-align: center;
+    width: auto;
+    margin: auto;
 }
 
 .button{
