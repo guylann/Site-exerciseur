@@ -1,0 +1,50 @@
+﻿<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="script.js"></script>
+    <script>
+        var nombre = CreateEq1();
+
+        function recommencer() {
+            nombre = CreateEq1();
+            document.getElementById("TextQuestion").innerHTML = nombre[0];
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+
+        function testReponse() {
+            var txt = document.getElementById("fname").value;
+            document.getElementById("TextReponse").innerHTML = "";
+            if (nombre[1] == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
+                document.getElementById("TextReponse").innerHTML = nombre[1];
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Résoudre une équation simple (de type ax=b)
+    </h1></b></u>
+    <p>
+        Consigne : Trouver la solution de cette équation. Donner la réponse arrondie au centième. ATTENTION : pour écrire une virgule il faut mettre un point.
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(nombre[0])</script>
+    </p>
+    <p>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
+    </p>
+    <p>
+        <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+        <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+    </p>
+</body>
