@@ -5,6 +5,8 @@
         var values;
         var typefigure = 0;
 
+
+
         function testReponse() {
             if ((values[1] == 0 && document.getElementById("reponse1").checked) ||
                 (values[1] == 1 && document.getElementById("reponse2").checked)) {
@@ -16,7 +18,8 @@
         }
 
         function recommencer(){
-            DessinerFigure();
+            values = GénérerSymétrieAxiale();
+            console.log(values);
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("reponse1").value = "";
             document.getElementById("reponse2").value = "";
@@ -25,7 +28,10 @@
 
         }
 
-        
+        function premierlancement(){
+            DessinerFigure();
+            recommencer();
+        }
 
 
         function DessinerFigure(){
@@ -45,7 +51,6 @@
             var y = margin;
             var id = 0;
             var id2 = 0;
-            var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
             for(i = 0; i < (nbr*2-1); i++) {
                 for(j = 0; j < nbr - ((i+1)%2); j++) {
                     x = margin + move * 4 * j;
@@ -113,22 +118,26 @@
                     ctx.font = "12px Arial";
                     ctx.textAlign="center";
                     ctx.fillText(id.toString(), x + move * 1.5, y + move);
+                    positionfigure.push([x + move * 1.5, y + move]);
                     id += 1;
                     ctx.fillText(id.toString(), x + move * 0.8, y + move*1.7);
+                    positionfigure.push([ x + move * 0.8, y + move*1.7])
                     id += 1;
                     ctx.fillText(id.toString(), x + move * 2.2, y + move*1.7);
+                    positionfigure.push([x + move * 2.2, y + move*1.7])
                     id += 1;
                     ctx.fillText(id.toString(), x + move * 1.5, y + move*2.4);
+                    positionfigure.push([x + move * 1.5, y + move*2.4])
                     id += 1;
                 }
             }
-
-            
         }
-
 
         function drawPoint(x,y, name, ctx)
         {
+            positionpoint[alphabet.indexOf(name)] = [x,y];
+            name = alphabet.indexOf(name).toString();
+
             var pointsize = 4;
                     ctx.beginPath();
                     ctx.fillStyle = "transparent";
@@ -153,7 +162,7 @@
 
     </script>
 </head>
-<body onload="recommencer();">
+<body onload="premierlancement();">
     <div style="height: 50px;"></div>
     <h1><b><u>
         Identifier les tranformations du plan.
@@ -263,5 +272,5 @@
         /*if the user clicks anywhere outside the select box,
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
-        </script>
+    </script>
 </body>
