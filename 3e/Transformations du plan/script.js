@@ -30,28 +30,28 @@ function GenererIdentifier(){
     return result;
 }
 
-
-
-
-
-
 function GénérerRotation(){
     var piece = Randint(0,95);
     var centre = 0;
     var angle = 90 + 180 * Randint(0,1);
     var result = -1;
     var count = -1;
-    var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
     while(result < 0 && count < 5000)
     {
         centre = Randint(0,24);
-        var image = rotate(positionpiece,
-                           {x:Math.round (positionpoint[centre][0]),y:Math.round (positionpoint[centre][1])},
-                           angle);
-        var result = FindNearest(image);
+        var result = ApplyRotation(piece, centre, angle);
         count += 1;
     }
     return [piece, angle, centre, result];
+}
+function ApplyRotation(piece, centre, angle){
+    if (centre == -1)
+        return -1;
+    var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
+    image = rotate(positionpiece,
+        {x:Math.round (positionpoint[centre][0]),y:Math.round (positionpoint[centre][1])},
+        angle);
+    return FindNearest(image);
 }
 
 function GénérerSymétrieCentrale(){
@@ -59,17 +59,16 @@ function GénérerSymétrieCentrale(){
     var centre = 0;
     var result = -1;
     var count = -1;
-    var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
     while(result < 0 && count < 5000)
     {
         centre = Randint(0,24);
-        var image = rotate(positionpiece,
-                           {x:Math.round (positionpoint[centre][0]),y:Math.round (positionpoint[centre][1])},
-                           180);
-        var result = FindNearest(image);
+        var result = ApplySymetrieCentrale(piece, centre);
         count += 1;
     }
     return [piece, 180, centre, result];
+}
+function ApplySymetrieCentrale(piece, centre){
+    return ApplyRotation(piece, centre, 180)
 }
 
 function GénérerSymétrieAxiale(){
@@ -81,31 +80,62 @@ function GénérerSymétrieAxiale(){
     var piece = 0;
     var result = -1;
     var count = -1;
-    var positionpiece = 0;
-    var pos1 = positionpoint[Math.min(pointa, pointb)];
-    var pos2 = positionpoint[Math.max(pointb, pointa)];
     while(result < 0 && count < 5000)
     {
         piece = Randint(0,95);
-        positionpiece = positionfigure[piece];
-        var image = [];
-        if (Math.abs(pos1[0]-pos2[0]) < 5){
-            image = [2 * pos1[0] - positionpiece[0], positionpiece[1]];
-        }
-        else if (Math.abs(pos1[1]-pos2[1]) < 5){
-            image = [positionpiece[0], 2 * pos1[1] - positionpiece[1]];
-        }
-        else{
-            if (pos1[0] > pos2[0])
-                image = [pos1[0] + pos1[1] - positionpiece[1], pos1[1] + pos1[0] - positionpiece[0]];
-            else
-                image = [pos1[0] - pos1[1] + positionpiece[1], pos1[1] - pos1[0] + positionpiece[0]];
-        }
-        var result = FindNearest(image);
+        var result = ApplySymetrieAxiale(piece, pointa, pointb);
         count += 1;
     }
     return [piece, pointa, pointb, result];
 }
+function ApplySymetrieAxiale(piece, pointa, pointb){
+    if (pointa == -1 || pointb == -1)
+        return -1;
+    var pos1 = positionpoint[Math.min(pointa, pointb)];
+    var pos2 = positionpoint[Math.max(pointb, pointa)];
+    var positionpiece = positionfigure[piece];
+    var image = [];
+    if (Math.abs(pos1[0]-pos2[0]) < 5){
+        image = [2 * pos1[0] - positionpiece[0], positionpiece[1]];
+    }
+    else if (Math.abs(pos1[1]-pos2[1]) < 5){
+        image = [positionpiece[0], 2 * pos1[1] - positionpiece[1]];
+    }
+    else{
+        if (pos1[0] > pos2[0])
+            image = [pos1[0] + pos1[1] - positionpiece[1], pos1[1] + pos1[0] - positionpiece[0]];
+        else
+            image = [pos1[0] - pos1[1] + positionpiece[1], pos1[1] - pos1[0] + positionpiece[0]];
+    }
+    return FindNearest(image);
+}
+
+
+function GénérerTranslation(){
+    var piece = Randint(0,95);
+    var pointa = Randint(0,24);
+    var pointb = 0;
+    var result = -1;
+    var count = -1;
+    while(result < 0 && count < 5000)
+    {
+        pointb = Randint(0,24);
+        while (pointb == pointa)
+            pointb = Randint(0,24);
+        var result = ApplyTranslation(piece, pointa, pointb);
+        count += 1;
+    }
+    return [piece, pointa, pointb, result];
+}
+function ApplyTranslation(piece, pointa, pointb){
+    if (pointa == -1 || pointb == -1)
+        return -1;
+    var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
+    var image = [positionpiece.x + positionpoint[pointb][0] - positionpoint[pointa][0],
+                 positionpiece.y + positionpoint[pointb][1] - positionpoint[pointa][1]];
+    return FindNearest(image);
+}
+
 
 function aligner(a, b){
     if (a == b)
@@ -146,29 +176,6 @@ function alignerThree(a, b, c){
         return true;
     return false;
 }
-
-
-
-function GénérerTranslation(){
-    var piece = Randint(0,95);
-    var pointa = Randint(0,24);
-    var pointb = 0;
-    var result = -1;
-    var count = -1;
-    var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
-    while(result < 0 && count < 5000)
-    {
-        pointb = Randint(0,24);
-        while (pointb == pointa)
-            pointb = Randint(0,24);
-        var image = [positionpiece.x + positionpoint[pointb][0] - positionpoint[pointa][0],
-                     positionpiece.y + positionpoint[pointb][1] - positionpoint[pointa][1]];
-        var result = FindNearest(image);
-        count += 1;
-    }
-    return [piece, pointa, pointb, result];
-}
-
 
 function distance(a,b)
 {

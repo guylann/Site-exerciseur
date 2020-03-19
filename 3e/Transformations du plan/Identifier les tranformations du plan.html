@@ -11,6 +11,61 @@
             var id = document.getElementById("Propositions").selectedIndex;
             var t;
 
+            var result = -1;
+            var piece = values[1][0];
+            if (id == 0 || id == 1)
+            {
+                var pointa = alphabet.indexOf(document.getElementById("translation_point1").value);
+                var pointb = alphabet.indexOf(document.getElementById("translation_point2").value);
+                result = ApplyTranslation(piece, pointa, pointb);
+            }
+            else if (id == 2){
+                var centre = alphabet.indexOf(document.getElementById("rotation_center").value);
+                var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
+                var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
+                rotation = (rotation * sens + 360) % 360;
+                result = ApplyRotation(piece, centre, rotation);
+            }
+            else if (id == 3){
+                var p1 = alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
+                var p2 = alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
+                result = ApplySymetrieAxiale(piece, p1, p2);
+            }
+            else if (id == 4)
+            {
+                var centre2 = alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+                result = ApplySymetrieCentrale(piece, centre2);
+            }
+
+
+            if (result == values[1][3])
+            {
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else{
+                if (values[0] == 0){
+                    t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
+                    t += alphabet[values[1][1]] + " en " + alphabet[values[1][2]];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 1){
+                    t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
+                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 2){
+                    t = "C'est loupé pour cette fois, c'etait une symétrie axiale d'axe (";
+                    t += alphabet[values[1][1]] + alphabet[values[1][2]] + ") par exemple.";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 3){
+                    t = "C'est loupé pour cette fois, c'etait une symétrie centrale de centre ";
+                    t += alphabet[values[1][2]];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+            }
+
+/*
             if (values[0] == 0 && (id == 0 || id == 1) ) // Translation
             {
                 var p1 = alphabet.indexOf(document.getElementById("translation_point1").value);
@@ -21,7 +76,6 @@
                 var remo_y = positionpoint[values[1][2]][1] - positionpoint[values[1][1]][1];
 
                 if (Math.abs(remo_x - move_x) < 5 && Math.abs(remo_y - move_y) < 5)
-                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
                 else{
                     t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
                     t += alphabet[values[1][1]] + " en " + values[1][2];
@@ -83,27 +137,8 @@
                 }
             }
             else {
-                if (values[0] == 0){
-                    t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
-                    t += alphabet[values[1][1]] + " en " + values[1][2];
-                    document.getElementById("Resultat").innerHTML = t;
-                }
-                else if (values[0] == 1){
-                    t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
-                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
-                    document.getElementById("Resultat").innerHTML = t;
-                }
-                else if (values[0] == 2){
-                    t = "C'est loupé pour cette fois, c'etait une symétrie axiale d'axe (";
-                    t += alphabet[values[1][1]] + alphabet[values[1][2]] + ") par exemple.";
-                    document.getElementById("Resultat").innerHTML = t;
-                }
-                else if (values[0] == 3){
-                    t = "C'est loupé pour cette fois, c'etait une symétrie centrale de centre ";
-                    t += alphabet[values[1][2]];
-                    document.getElementById("Resultat").innerHTML = t;
-                }
             }
+*/
         }
 
         function recommencer(){
@@ -111,6 +146,7 @@
             console.log(values);
             console.log(alphabet[values[1][2]]);
             
+
             document.getElementById("NomFigure1").innerHTML = values[1][0];
             document.getElementById("NomFigure2").innerHTML = values[1][3];
             document.getElementById("Resultat").innerHTML = "";
@@ -118,11 +154,11 @@
             document.getElementById("translation_point2").value = "";
             document.getElementById("symétrieAxial_point1").checked = false;
             document.getElementById("symétrieAxial_point2").checked = false;
-            document.getElementById("symétrieCentrale_centre").checked = false;
+            document.getElementById("symétrieCentrale_centre").value = "";
             document.getElementById("rotation_center").value = "";
             document.getElementById("rotation_angle").selectedIndex = 0;
             document.getElementById("rotation_sens").selectedIndex = 0;
-
+            ChangeMenu();
         }
 
         function premierlancement(){
@@ -285,7 +321,7 @@
         Identifier les tranformations du plan.
     </h1></b></u>
     <p>
-        Consigne : Completer la phrase ci-dessous en vous aidant de la figure.
+        Consigne : Completer la phrase ci-dessous en vous aidant de la figure. Attention les noms de points sont à mettrent en majuscule.
     </p>
     <canvas id="myCanvas" width="500" height="500" style="color: white;stroke: white; border:1px solid white">
         Your browser does not support the HTML5 canvas tag.
@@ -293,9 +329,9 @@
     <p>
     <div>
         <label>La figure </label>
-        <label id="NomFigure1"></label>
-        <label>, est l'image de la figure </label>
         <label id="NomFigure2"></label>
+        <label>, est l'image de la figure </label>
+        <label id="NomFigure1"></label>
         <label>par la </label>
         <div class="custom-select" style="width: 170; display: inline-block;">
             <select id="Propositions" >
