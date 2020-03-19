@@ -98,6 +98,7 @@ li{
 .custom-select {
     position: relative;
     font-family: Arial;
+    display: inline-block;
     border-radius: 5px;
   }
   
@@ -108,7 +109,7 @@ li{
   .select-selected {
     background-color: white;
     color: #1D7F56;
-    padding: 5px 5px;
+    padding: 5px 20px 5px 5px;
     border: 2px solid white;
     border-color: white white rgb(255, 255, 255, 0.9) white;
     cursor: pointer;
@@ -143,7 +144,7 @@ li{
   /*style the items (options), including the selected item:*/
 .select-items div {
     color: #1D7F56;
-    padding: 5px 5px;
+    padding: 5px 5px 5px 5px;
     border: 2px solid white;
     border-color: white white rgb(255, 255, 255, 0.9) white;
     background-color: white;
@@ -151,8 +152,6 @@ li{
     user-select: none;
     transition-duration: 0.4s;
     border-radius: 5px;
-  }
-   {
   }
   
   /*style items (options):*/

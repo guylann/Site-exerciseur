@@ -14,20 +14,42 @@ function Randint(min, max)
     return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
+function GenererIdentifier(){
+    var type = Randint(0,3);
+    var result = [type, [0,0,0,-1]];
+    while (result[1][3] < 0){
+        if (type == 1)
+            result[1] = GénérerRotation();
+        if (type == 3)
+            result[1] = GénérerSymétrieCentrale();
+        if (type == 2)
+            result[1] = GénérerSymétrieAxiale();
+        if (type == 0)
+            result[1] = GénérerTranslation();
+    }
+    return result;
+}
+
+
+
+
+
+
 function GénérerRotation(){
     var piece = Randint(0,95);
     var centre = 0;
     var angle = 90 + 180 * Randint(0,1);
     var result = -1;
+    var count = -1;
     var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
-    while(result < 0)
+    while(result < 0 && count < 5000)
     {
         centre = Randint(0,24);
         var image = rotate(positionpiece,
                            {x:Math.round (positionpoint[centre][0]),y:Math.round (positionpoint[centre][1])},
                            angle);
         var result = FindNearest(image);
-        console.log(result);
+        count += 1;
     }
     return [piece, angle, centre, result];
 }
@@ -36,15 +58,16 @@ function GénérerSymétrieCentrale(){
     var piece = Randint(0,95);
     var centre = 0;
     var result = -1;
+    var count = -1;
     var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
-    while(result < 0)
+    while(result < 0 && count < 5000)
     {
         centre = Randint(0,24);
         var image = rotate(positionpiece,
                            {x:Math.round (positionpoint[centre][0]),y:Math.round (positionpoint[centre][1])},
                            180);
         var result = FindNearest(image);
-        console.log(result);
+        count += 1;
     }
     return [piece, 180, centre, result];
 }
@@ -61,23 +84,23 @@ function GénérerSymétrieAxiale(){
     var positionpiece = 0;
     var pos1 = positionpoint[Math.min(pointa, pointb)];
     var pos2 = positionpoint[Math.max(pointb, pointa)];
-
     while(result < 0 && count < 5000)
     {
         piece = Randint(0,95);
         positionpiece = positionfigure[piece];
         var image = [];
-        if (Math.abs(pos1[0]-pos2[0]) < 5)
+        if (Math.abs(pos1[0]-pos2[0]) < 5){
             image = [2 * pos1[0] - positionpiece[0], positionpiece[1]];
-        if (Math.abs(pos1[1]-pos2[1]) < 5)
+        }
+        else if (Math.abs(pos1[1]-pos2[1]) < 5){
             image = [positionpiece[0], 2 * pos1[1] - positionpiece[1]];
+        }
         else{
             if (pos1[0] > pos2[0])
                 image = [pos1[0] + pos1[1] - positionpiece[1], pos1[1] + pos1[0] - positionpiece[0]];
             else
                 image = [pos1[0] - pos1[1] + positionpiece[1], pos1[1] - pos1[0] + positionpiece[0]];
         }
-        //console.log(image);
         var result = FindNearest(image);
         count += 1;
     }
@@ -90,20 +113,38 @@ function aligner(a, b){
     var pos1 = positionpoint[a];
     var pos2 = positionpoint[b];
     if (Math.abs(pos1[0]-pos2[0]) < 5 && Math.abs(pos1[0]-positionpoint[0][0]) > 30 && Math.abs(pos1[0]-positionpoint[3][0]) > 30){
-        console.log(pos1);
         return true;
     }
     else if (Math.abs(pos1[1]-pos2[1]) < 5 && Math.abs(pos1[1]-positionpoint[0][1]) > 30 && Math.abs(pos1[1]-positionpoint[21][1]) > 30){
-        console.log(pos1);
         return true;
     }
     else if (Math.abs(Math.abs(pos1[0]-pos2[0]) - Math.abs(pos1[1]-pos2[1])) < 5){
-        console.log(pos1);
-        console.log(pos2);
         return true;
     }
     else
         return false;
+}
+
+function alignerThree(a, b, c){
+    if (a == b)
+        return true;
+    if (a == c)
+        return true;
+    if (c == b)
+        return true;
+    var pos1 = positionpoint[a];
+    var pos2 = positionpoint[b];
+    var pos3 = positionpoint[c];
+    var seg1 = distance(pos1, pos2);
+    var seg2 = distance(pos1, pos3);
+    var seg3 = distance(pos3, pos2);
+    if (Math.abs(seg1 - (seg2+seg3)) < 2)
+        return true;
+    if (Math.abs(seg2 - (seg1+seg3)) < 2)
+        return true;
+    if (Math.abs(seg3 - (seg2+seg1)) < 2)
+        return true;
+    return false;
 }
 
 
@@ -113,8 +154,9 @@ function GénérerTranslation(){
     var pointa = Randint(0,24);
     var pointb = 0;
     var result = -1;
+    var count = -1;
     var positionpiece = {x:Math.round (positionfigure[piece][0]),y:Math.round (positionfigure[piece][1])};
-    while(result < 0)
+    while(result < 0 && count < 5000)
     {
         pointb = Randint(0,24);
         while (pointb == pointa)
@@ -122,7 +164,7 @@ function GénérerTranslation(){
         var image = [positionpiece.x + positionpoint[pointb][0] - positionpoint[pointa][0],
                      positionpiece.y + positionpoint[pointb][1] - positionpoint[pointa][1]];
         var result = FindNearest(image);
-        console.log(result);
+        count += 1;
     }
     return [piece, pointa, pointb, result];
 }

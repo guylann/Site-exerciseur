@@ -8,29 +8,127 @@
 
 
         function testReponse() {
-            if ((values[1] == 0 && document.getElementById("reponse1").checked) ||
-                (values[1] == 1 && document.getElementById("reponse2").checked)) {
-                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            var id = document.getElementById("Propositions").selectedIndex;
+            var t;
+
+            if (values[0] == 0 && (id == 0 || id == 1) ) // Translation
+            {
+                var p1 = alphabet.indexOf(document.getElementById("translation_point1").value);
+                var p2 = alphabet.indexOf(document.getElementById("translation_point2").value);
+                var move_x = positionpoint[p2][0] - positionpoint[p1][0];
+                var move_y = positionpoint[p2][1] - positionpoint[p1][1];
+                var remo_x = positionpoint[values[1][2]][0] - positionpoint[values[1][1]][0];
+                var remo_y = positionpoint[values[1][2]][1] - positionpoint[values[1][1]][1];
+
+                if (Math.abs(remo_x - move_x) < 5 && Math.abs(remo_y - move_y) < 5)
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+                else{
+                    t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
+                    t += alphabet[values[1][1]] + " en " + values[1][2];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+            }
+            else if (values[0] == 1 && id == 2){ // Rotation
+                var centre = alphabet.indexOf(document.getElementById("rotation_center").value);
+                var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
+                var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
+                rotation = (rotation * sens + 360) % 360;
+                console.log(rotation);
+                if (centre == values[1][2] && rotation == values[1][1]){
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+                }
+                else{
+                    t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
+                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+            }
+            else if (values[0] == 3 && id == 2){ // Rotation a la place d'une symétrie centrale
+                var centre = alphabet.indexOf(document.getElementById("rotation_center").value);
+                var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
+                var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
+                rotation = (rotation * sens + 360) % 360;
+                if (centre == values[1][2] && rotation == values[1][1]){
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+                }
+                else{
+                    t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
+                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire ou un symétrie centrale";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+            }
+            else if (values[0] == 2 && id == 3){ // Symétrie axiale
+                var p1 = alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
+                var p2 = alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
+                var p3 = values[1][1];
+                var p4 = values[1][2];
+                if (alignerThree(p1,p3,p4) && alignerThree(p2,p3,p4) && p1 != p2 ){
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+                }
+                else{
+                    t = "C'est loupé pour cette fois, c'etait une symétrie axiale d'axe (";
+                    t += alphabet[values[1][1]] + alphabet[values[1][2]] + ") par exemple.";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+            }
+            else if (values[0] == 3 && id == 4){ // Symétrie centrale
+                var centre = alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+                if (centre == values[1][2]){
+                    document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+                }
+                else{
+                    t = "C'est loupé pour cette fois, c'etait une symétrie centrale de centre ";
+                    t += alphabet[values[1][2]];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
             }
             else {
-                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois...";
+                if (values[0] == 0){
+                    t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
+                    t += alphabet[values[1][1]] + " en " + values[1][2];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 1){
+                    t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
+                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 2){
+                    t = "C'est loupé pour cette fois, c'etait une symétrie axiale d'axe (";
+                    t += alphabet[values[1][1]] + alphabet[values[1][2]] + ") par exemple.";
+                    document.getElementById("Resultat").innerHTML = t;
+                }
+                else if (values[0] == 3){
+                    t = "C'est loupé pour cette fois, c'etait une symétrie centrale de centre ";
+                    t += alphabet[values[1][2]];
+                    document.getElementById("Resultat").innerHTML = t;
+                }
             }
         }
 
         function recommencer(){
-            values = GénérerSymétrieAxiale();
+            values = GenererIdentifier();
             console.log(values);
+            console.log(alphabet[values[1][2]]);
+            
+            document.getElementById("NomFigure1").innerHTML = values[1][0];
+            document.getElementById("NomFigure2").innerHTML = values[1][3];
             document.getElementById("Resultat").innerHTML = "";
-            document.getElementById("reponse1").value = "";
-            document.getElementById("reponse2").value = "";
-            document.getElementById("reponse1").checked = false;
-            document.getElementById("reponse2").checked = false;
+            document.getElementById("translation_point1").value = "";
+            document.getElementById("translation_point2").value = "";
+            document.getElementById("symétrieAxial_point1").checked = false;
+            document.getElementById("symétrieAxial_point2").checked = false;
+            document.getElementById("symétrieCentrale_centre").checked = false;
+            document.getElementById("rotation_center").value = "";
+            document.getElementById("rotation_angle").selectedIndex = 0;
+            document.getElementById("rotation_sens").selectedIndex = 0;
 
         }
 
         function premierlancement(){
             DessinerFigure();
-            recommencer();
+            recommencer(); 
+            ChangeMenu();
         }
 
 
@@ -136,7 +234,7 @@
         function drawPoint(x,y, name, ctx)
         {
             positionpoint[alphabet.indexOf(name)] = [x,y];
-            name = alphabet.indexOf(name).toString();
+            //name = alphabet.indexOf(name).toString();
 
             var pointsize = 4;
                     ctx.beginPath();
@@ -159,6 +257,25 @@
 
         }
 
+        function ChangeMenu(){
+            var index = document.getElementById("Propositions").selectedIndex;
+            document.getElementById("translation").style.display = "none";
+            document.getElementById("rotation").style.display = "none";
+            document.getElementById("symétrieAxial").style.display = "none";
+            document.getElementById("symétrieCentrale").style.display = "none";
+            if (index == 0 || index == 1){
+            document.getElementById("translation").style.display = "block";
+            }
+            else if (index == 2){
+                document.getElementById("rotation").style.display = "block";
+            }
+            else if (index == 3){
+                document.getElementById("symétrieAxial").style.display = "block";
+            }
+            else if (index == 4){
+                document.getElementById("symétrieCentrale").style.display = "block";
+            }
+        }
 
     </script>
 </head>
@@ -168,27 +285,73 @@
         Identifier les tranformations du plan.
     </h1></b></u>
     <p>
-        Consigne : Les points A;B;C et E;D;C sont alignés. Les droites (AE) et (BD) sont-elles-parallèles ?
+        Consigne : Completer la phrase ci-dessous en vous aidant de la figure.
     </p>
     <canvas id="myCanvas" width="500" height="500" style="color: white;stroke: white; border:1px solid white">
         Your browser does not support the HTML5 canvas tag.
     </canvas>
     <p>
-        <div class="custom-select" id="Propositions">
-            <select >
+    <div>
+        <label>La figure </label>
+        <label id="NomFigure1"></label>
+        <label>, est l'image de la figure </label>
+        <label id="NomFigure2"></label>
+        <label>par la </label>
+        <div class="custom-select" style="width: 170; display: inline-block;">
+            <select id="Propositions" >
+                <option class="option" value="Translation">Translation</option>
                 <option class="option" value="Translation">Translation</option>
                 <option class="option" value="Rotation">Rotation</option>
                 <option class="option" value="Symétrie Axiale">Symétrie Axiale</option>
                 <option class="option" value="Symétrie Centrale">Symétrie Centrale</option>
-                <option class="option" value="Homothétie">Homothétie</option>
             </select>
         </div>
-        <input class="backbutton" type="radio" name="radio1" id="reponse1">
-        <label id="reponse1l" for="reponse1">(AE) est parallèle à (BD)</label><br>
-        <input class="backbutton" type="radio" name="radio1" id="reponse2">
-        <label id="reponse2l" for="reponse2">(AE) n'est pas parallèle à (BD)</label><br>
+
+        <div id="translation" style="display: inline-block;">
+            <label>qui transforme </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="translation_point1">
+            <label>en </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="translation_point2">
+        </div>
+
+        <div id="rotation" style="display: inline-block; margin-top: 5px;">
+            <label> de centre </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="rotation_center">
+            <label>d'angle </label>
+            <div class="custom-select" style="width: 170;">
+                <select id="rotation_angle">
+                    <option class="option" value="90°">90°</option>
+                    <option class="option" value="90°">90°</option>
+                    <option class="option" value="180°">180°</option>
+                    <option class="option" value="270°">270°</option>
+                </select>
+            </div>
+            <label>dans le sens </label>
+             <div class="custom-select" style="width: 170;">
+                <select id="rotation_sens">
+                    <option class="option" value="horaire">horaire</option>
+                    <option class="option" value="horaire">horaire</option>
+                    <option class="option" value="antihoraire">antihoraire</option>
+                </select>
+            </div>
+            .
+        </div>
+
+        <div id="symétrieAxial" style="display: inline-block;">
+            <label>d'axe (</label>
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieAxial_point1">
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieAxial_point2">
+            <label>).</label>
+        </div>
+
+        <div id="symétrieCentrale" style="display: inline-block;">
+            <label>de centre </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieCentrale_centre">
+            .
+        </div>
         <input class="backbutton" type="button" value="Valider" onclick="testReponse()"><br>
         <label id="Resultat"></label><br>
+    </div>
     </p>
     <p>
         <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
@@ -237,6 +400,7 @@
                   }
                 }
                 h.click();
+                ChangeMenu();
             });
             b.appendChild(c);
           }
@@ -248,6 +412,7 @@
               closeAllSelect(this);
               this.nextSibling.classList.toggle("select-hide");
               this.classList.toggle("select-arrow-active");
+                ChangeMenu();
             });
         }
         function closeAllSelect(elmnt) {
