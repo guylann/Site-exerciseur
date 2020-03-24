@@ -62,3 +62,26 @@ function CreateEq3(){
 		txt += d
 	return [txt, sol];
 }
+
+function CreateEqProd(){
+		var a = Randint(-20,20);
+	while (a === 0)
+		a = Randint(-20,20);
+	var b = Randint(-20,20);
+	var c = Randint(-20,20);
+	while (c === 0)
+		c = Randint(-20,20);
+	var d = Randint(-20,20);
+	var x1 = Math.floor(-b/a*100)/100;
+	var x2 = Math.floor(-c/d*100)/100;
+    var txt = "("+a+"x+";
+	if (b < 0)
+		txt += "("+b+"))("+c+"x+";
+	else
+		txt += b+")("+c+"x+";
+	if (d < 0)
+		txt += "("+d+"))=0"
+	else
+		txt += d+")=0"
+	return [txt, x1, x2];
+}
