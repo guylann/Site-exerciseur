@@ -1,0 +1,66 @@
+﻿<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="script.js"></script>
+    <script>
+        var nombre = CreateEqProd();
+
+        function recommencer() {
+            nombre = CreateEqProd();
+            document.getElementById("TextQuestion").innerHTML = nombre[0];
+            document.getElementById("Resultat1").innerHTML = "";
+            document.getElementById("TextReponse1").innerHTML = "";
+            document.getElementById("fname1").value = "";
+			document.getElementById("Resultat2").innerHTML = "";
+            document.getElementById("TextReponse2").innerHTML = "";
+            document.getElementById("fname2").value = "";
+        }
+
+
+        function testReponse() {
+            var txt1 = document.getElementById("fname1").value;
+            document.getElementById("TextReponse1").innerHTML = "";
+			var txt2 = document.getElementById("fname2").value;
+            document.getElementById("TextReponse2").innerHTML = "";
+            if (nombre[1] == txt1) {
+                document.getElementById("Resultat1").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat1").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
+                document.getElementById("TextReponse1").innerHTML = nombre[1];
+            }
+			if (nombre[2] == txt2) {
+                document.getElementById("Resultat2").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat2").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
+                document.getElementById("TextReponse2").innerHTML = nombre[2];
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Résoudre une équation produit
+    </h1></b></u>
+    <p>
+        Consigne : Trouver les solutions de cette équation. Donner les réponses arrondies au centième. ATTENTION : pour écrire une virgule il faut mettre un point.
+    </p>
+    <p id="TextQuestion">
+        <script>document.write(nombre[0])</script>
+    </p>
+    <p>
+        Réponse 1 : <input class="backbutton" type="text" id="fname1">
+        <label id="Resultat1"></label>
+        <label id="TextReponse1"></label><br>
+		Réponse 2 : <input class="backbutton" type="text" id="fname2">
+        <label id="Resultat2"></label>
+		<label id="TextReponse2"></label><br>
+		<input class="backbutton" type="button" value="Valider" onclick="testReponse()">
+    </p>
+    </p>
+    <p>
+        <input class="backbutton" type="button" value="Recommencer ?" onclick="recommencer()">
+        <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+    </p>
+</body>
