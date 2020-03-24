@@ -1,0 +1,113 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="script.js"></script>
+    <script>
+        var values;
+        var coeffi;
+
+        function Recommencer() {
+            var number = Randint(2,5);
+            values = CreateListEntier(number, 0,50);
+            coeffi = CreateListEntier(number, 0,50);
+            CreateTableau();
+            
+            document.getElementById("Resultat").innerHTML = "";
+            document.getElementById("TextReponse").innerHTML = "";
+            document.getElementById("fname").value = "";
+        }
+
+        function Validation() {
+            var txt = document.getElementById("fname").value;
+            document.getElementById("TextReponse").innerHTML = "";
+            if (CalculateMoyennePondérée(values, coeffi).toString() == txt) {
+                document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
+            }
+            else {
+                document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
+                document.getElementById("TextReponse").innerHTML = CalculateMoyennePondérée(values, coeffi).toString();
+            }
+        }
+
+        function CreateTableau(){
+            var parent = document.getElementById("TableValeur");
+            parent.innerHTML = '';
+            
+            var ligne1 = document.createElement("tr");
+            var ligne2 = document.createElement("tr");
+
+            var a = document.createElement("td");
+            var l = document.createElement("label");
+            l.innerHTML = "Valeurs";
+            a.appendChild(l);
+            ligne1.appendChild(a);
+
+            a = document.createElement("td");
+            l = document.createElement("label");
+            l.innerHTML = "Effectifs";
+            a.appendChild(l);
+            ligne2.appendChild(a);
+
+            for(k = 0; k < values.length; k++){
+                a = document.createElement("td");
+                l = document.createElement("label");
+                l.innerHTML = values[k];
+                a.appendChild(l);
+                ligne1.appendChild(a);
+                
+                a = document.createElement("td");
+                l = document.createElement("label");
+                l.innerHTML = coeffi[k];
+                a.appendChild(l);
+                ligne2.appendChild(a);
+            }
+
+            a = document.createElement("td");
+            a.setAttribute("class", "tdrouge");
+            l = document.createElement("label");
+            l.setAttribute("class", "labelrouge");
+            l.innerHTML = "Total :";
+            a.appendChild(l);
+            ligne1.appendChild(a);
+                
+            a = document.createElement("td");
+            a.setAttribute("class", "tdrouge2");
+            l = document.createElement("label");
+            l.setAttribute("class", "labelrouge");
+            l.innerHTML = Somme(coeffi);
+            a.appendChild(l);
+            ligne2.appendChild(a);
+
+
+            parent.appendChild(ligne1);
+            parent.appendChild(ligne2);
+        }
+
+
+    </script>
+</head>
+<body onload="Recommencer();">
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Calculer une moyenne pondérée.
+    </h1></b></u>
+    <p>
+        Consigne : Calculer la moyenne des valeurs ci-dessous en pondérant correctement et en arrondissant au dixième près.<br>ATTENTION : La virgule doit être un point.
+    </p>
+    <table >
+        <tbody id="TableValeur" >
+        </tbody>
+    </table>
+    <p id="TextQuestion">
+    </p>
+    <p>
+        <input class="backbutton" type="text" id="fname">
+        <input class="backbutton" type="button" value="Valider" onclick="Validation()"><br><br>
+        <label id="Resultat"></label>
+        <label id="TextReponse"></label><br>
+    </p>
+    <input class="backbutton" type="button" value="Recommencer ?" onclick="Recommencer()">
+    <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+
+</body>
+</html>
