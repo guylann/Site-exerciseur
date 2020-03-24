@@ -39,27 +39,39 @@ function GetPGCD(a, b) {
 
 function CreateSitProp()
 {
-	var a = Randint(0,20)
+	var a = Randint(0,20);
 	while (a === 0)
-		a = Randint(0,20)
-	var b = Randint(0,20)
-	while (b === 0)
-		b = Randint(0,20)
-	var coef = Randint(2,12)
-	var sol = Randint(0,1)
-	var c
-	var d
+		a = Randint(0,20);
+	var b = Randint(0,20);
+	while (b === 0 || b == a)
+		b = Randint(0,20);
+	var coef1 = Randint(2,12);
+	var coef2 = Randint(2,12);
+	while(coef2 == coef1)
+		coef2 = Randint(2,12);
+	var sol = Randint(0,1);
+	var c, d, e, f;
 	if (sol == 0)
 	{
-		c=a*coef+1
-		d=b*coef+1
-		sol=false
+		c=a*coef1+1;
+		d=b*coef1;
+		e=a*coef2;
+		f=b*coef2;
+		sol=false;
 	}
 	else	
 	{
-		c=a*coef
-		d=b*coef
-		sol=true
+		c=a*coef1;
+		d=b*coef1;
+		e=a*coef2;
+		f=b*coef2;
+		sol=true;
 	}
-	return [a, b, c, d, sol]
+	var pos = Randint(0,2);
+	if (pos == 0)
+		return [a, b, c, d, e, f, sol];
+	else if (pos == 1)
+		return [c, d, a, b, e, f, sol];
+	else
+		return [a, b, e, f, c, d, sol];
 }

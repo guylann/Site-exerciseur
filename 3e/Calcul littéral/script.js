@@ -36,7 +36,6 @@ function CreateExprDev(){
 	var s2 = x2*x1;
     var s1 = x2 * x0;
     var txt;
-    console.log(test);
 	if (test === 0){
         txt = CreatePolynôme(0,x2,0)+"("+CreatePolynôme(0,x1,x0)+")";
 		return [txt, CreatePolynôme(s2,s1,0)];
