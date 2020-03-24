@@ -1,0 +1,109 @@
+﻿﻿<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script src="script.js"></script>
+    <script>
+        var values = CreateSitProp();
+
+
+        function Valider() {
+            var nbr1 = document.getElementById("oui").checked;
+            var nbr2 = document.getElementById("non").checked;
+            document.getElementById("Sol").innerHTML = "";
+            if (values[6] == nbr1 && (nbr1 || nbr2))
+                document.getElementById("Sol").innerHTML = "Bravo c'est correct";
+            else {
+                document.getElementById("Sol").innerHTML = "C'est incorrect";
+            }
+        }
+
+        function Annuler() {
+            document.getElementById("oui").checked = false;
+			document.getElementById("non").checked = false;
+			document.getElementById("Sol").innerHTML = "";
+        }
+
+
+        function Recommencer() {
+            Annuler();
+            values = CreateSitProp();
+            document.getElementById("numerateur").innerHTML = values[0].toString();
+            document.getElementById("denominateur").innerHTML = values[1].toString();
+            document.getElementById("numerateur2").innerHTML = values[2].toString();
+			document.getElementById("denominateur2").innerHTML = values[3].toString();
+            document.getElementById("numerateur3").innerHTML = values[4].toString();
+			document.getElementById("denominateur3").innerHTML = values[5].toString();
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div style="height: 50px;"></div>
+    <h1><b><u>
+        Identifier une situation de proportionnalité
+    </h1></b></u>
+    <p>
+        Consigne : Ce tableau est-il un tableau de proportionnalité ?
+    </p>
+    <table style=" border-collapse: collapse;">
+        <tbody >
+            <tr>
+                <td style="text-align: center; border-color: white; border-style: solid;">
+                    <div style="padding: 15px;">
+                        <label id="numerateur" >
+                            <script>document.write(values[0])</script>
+                        </label>
+                    </div>
+                </td>
+				<td style="text-align: center; border-color: white; border-style: solid">
+                    <label id="numerateur2">
+                        <script>document.write(values[2])</script>
+                    </label>
+                </td>
+                <td style="text-align: center; border-color: white; border-style: solid;">
+                    <div style="padding: 15px;">
+                        <label id="numerateur3" >
+                            <script>document.write(values[4])</script>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-color: white; border-style: solid; text-align: center;">
+                    <label id="denominateur">
+                        <script>document.write(values[1])</script>
+                    </label>
+                </td>
+                <td style="border-color: white; border-style: solid; text-align: center;">
+                    <div style="padding: 15px;">
+                        <label id="denominateur2">
+                            <script>document.write(values[3])</script>
+                        </label>
+                    </div>
+                </td>
+                <td style="border-color: white; border-style: solid; text-align: center;">
+                    <label id="denominateur3">
+                        <script>document.write(values[5])</script>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <input type="radio" name="rep" id="oui" />
+        <label for="oui">Oui</label>
+        <input type="radio" name="rep" id="non" />
+        <label for="non">Non</label><br>
+    </p>
+    <p>
+        <INPUT class="backbutton" TYPE="button" VALUE=" Valider " onclick="Valider()">
+        <INPUT class="backbutton" TYPE="button" VALUE=" Annuler " onclick="Annuler()"><br>
+        <label id="Sol"></label><br>
+    </p>
+    <p>
+        <INPUT class="backbutton" TYPE="button" VALUE=" Recommencer " onclick="Recommencer()">
+        <input class="backbutton" type="button" value="Retour" onclick="history.go(-1)">
+    </p>
+</body>
