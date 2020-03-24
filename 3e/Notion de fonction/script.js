@@ -110,7 +110,6 @@ function RandomiseFunction(param, nbr,  pas)
     points.push(point);
 
     var position = []
-    console.log("########");
 
     var move = (param.maxx - param.minx)/pas;
     for(i =0; i < nbr; i++){
