@@ -1,5 +1,7 @@
 const Page = {
 
+    dependency: ["Script/jquery-3.4.1.min.js", "Script/jquery.nicescroll.js"],
+
     main: ["Menu principal", "https://criscuolomaths.netlify.com"],
 
     ordre: [3,2,1,0],
@@ -51,16 +53,29 @@ function DeveloppeField(id,document){
     Developpedfields[id] = !Developpedfields[id];
     if (Developpedfields[id])
     {
-        document.getElementById("SidePanelField" + id.toString()).style.maxHeight = "500px";
+        let element = document.getElementById("SidePanelField" + id.toString());
+        element.style.height = element.childElementCount*45 + "px";
     }
     else{
-        document.getElementById("SidePanelField" + id.toString()).style.maxHeight = "0";
+        document.getElementById("SidePanelField" + id.toString()).style.height = "0";
     }
 }
 
+//<script src="jquery.nicescroll.js"></script>
 
+function AddDependency(document){
+    var head = document.getElementsByTagName("head")[0];
+    var m = Page.main[1] + '/';
+    for(var i = 0; i < Page.dependency.length; i++)
+    {
+        var a = document.createElement("script");
+        a.setAttribute("src", m + Page.dependency[i]);
+        head.appendChild(a);
+    }
+}
 
 function CreateSidePanel(document, global = false){
+    AddDependency(document);
     nav = false;
     Developpedfields = [false,false,false,false];
     var Sidepanel = document.getElementById("Sidepanel");
@@ -94,15 +109,15 @@ function CreateSidePanel(document, global = false){
         a.setAttribute("class", "openbtninside");
         a.innerHTML = data[l][0];
         a.setAttribute("onclick", "DeveloppeField(" + l.toString() + ",document)");
+        a.style.zIndex = "10";
         ligneblock.appendChild(a);
 
-        var ul = document.createElement("ul");
+        var ul = document.createElement("div");
         ul.setAttribute("id", "SidePanelField" + l.toString());
-        ul.style.maxHeight = "0";
+        ul.style.heigth = "0";
         ul.style.display = "block";
 
         for(var i = 1; i < data[l].length; i++){
-            var li = document.createElement("li");
             var lien = document.createElement("a");
             
             var link = data[l][i][1];
@@ -110,8 +125,7 @@ function CreateSidePanel(document, global = false){
                 link = Page.main[1] + "/" + data[l][i][1];
             lien.setAttribute("href", link);
             lien.innerHTML = data[l][i][0];
-            li.appendChild(lien);
-            ul.appendChild(li);
+            ul.appendChild(lien);
         }
         ligneblock.appendChild(ul);
         Sidepanel.appendChild(ligneblock);

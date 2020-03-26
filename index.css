@@ -271,7 +271,6 @@ td{
     transition: 0.3s;
     overflow: hidden;
     text-align: center;
-    max-height: 500px;
 }
 .openbtninside {
     font-size: 25px;
@@ -297,18 +296,17 @@ td{
     border: none;
     display: block;
     text-align: center;
-    margin-bottom: -10px;
 }
 #SidePanelField0, #SidePanelField1, #SidePanelField2, #SidePanelField3 {
-    padding: 8px 8px 8px 8px;
+    padding: 8px 5px 0px 5px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     margin-top: -10px;
     
-    max-height: 0;
-    transition: max-height 0.25s;
+    height: 0;
+    transition: 0.25s;
     overflow: hidden;
 }
 .sidepanel a:hover {
