@@ -1,6 +1,6 @@
 const Page = {
 
-    dependency: ["Script/jquery-3.4.1.min.js", "Script/jquery.nicescroll.js"],
+    dependency: [],
 
     main: ["Menu principal", "https://criscuolomaths.netlify.com"],
 
@@ -98,9 +98,6 @@ function CreateSidePanel(document, global = false){
 
     for(var l = 0; l < data.length; l++)
     {
-        
-        
-
         var ligneblock = document.createElement("div");
         ligneblock.setAttribute("id", "SidePanelField");
         ligneblock.style.display = "block";

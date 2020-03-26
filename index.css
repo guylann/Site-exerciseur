@@ -10,7 +10,7 @@
 
 /* Base content */
 :root{
-    
+  
   background-color: #1D7F56; /* For browsers that do not support gradients */
   background-image: linear-gradient(to right, #146640, #1D7F56, #146640); /* Standard syntax (must be last) */
 }
@@ -253,7 +253,6 @@ td{
     background-image: linear-gradient(to right, #111, #222, #111);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
 }
 .sidepanel a {
     padding: 8px 8px 8px 8px;
@@ -333,6 +332,27 @@ td{
 }
 .openbtn:hover {
     background-color:#444;
+}
+
+html {
+  --scrollbarBG: transparent;
+  --thumbBG: rgba(100, 100, 100, 0.3);
+}
+#Sidepanel::-webkit-scrollbar {
+  width: 11px;
+}
+#Sidepanel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  overflow-y: auto;
+}
+#Sidepanel::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+#Sidepanel::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
 }
 
  
