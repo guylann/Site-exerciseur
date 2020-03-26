@@ -1,21 +1,34 @@
 ﻿<html>
     <head>
-        <link rel="stylesheet" type="text/css" href="base.css">
+        <link rel="stylesheet" type="text/css" href="../index.css">
+        <script src="../MenuSetup.js"></script>
     </head>
-    <body>
-    <div style="height: 50px;"></div>
-    <p class="soustitre">
-        Niveau 3ème :
-    </p>
-    <h1><b><u>
-        Equations
-    </h1></b></u>
-    <ul>Sélectionner la compétence à travailler</ul>
-    <li><a class="button"  href="Equations/Résoudre une équation simple (de type ax=b).html">Résoudre une équation simple (de type ax=b)</a></li>
-    <li><a class="button"  href="Equations/Résoudre une équation (de type ax+b=c).html">Equations/Résoudre une équation (de type ax+b=c)</a></li>
-    <li><a class="button"  href="Equations/Résoudre une équation (de type ax+b=cx+d).html">Equations/Résoudre une équation (de type ax+b=cx+d)</a></li>
-    <li><a class="button"  href="Equations/Résoudre une équation produit.html">Résoudre une équation produit</a></li>
-    <div style="height: 50px;"></div>
-    <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
+    <body onload="CreateSidePanel(document, true);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+            <a href="#">Menu principal</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+        
+        <div style="height: 50px;"></div>
+        <p class="soustitre">
+            Niveau 3ème :
+        </p>
+        <h1><b><u>
+            Equations
+        </h1></b></u>
+        <ul>Sélectionner la compétence à travailler
+            <li><a class="button"  href="Equations/Résoudre une équation simple (de type ax=b).html">Résoudre une équation simple (de type ax=b)</a></li>
+            <li><a class="button"  href="Equations/Résoudre une équation (de type ax+b=c).html">Equations/Résoudre une équation (de type ax+b=c)</a></li>
+            <li><a class="button"  href="Equations/Résoudre une équation (de type ax+b=cx+d).html">Equations/Résoudre une équation (de type ax+b=cx+d)</a></li>
+            <li><a class="button"  href="Equations/Résoudre une équation produit.html">Résoudre une équation produit</a></li>
+        </ul>
+        <div style="height: 50px;"></div>
+        <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
     </body>
 </html>

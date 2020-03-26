@@ -1,22 +1,35 @@
 ﻿<html>
     <head>
-        <link rel="stylesheet" type="text/css" href="base.css">
+        <link rel="stylesheet" type="text/css" href="../index.css">
+        <script src="../MenuSetup.js"></script>
     </head>
-    <body>
-    <div style="height: 50px;"></div>
-    <p class="soustitre">
-        Niveau 3ème :
-    </p>
-    <h1><b><u>
-        Tranformations du plan
-    </h1></b></u>
-    <ul>Sélectionner la compétence à travailler</ul>
-    <li><a class="button" href="Transformations du plan/Identifier les tranformations du plan.html">Identifier les tranformations du plan</a></li>
-    <li><a class="button" href="Transformations du plan/Comprendre les symétries.html">Comprendre les symétries</a></li>
-    <li><a class="button" href="Transformations du plan/Comprendre les translations.html">Comprendre les translations</a></li>
-    <li><a class="button" href="Transformations du plan/Comprendre les rotations.html">Comprendre les rotations</a></li>
-    <li><a class="button" href="Transformations du plan/Comprendre les homothéties.html">Comprendre les homothéties</a></li>
-    <div style="height: 50px;"></div>
-    <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
+    <body onload="CreateSidePanel(document, true);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+            <a href="#">Menu principal</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+        
+        <div style="height: 50px;"></div>
+        <p class="soustitre">
+            Niveau 3ème :
+        </p>
+        <h1><b><u>
+            Tranformations du plan
+        </h1></b></u>
+        <ul>Sélectionner la compétence à travailler
+            <li><a class="button" href="Transformations du plan/Identifier les tranformations du plan.html">Identifier les tranformations du plan</a></li>
+            <li><a class="button" href="Transformations du plan/Comprendre les symétries.html">Comprendre les symétries</a></li>
+            <li><a class="button" href="Transformations du plan/Comprendre les translations.html">Comprendre les translations</a></li>
+            <li><a class="button" href="Transformations du plan/Comprendre les rotations.html">Comprendre les rotations</a></li>
+            <li><a class="button" href="Transformations du plan/Comprendre les homothéties.html">Comprendre les homothéties</a></li>
+        </ul>
+        <div style="height: 50px;"></div>
+        <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
     </body>
 </html>

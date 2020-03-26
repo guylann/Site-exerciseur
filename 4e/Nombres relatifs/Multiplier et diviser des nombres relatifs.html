@@ -1,5 +1,6 @@
 ﻿<head>
-    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="../../index.css">
+    <script src="../../MenuSetup.js"></script>
     <script src="script.js"></script>
     <script>
         var nombre = CreateMult();
@@ -27,7 +28,18 @@
         }
     </script>
 </head>
-<body>
+<body onload="CreateSidePanel(document, true);">
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+        <a href="#">Menu principal</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+    
     <div style="height: 50px;"></div>
     <h1><b><u>
         Multiplier et diviser des nombres relatifs.

@@ -1,10 +1,110 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html id="MainBody">
     <head>
         <link rel="stylesheet" type="text/css" href="index.css">
-        <img src="BackgroundHead.png"
-          alt="" title="Site Exerciseur" id="Titre">
+        <script src="MenuSetup.js"></script>
+        <div style="position: relative; overflow: hidden; height: 296px;">
+            <img src="BackgroundHead.png" class="imagecenter"
+              alt="" title="Site Exerciseur" id="Titre"><br>
+        </div>
+
+        <style>
+            td{
+                border: none;
+                padding: 0px;
+            }
+            div{
+                display: block;
+            }
+        </style>
+
+
+        <script>
+
+            function CreateMenu(){
+                var w = window.innerWidth;
+
+
+                var colonne = 2;
+                if (w < 800)
+                    colonne = 1;
+                var ligne = Math.ceil(Page.ordre.length / colonne)
+
+                var data = [];
+                for(var i = 0; i<Page.ordre.length; i++)
+                {
+                    if (Page.ordre[i] == 0){data.push(Page.sixième);}
+                    if (Page.ordre[i] == 1){data.push(Page.cinquième);}
+                    if (Page.ordre[i] == 2){data.push(Page.quatrième);}
+                    if (Page.ordre[i] == 3){data.push(Page.troisième);}
+                }
+
+                var table = document.getElementById("TableMenu");
+                table.innerHTML = "";
+                for(var l = 0; l < ligne; l++){
+
+                    if(l > 0){
+                        var spaceline = document.createElement("tr");
+                        spaceline.style.height = "20px";
+                        table.appendChild(spaceline);
+                    }
+
+                    var ligneblock = document.createElement("tr");
+                    for(var c = 0; c < colonne; c++)
+                    {
+                        var id = l*colonne+c;
+                        if(c > 0 && l == 0){
+                            var space = document.createElement("td");
+                            space.style.width = "20px";
+                            space.setAttribute("rowspan", ligne * 2);
+                            ligneblock.appendChild(space);
+                        }
+
+                        var colonneblock = document.createElement("td");
+
+                        var content = document.createElement("div");
+                        content.setAttribute("class", "cadredesclasses");
+
+                        var content_titre = document.createElement("p");
+                        content_titre.setAttribute("class", "titredesclasses");
+                        content_titre.innerHTML = data[id][0];
+                        content.appendChild(content_titre);
+
+                        for(var i = 1; i < data[id].length; i++){
+                            var lien = document.createElement("a");
+                            lien.setAttribute("class", "button");
+                            lien.setAttribute("href", data[id][i][1]);
+                            lien.innerHTML = data[id][i][0];
+                            content.appendChild(lien);
+                            var newligne = document.createElement("br");
+                            content.appendChild(newligne);
+                        }
+
+                        var endspace = document.createElement("div");
+                        endspace.style.height = "5px";
+                        content.appendChild(endspace);
+                        colonneblock.appendChild(content);
+                        ligneblock.appendChild(colonneblock);
+                    }
+                    table.appendChild(ligneblock);
+                }
+            }
+
+        </script>
     </head>
-    <body>
+    <body onload="CreateMenu(); CreateSidePanel(document);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+            <a href="#">Menu principal</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+
+
         <h1><b><u>
             Exerciseur en ligne
         </h1></b></u>
@@ -12,69 +112,7 @@
             par Guylann Criscuolo et Vincent Sinel.
         </p>
 
-        <table class="colonnetable">
-            <tr>
-                <td>
-                    <div class="classeSelect">
-                        <p class="selectedclasse"></pclass>
-                            3ème
-                        </p>
-                        <a class="button" href="3e\Arithmétique.html">
-                            Arithmétique
-                        </a><br>
-                        <a class="button" href="3e\Transformations du plan.html">
-                            Tranformations du plan
-                        </a><br>
-                        <a class="button" href="3e\Notion de fonction.html">
-                            Notion de fonctions
-                        </a><br>
-                        <a class="button" href="3e\Statistiques.html">
-                            Statistiques
-                        </a><br>
-                        <a class="button" href="3e\Calcul littéral.html">
-                            Calcul littéral
-                        </a><br>
-                        <a class="button" href="3e\Théorème de Thalès.html">
-                            Théorème de Thalès
-                        </a><br>
-                        <a class="button" href="3e\Equations.html">
-                            Equations
-                        </a><br>
-                        <div style="height: 5px;"></div>
-                    </div>
-                </td>
-                <td style="width: 20px;">
-                </td>
-                <td>
-                    <div class="classeSelect">
-                        <p class="selectedclasse"></pclass>
-                            4ème
-                        </p>
-                        <a class="button" href="4e\Nombres relatifs.html">
-                            Nombres relatifs
-                        </a><br>
-                        <a class="button" href="4e\Théorème de Pythagore.html">
-                            Théorème de Pythagore
-                        </a><br>
-                        <a class="button" href="4e\Fractions.html">
-                            Fractions
-                        </a><br>
-                        <a class="button" href="4e\Pyramide et cône.html">
-                            Pyramide et cônes
-                        </a><br>
-                        <a class="button" href="4e\Proportionnalité.html">
-                            Proportionnalité
-                        </a><br>
-                        <a class="button" href="4e\Transformations du plan.html">
-                            Transformations du plan
-                        </a><br>
-                        <a class="button" href="4e\Calcul littéral.html">
-                            Calcul littéral
-                        </a><br>
-                        <div style="height: 5px;"></div>
-                    </div>
-                </td>
-            </tr>
+        <table class="colonnetable" id="TableMenu">
         </table>
     </body>
 </html>
