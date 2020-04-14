@@ -6,7 +6,7 @@ const Page = {
 
     ordre: [3,2,1,0],
 
-    troisième: ["Troisième",
+    troisième: 	["Troisième",
                 ["Arithmétique",                        "3e/Arithmétique.html"],
                 ["Calcul littéral",                     "3e/Calcul littéral.html"],
                 ["Equations",                           "3e/Equations.html"],
@@ -15,7 +15,7 @@ const Page = {
                 ["Théorème de Thalès",                  "3e/Théorème de Thalès.html"],
                 ["Transformations du plan",             "3e/Transformations du plan.html"]],
 
-    quatrième: ["Quatrième",
+    quatrième: 	["Quatrième",
                 ["Calcul littéral",                     "4e/Calcul littéral.html"],
                 ["Fractions",                           "4e/Fractions.html"],
                 ["Nombres relatifs",                    "4e/Nombres relatifs.html"],
@@ -24,9 +24,10 @@ const Page = {
                 ["Théorème de Pythagore",               "4e/Théorème de Pythagore.html"],
                 ["Transformations du plan",             "4e/Transformations du plan.html"]],
 
-    cinquième: ["Cinquième"],
+    cinquième:	["Cinquième"],
 
-    sixième: ["Sixième"],
+    sixième:    ["Sixième",
+				["Nombres décimaux",                        "6e/Nombres décimaux.html"]],
 
 }
 
