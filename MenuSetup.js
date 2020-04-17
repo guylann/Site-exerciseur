@@ -24,10 +24,11 @@ const Page = {
                 ["Théorème de Pythagore",               "4e/Théorème de Pythagore.html"],
                 ["Transformations du plan",             "4e/Transformations du plan.html"]],
 
-    cinquième:	["Cinquième"],
+    cinquième:	["Cinquième",
+                ["Nombres relatifs",                    "5e/Nombres relatifs.html"]],
 
     sixième:    ["Sixième",
-				["Nombres décimaux",                        "6e/Nombres décimaux.html"]],
+				["Nombres décimaux",                    "6e/Nombres décimaux.html"]],
 
 }
 
