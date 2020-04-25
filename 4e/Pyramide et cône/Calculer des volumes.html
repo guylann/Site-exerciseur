@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var param;
@@ -29,7 +29,7 @@
                      basePoints: 0, longueurs: 0, hauteur: 0, 
                      coefbase: 0.33, angle: 0, type: 0};
                      
-            let s = CreateFigure(2,8,10);
+            let s = Quatrième_PyramideCône.CreateFigure(2,8,10);
             param.sommet = s.sommet;
             param.basePoints = s.basePoints;
             param.longueurs = s.longueurs;
@@ -38,7 +38,7 @@
             figure = s.type;
             volume = s.volume;
 
-            showfigure = Randint(0,1) == 1;
+            showfigure = Constante.Randint(0,1) == 1;
 
             document.getElementById("TestRange").value = 0;
             document.getElementById("Testview").value = 33;
@@ -120,7 +120,6 @@
         }
 
         function premierlancement(){
-            var c = document.getElementById("myCanvas");
             recommencer(); 
         }
 
@@ -129,7 +128,7 @@
             var c = document.getElementById("myCanvas");
             param.angle = document.getElementById("TestRange").value;
             param.coefbase = document.getElementById("Testview").value / 100;
-            DrawPyramide(param, c);
+            Quatrième_PyramideCône.DrawPyramide(param, c);
         }
         
 

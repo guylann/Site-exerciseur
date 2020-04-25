@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -22,26 +22,26 @@
         }
 
         function recommencer(){
-            values = GenererSymétrie();
+            values = Troisième_TransformationPlan.GenererSymétrie();
             
 
             document.getElementById("NomFigure1").innerHTML = values[1][0];
             document.getElementById("Resultat").innerHTML = "";
             if (values[0] == 1){
                 document.getElementById("TypeTransformation").innerHTML = "Symétrie Centrale";
-                document.getElementById("SymétrieCentralePoint").innerHTML = alphabet[values[1][2]];
+                document.getElementById("SymétrieCentralePoint").innerHTML = Constante.alphabet[values[1][2]];
 
             }
             if (values[0] == 0){
                 document.getElementById("TypeTransformation").innerHTML = "Symétrie Axiale";
-                document.getElementById("SymétrieAxialLine").innerHTML = alphabet[values[1][1]]+alphabet[values[1][2]];
+                document.getElementById("SymétrieAxialLine").innerHTML = Constante.alphabet[values[1][1]]+Constante.alphabet[values[1][2]];
             }
             ChangeMenu();
         }
 
         function premierlancement(){
             var c = document.getElementById("myCanvas");
-            DessinerFigure(c);
+            Troisième_TransformationPlan.DessinerFigure(c);
             recommencer(); 
             ChangeMenu();
         }

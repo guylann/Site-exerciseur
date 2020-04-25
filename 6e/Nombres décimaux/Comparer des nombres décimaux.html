@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var param;
@@ -38,7 +38,7 @@
 
         function Recommencer() {
             Annuler();
-            values =  GetComparaison();
+            values =  Sixième_NombresDecimaux.GetComparaison();
             var nombre1 =  values[2] + "&nbsp;";
             var nombre2 = "&nbsp;" +  values[3];
             document.getElementById("Nombre1").innerHTML = nombre1;

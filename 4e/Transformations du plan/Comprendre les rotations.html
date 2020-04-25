@@ -1,7 +1,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../index.css">
   <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -20,20 +20,20 @@
         }
 
         function recommencer(){
-            values = GénérerRotationFull();
+            values = Quatrième_TranformationPlan.GénérerRotationFull();
             while (values[3] < 0){
-                values = GénérerRotationFull();
+                values = Quatrième_TranformationPlan.GénérerRotationFull();
             }
             
             document.getElementById("NomFigure1").innerHTML = values[0];
-            document.getElementById("TransPointa").innerHTML = alphabet[values[2]];
+            document.getElementById("TransPointa").innerHTML = Constante.alphabet[values[2]];
             document.getElementById("TransPointb").innerHTML = 360 - values[1];
             document.getElementById("Resultat").innerHTML = "";
         }
 
         function premierlancement(){
             var c = document.getElementById("myCanvas");
-            DessinerFigure(c);
+            Quatrième_TranformationPlan.DessinerFigure(c);
             recommencer();
         }
 

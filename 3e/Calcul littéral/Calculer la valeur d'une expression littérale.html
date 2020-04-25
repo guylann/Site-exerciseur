@@ -1,12 +1,12 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var nombre = CreateExprLitt();
+        var nombre = Troisième_CalculLittéral.CreateExprLitt();
 
         function recommencer() {
-            nombre = CreateExprLitt();
+            nombre = Troisième_CalculLittéral.CreateExprLitt();
             document.getElementById("TextQuestion").innerHTML = nombre[0] + "  pour x = " + nombre[1];
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";

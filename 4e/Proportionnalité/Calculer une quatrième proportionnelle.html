@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = CreateProp();
+        var values = Quatrième_Proportionnalité.CreateProp();
 
 
         function Valider() {
@@ -25,7 +25,7 @@
 
         function Recommencer() {
             Annuler();
-            values = CreateProp();
+            values = Quatrième_Proportionnalité.CreateProp();
             document.getElementById("numerateur").innerHTML = values[0].toString();
             document.getElementById("denominateur").innerHTML = values[1].toString();
             document.getElementById("numerateur2").innerHTML = values[2].toString();

@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = GenererExerciceProblème(10, 100);
+        var values = Quatrième_Fractions.GenererExerciceProblème(10, 100);
 
 
         function Valider() {
@@ -31,7 +31,7 @@
 
         function Recommencer() {
             Annuler();
-            values = GenererExerciceProblème(10, 100);
+            values = Quatrième_Fractions.GenererExerciceProblème(10, 100);
             document.getElementById("numerateur").innerHTML = values[0].toString();
             document.getElementById("denominateur").innerHTML = values[1].toString();
         }

@@ -1,14 +1,14 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var nbr = 4;
         var nbr2 = 4;
 
         var values2 = [];
         for (j = 0; j < nbr; j++) {
-            values2.push(CreateFractionProche(nbr2, 50, 200));
+            values2.push(Troisième_Arithmetique.CreateFractionProche(nbr2, 50, 200));
         }
 
 
@@ -97,7 +97,7 @@
             values2 = [];
 
             for (j = 0; j < nbr; j++) {
-                values2.push(CreateFractionProche(nbr2, 50, 500));
+                values2.push(Troisième_Arithmetique.CreateFractionProche(nbr2, 50, 500));
                 var values = values2[j]
                 document.getElementById("numerateur" + (j+1).toString()).innerHTML = values[0][0].toString();
                 document.getElementById("denominateur" + (j+1).toString()).innerHTML = values[0][1].toString();

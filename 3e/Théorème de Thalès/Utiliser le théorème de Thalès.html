@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -15,8 +15,8 @@
             if (typefigure == 0){
                 txt = ["BC = ","DC = ","BD = ","AB = ","ED = ","AE = "];
                 ar = [values[2][1],values[2][2],values[2][5],
-                    Round(values[2][0] - values[2][1]),
-                    Round(values[2][3] - values[2][2]),values[2][4]];
+                Constante.Round(values[2][0] - values[2][1]),
+                Constante.Round(values[2][3] - values[2][2]),values[2][4]];
             }
             else
             {
@@ -34,8 +34,8 @@
         }
 
         function recommencer(){
-            typefigure = Randint(0,1);
-            values = CreateThales(typefigure);
+            typefigure = Constante.Randint(0,1);
+            values = Troisième_Thalès.CreateThales(typefigure);
             DessinerFigure(typefigure);
             var tx;
             if (typefigure == 0)

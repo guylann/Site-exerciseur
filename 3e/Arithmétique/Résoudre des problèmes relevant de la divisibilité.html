@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = GenererExerciceProblème(1800, 3000);
+        var values = Troisième_Arithmetique.GenererExerciceProblème(1800, 3000);
 
 
         function Valider() {
@@ -41,7 +41,7 @@
 
         function Recommencer() {
             Annuler();
-            values = GenererExerciceProblème(1800, 3000);
+            values = Troisième_Arithmetique.GenererExerciceProblème(1800, 3000);
             document.getElementById("rosesnbr").innerHTML = values[0].toString();
             document.getElementById("margueritesnbr").innerHTML = values[1].toString();
         }
@@ -49,7 +49,7 @@
 
     </script>
 </head>
-<body onload="CreateSidePanel(document, true);">
+<body onload="CreateSidePanel(document, true); ">
 
     <!-- Side Panel -->
     <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">

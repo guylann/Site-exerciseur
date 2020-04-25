@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = Exercice();
+        var values = Sixième_NombresDecimaux.Exercice();
 
 
         function Valider() {
@@ -42,7 +42,7 @@
 
         function Recommencer() {
             Annuler();
-            values = Exercice();
+            values = Sixième_NombresDecimaux.Exercice();
 			document.getElementById("nombre").innerHTML = values[0].toString();
             document.getElementById("numerateur").innerHTML = values[3].toString();
             document.getElementById("denominateur").innerHTML = values[4].toString();

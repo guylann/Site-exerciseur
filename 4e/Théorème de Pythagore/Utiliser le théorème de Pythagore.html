@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var param;
@@ -82,8 +82,8 @@
         function Recommencer() {
             Annuler();
             var c = document.getElementById("myCanvas");
-            param = {longueurmin: 2, longueurmax: 8, arrondi: 10, hide: Randint(0,2), angledroit: true};
-            values = CreatePythagore(param, c);
+            param = {longueurmin: 2, longueurmax: 8, arrondi: 10, hide: Constante.Randint(0,2), angledroit: true};
+            values = Quatrième_Pythagore.CreatePythagore(param, c);
             if (param.hide == 0)
                 document.getElementById("Pythagore_manque").innerHTML = values[0].sommet + values[1].sommet;
             else if(param.hide == 1)

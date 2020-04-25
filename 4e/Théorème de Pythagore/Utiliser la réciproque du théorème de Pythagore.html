@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var param;
@@ -37,11 +37,11 @@
             Annuler();
             var c = document.getElementById("myCanvas");
             param = {longueurmin: 2, longueurmax: 8, arrondi: 10, hide: 3, angledroit: false};
-            var faux = Randint(0,1);
+            var faux = Constante.Randint(0,1);
             if( faux == 0)
-                values = CreatePythagore(param, c);
+                values = Quatrième_Pythagore.CreatePythagore(param, c);
             else
-                values = CreateFauxPythagore(param, c);
+                values = Quatrième_Pythagore.CreateFauxPythagore(param, c);
         }
 
         function PremierLancement(){

@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = GenererExerciceProblème(50, 500);
+        var values = Troisième_Arithmetique.GenererExerciceProblème(50, 500);
 
 
         function Valider() {
@@ -32,7 +32,7 @@
 
         function Recommencer() {
             Annuler();
-            values = GenererExerciceProblème(50, 500);
+            values = Troisième_Arithmetique.GenererExerciceProblème(50, 500);
             document.getElementById("numerateur").innerHTML = values[0].toString();
             document.getElementById("denominateur").innerHTML = values[1].toString();
         }

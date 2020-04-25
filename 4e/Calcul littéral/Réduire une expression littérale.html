@@ -1,12 +1,12 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = CreateReductionExpression(7, -10, 10);
+        var values = Quatrième_CalculLittérale.CreateReductionExpression(7, -10, 10);
 
          function recommencer() {
-            values = CreateReductionExpression(7, -10, 10);
+            values = Quatrième_CalculLittérale.CreateReductionExpression(7, -10, 10);
             document.getElementById("TextQuestion").innerHTML = values[0];
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";

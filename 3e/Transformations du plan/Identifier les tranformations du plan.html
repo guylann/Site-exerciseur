@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -16,26 +16,26 @@
             var piece = values[1][0];
             if (id == 0 || id == 1)
             {
-                var pointa = alphabet.indexOf(document.getElementById("translation_point1").value);
-                var pointb = alphabet.indexOf(document.getElementById("translation_point2").value);
-                result = ApplyTranslation(piece, pointa, pointb);
+                var pointa = Constante.alphabet.indexOf(document.getElementById("translation_point1").value);
+                var pointb = Constante.alphabet.indexOf(document.getElementById("translation_point2").value);
+                result = Troisième_TransformationPlan.ApplyTranslation(piece, pointa, pointb);
             }
             else if (id == 2){
-                var centre = alphabet.indexOf(document.getElementById("rotation_center").value);
+                var centre = Constante.alphabet.indexOf(document.getElementById("rotation_center").value);
                 var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
                 var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
                 rotation = (rotation * sens + 360) % 360;
-                result = ApplyRotation(piece, centre, rotation);
+                result = Troisième_TransformationPlan.ApplyRotation(piece, centre, rotation);
             }
             else if (id == 3){
-                var p1 = alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
-                var p2 = alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
-                result = ApplySymetrieAxiale(piece, p1, p2);
+                var p1 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
+                var p2 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
+                result = Troisième_TransformationPlan.ApplySymetrieAxiale(piece, p1, p2);
             }
             else if (id == 4)
             {
-                var centre2 = alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
-                result = ApplySymetrieCentrale(piece, centre2);
+                var centre2 = Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+                result = Troisième_TransformationPlan.ApplySymetrieCentrale(piece, centre2);
             }
 
 
@@ -46,29 +46,29 @@
             else{
                 if (values[0] == 0){
                     t = "C'est loupé pour cette fois, c'etait une translation qui transforme par exemple ";
-                    t += alphabet[values[1][1]] + " en " + alphabet[values[1][2]];
+                    t += Constante.alphabet[values[1][1]] + " en " + Constante.alphabet[values[1][2]];
                     document.getElementById("Resultat").innerHTML = t;
                 }
                 else if (values[0] == 1){
                     t = "C'est loupé pour cette fois, c'etait une rotation de centre ";
-                    t += alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
+                    t += Constante.alphabet[values[1][2]] + " d'angle " + values[1][1] + "° dans le sens horaire";
                     document.getElementById("Resultat").innerHTML = t;
                 }
                 else if (values[0] == 2){
                     t = "C'est loupé pour cette fois, c'etait une symétrie axiale d'axe (";
-                    t += alphabet[values[1][1]] + alphabet[values[1][2]] + ") par exemple.";
+                    t += Constante.alphabet[values[1][1]] + Constante.alphabet[values[1][2]] + ") par exemple.";
                     document.getElementById("Resultat").innerHTML = t;
                 }
                 else if (values[0] == 3){
                     t = "C'est loupé pour cette fois, c'etait une symétrie centrale de centre ";
-                    t += alphabet[values[1][2]];
+                    t += Constante.alphabet[values[1][2]];
                     document.getElementById("Resultat").innerHTML = t;
                 }
             }
         }
 
         function recommencer(){
-            values = GenererIdentifier();
+            values = Troisième_TransformationPlan.GenererIdentifier();
             
 
             document.getElementById("NomFigure1").innerHTML = values[1][0];
@@ -87,7 +87,7 @@
 
         function premierlancement(){
             var c = document.getElementById("myCanvas");
-            DessinerFigure(c);
+            Troisième_TransformationPlan.DessinerFigure(c);
             recommencer(); 
             ChangeMenu();
         }

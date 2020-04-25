@@ -2,12 +2,12 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
 
         function Recommencer() {
-            values = CreateListEntier(Randint(5,10), 0,50);
+            values = Troisième_Statistiques.CreateListEntier(Constante.Randint(5,10), 0,50);
             document.getElementById("TextQuestion").innerHTML = values.toString().replace(/,/gi,' ; ');
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";
@@ -17,12 +17,12 @@
         function Validation() {
             var txt = document.getElementById("fname").value;
             document.getElementById("TextReponse").innerHTML = "";
-            if (CalculateEtendue(values).toString() == txt) {
+            if (Troisième_Statistiques.CalculateEtendue(values).toString() == txt) {
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
                 document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
-                document.getElementById("TextReponse").innerHTML = CalculateEtendue(values).toString();
+                document.getElementById("TextReponse").innerHTML = Troisième_Statistiques.CalculateEtendue(values).toString();
             }
         }
     </script>

@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -30,28 +30,28 @@
             
             var canvas = document.getElementById("myCanvas");
             InitFigure(canvas)  
-            CreateRepere(canvas, param);
+            Troisième_NotionFonction.CreateRepere(canvas, param);
 
-            RandomiseFunction(param, Randint(0,3), 1);
+            Troisième_NotionFonction.RandomiseFunction(param, Constante.Randint(0,3), 1);
 
             var a = 1;
             var b = 1;
             var c = 1;
             while (a == 1 && b == 1 && c == 1)
             {
-                a = Randint(0,1);
-                b = Randint(0,1);
-                c = Randint(0,1);
+                a = Constante.Randint(0,1);
+                b = Constante.Randint(0,1);
+                c = Constante.Randint(0,1);
             }
 
             if (a == 0)
-                CreateFunction(canvas, param);
+                Troisième_NotionFonction.CreateFunction(canvas, param);
             if (b == 0)
                 CreateFormule();
             if (c == 0)
                 CreateTableau();
 
-            values = GetsValues();
+            values = Troisième_NotionFonction.GetsValues();
             
 
             document.getElementById("valeurx").innerHTML = values.y;
@@ -80,6 +80,7 @@
             var parent = document.getElementById("formule");
             parent.innerHTML = '';
             var before = false;
+            var coefs = Troisième_NotionFonction.coefs;
             for(var i = 0; i<coefs.length; ++i) {
                 var coef = coefs[coefs.length - 1 - i];
                 var puissance = coefs.length - 1 - i;
@@ -103,7 +104,7 @@
                         s.innerHTML = " - ";
                     parent.appendChild(s);
 
-                    const rational = find_rational( coef, 10000 );
+                    const rational = Constante.find_rational( coef, 10000 );
                     if (rational.denominator != 1)
                     {
                         var a = document.createElement("div");
@@ -181,16 +182,16 @@
             a.appendChild(l);
             ligne2.appendChild(a);
 
-            for(k = 0; k < points.length; k++){
+            for(var k = 0; k < Troisième_NotionFonction.points.length; k++){
                 a = document.createElement("td");
                 l = document.createElement("label");
-                l.innerHTML = points[k].x;
+                l.innerHTML = Troisième_NotionFonction.points[k].x;
                 a.appendChild(l);
                 ligne1.appendChild(a);
                 
                 a = document.createElement("td");
                 l = document.createElement("label");
-                l.innerHTML = points[k].y;
+                l.innerHTML = Troisième_NotionFonction.points[k].y;
                 a.appendChild(l);
                 ligne2.appendChild(a);
             }

@@ -1,9 +1,9 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var values = CreateMult();
+        var values = Quatrième_Fractions.CreateMult();
 
 
         function Valider() {
@@ -36,7 +36,7 @@
 
         function Recommencer() {
             Annuler();
-            values = CreateMult();
+            values = Quatrième_Fractions.CreateMult();
             document.getElementById("numerateur").innerHTML = values[0].toString();
             document.getElementById("denominateur").innerHTML = values[1].toString();
             document.getElementById("numerateur2").innerHTML = values[2].toString();

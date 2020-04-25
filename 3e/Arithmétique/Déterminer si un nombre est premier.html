@@ -2,12 +2,12 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
-        var nombre = CreerListNbrPremierOuNon(4, 50, 150);
+        var nombre = Troisième_Arithmetique.CreerListNbrPremierOuNon(4, 50, 150);
 
         function recommencer() {
-            nombre = CreerListNbrPremierOuNon(4, 50, 150);
+            nombre = Troisième_Arithmetique.CreerListNbrPremierOuNon(4, 50, 150);
             annuler();
             document.getElementById("check1label").innerHTML = nombre[0];
             document.getElementById("check2label").innerHTML = nombre[2];

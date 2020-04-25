@@ -1,7 +1,7 @@
 ﻿<head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
 
@@ -14,12 +14,12 @@
             var v5 = document.getElementById("Rep_numerateurs5").value;
             document.getElementById("Correction").style.display = "none";
             var erreur = false;
-            if (NombreAcceptableDecomposition(v1,true))
+            if (Sixième_NombresDecimaux.NombreAcceptableDecomposition(v1,true))
             {
-                if (NombreAcceptableDecomposition(v2) && 
-                    NombreAcceptableDecomposition(v3) && 
-                    NombreAcceptableDecomposition(v4) && 
-                    NombreAcceptableDecomposition(v5))
+                if (Sixième_NombresDecimaux.NombreAcceptableDecomposition(v2) && 
+                    Sixième_NombresDecimaux.NombreAcceptableDecomposition(v3) && 
+                    Sixième_NombresDecimaux.NombreAcceptableDecomposition(v4) && 
+                    Sixième_NombresDecimaux.NombreAcceptableDecomposition(v5))
                 {
                     if (v1+v2+v3+v4+v5 == values)
                     {
@@ -58,7 +58,7 @@
 
         function Recommencer() {
             Annuler();
-            values = GetDecompositionDecimal();
+            values = Sixième_NombresDecimaux.GetDecompositionDecimal();
 			document.getElementById("nombre").innerHTML = values[0].toString();
         }
 

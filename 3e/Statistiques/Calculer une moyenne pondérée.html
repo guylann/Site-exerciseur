@@ -2,15 +2,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var coeffi;
 
         function Recommencer() {
-            var number = Randint(2,5);
-            values = CreateListEntier(number, 0,50);
-            coeffi = CreateListEntier(number, 0,50);
+            var number = Constante.Randint(2,5);
+            values = Troisième_Statistiques.CreateListEntier(number, 0,50);
+            coeffi = Troisième_Statistiques.CreateListEntier(number, 0,50);
             CreateTableau();
             
             document.getElementById("Resultat").innerHTML = "";
@@ -21,12 +21,12 @@
         function Validation() {
             var txt = document.getElementById("fname").value;
             document.getElementById("TextReponse").innerHTML = "";
-            if (CalculateMoyennePondérée(values, coeffi).toString() == txt) {
+            if (Troisième_Statistiques.CalculateMoyennePondérée(values, coeffi).toString() == txt) {
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
                 document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
-                document.getElementById("TextReponse").innerHTML = CalculateMoyennePondérée(values, coeffi).toString();
+                document.getElementById("TextReponse").innerHTML = Troisième_Statistiques.CalculateMoyennePondérée(values, coeffi).toString();
             }
         }
 
@@ -75,7 +75,7 @@
             a.setAttribute("class", "tdrouge2");
             l = document.createElement("label");
             l.setAttribute("class", "labelrouge");
-            l.innerHTML = Somme(coeffi);
+            l.innerHTML = Troisième_Statistiques.Somme(coeffi);
             a.appendChild(l);
             ligne2.appendChild(a);
 

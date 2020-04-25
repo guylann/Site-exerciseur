@@ -1,7 +1,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../index.css">
   <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typerapport = 0;
@@ -39,10 +39,10 @@
         }
 
         function recommencer(){
-            values = GénérerHomothétie();
+            values = Troisième_TransformationPlan.GénérerHomothétie();
             var c = document.getElementById("myCanvas");
-            DrawHomothétie(values, c);
-            typerapport = Randint(0,3);
+            Troisième_TransformationPlan.DrawHomothétie(values, c);
+            typerapport = Constante.Randint(0,3);
             
             document.getElementById("Rapport").innerHTML = values[4 + typerapport];
             if (typerapport == 3)

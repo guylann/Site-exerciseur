@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var typefigure = 0;
@@ -18,8 +18,8 @@
         }
 
         function recommencer(){
-            values = CreateReciproque();
-            typefigure = Randint(0,1);
+            values = Troisième_Thalès.CreateReciproque();
+            typefigure = Constante.Randint(0,1);
             DessinerFigure(typefigure);
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("reponse1").value = "";
@@ -68,7 +68,7 @@
                 console.log(values);
                 if (values[0] != 0)
                 {
-                    t = Round(values[2][0] - values[2][1]);
+                    t = Constante.Round(values[2][0] - values[2][1]);
                     ctx.fillText(t.toString() + " cm", margin+50, 20);
                     t = values[2][1];
                     ctx.fillText(t.toString() + " cm", margin+230, 20);
@@ -79,7 +79,7 @@
                 {
                     t = values[2][2];
                     ctx.fillText(t.toString() + " cm", margin+170, 240);
-                    t = Round(values[2][3] - values[2][2]);
+                    t = Constante.Round(values[2][3] - values[2][2]);
                     ctx.fillText(t.toString() + " cm", margin-5, 240);
                 }
                 ctx.rotate(11 * Math.PI / 180);

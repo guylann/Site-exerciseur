@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../index.css">
     <script src="../../MenuSetup.js"></script>
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
     <script>
         var values;
         var param;
@@ -16,14 +16,14 @@
             }
             else{
                 document.getElementById("correctionGlobal").innerHTML = "Oups, ce n'est pas la réponse attendue ...";
-                var Correction = ConvertNombre(values[0]) + " ";
+                var Correction = Cinquième_NombresRlatifs.ConvertNombre(values[0]) + " ";
                 if (values[0] === values[1])
                     Correction += "="
                 else if (values[0] > values[1])
                     Correction += ">"
                 else if (values[0] < values[1])
                     Correction += "<"
-                Correction += " " + ConvertNombre(values[1]) ;
+                Correction += " " + Cinquième_NombresRlatifs.ConvertNombre(values[1]) ;
                 document.getElementById("Correction").innerHTML = Correction;
                 
             }
@@ -38,9 +38,9 @@
 
         function Recommencer() {
             Annuler();
-            values =  GetComparaison();
-            var nombre1 =  ConvertNombre(values[0]) + "&nbsp;";
-            var nombre2 = "&nbsp;" +  ConvertNombre(values[1]);
+            values =  Cinquième_NombresRlatifs.GetComparaison();
+            var nombre1 =  Cinquième_NombresRlatifs.ConvertNombre(values[0]) + "&nbsp;";
+            var nombre2 = "&nbsp;" +  Cinquième_NombresRlatifs.ConvertNombre(values[1]);
             document.getElementById("Nombre1").innerHTML = nombre1;
             document.getElementById("Nombre2").innerHTML = nombre2;
         }
