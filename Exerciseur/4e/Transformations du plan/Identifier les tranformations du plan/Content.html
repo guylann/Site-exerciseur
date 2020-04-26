@@ -1,0 +1,65 @@
+    <canvas id="myCanvas" width="500" height="500" style="color: white;stroke: white; border:1px solid white">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <p>
+    <div>
+        <label>La figure </label>
+        <label id="NomFigure2"></label>
+        <label>, est l'image de la figure </label>
+        <label id="NomFigure1"></label>
+        <label>par la </label>
+        <div class="custom-select" style="width: 170; display: inline-block;">
+            <select id="Propositions" >
+                <option class="option" value="Translation">Translation</option>
+                <option class="option" value="Translation">Translation</option>
+                <option class="option" value="Rotation">Rotation</option>
+                <option class="option" value="Symétrie Axiale">Symétrie Axiale</option>
+                <option class="option" value="Symétrie Centrale">Symétrie Centrale</option>
+            </select>
+        </div>
+
+        <div id="translation" style="display: inline-block;">
+            <label>qui transforme </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="translation_point1">
+            <label>en </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="translation_point2">
+        </div>
+
+        <div id="rotation" style="display: inline-block; margin-top: 5px;">
+            <label> de centre </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="rotation_center">
+            <label>d'angle </label>
+            <div class="custom-select" style="width: 75;">
+                <select id="rotation_angle">
+                    <option class="option" value="90°">90°</option>
+                    <option class="option" value="90°">90°</option>
+                    <option class="option" value="180°">180°</option>
+                    <option class="option" value="270°">270°</option>
+                </select>
+            </div>
+            <label>dans le sens </label>
+             <div class="custom-select" style="width: 120;">
+                <select id="rotation_sens">
+                    <option class="option" value="horaire">horaire</option>
+                    <option class="option" value="horaire">horaire</option>
+                    <option class="option" value="antihoraire">antihoraire</option>
+                </select>
+            </div>
+            <label>.</label>
+        </div>
+
+        <div id="symétrieAxial" style="display: inline-block;">
+            <label>d'axe (</label>
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieAxial_point1">
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieAxial_point2">
+            <label>).</label>
+        </div>
+
+        <div id="symétrieCentrale" style="display: inline-block;">
+            <label>de centre </label>
+            <input class="backbutton" style="width: 30px;" type="text" id="symétrieCentrale_centre">
+            <label>.</label>
+        </div>
+        <label id="Resultat"></label><br>
+    </div>
+    </p>

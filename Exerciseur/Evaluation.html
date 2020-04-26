@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html id="MainBody">
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="import" href="/path/to/file.html">
+        <script src="MenuSetup.js"></script>
+        <div style="position: relative; overflow: hidden; height: 296px;">
+            <img src="BackgroundHead.png" class="imagecenter"
+              alt="" title="Site Exerciseur" id="Titre"><br>
+        </div>
+
+        <style>
+            td{
+                border: none;
+                padding: 0px;
+            }
+            div{
+                display: block;
+            }
+        </style>
+    </head>
+    <body onload="CreateMenu(); CreateSidePanel(document);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+
+        
+    </body>
+
+
+    <script>
+        HtmlManipulator.includeHTML(document);
+    </script> 
+</html>

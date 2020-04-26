@@ -187,7 +187,6 @@ class Constante
     }
 }
 
-
 //#region Troisième
 
 // Arithmétiques
@@ -205,9 +204,9 @@ class Troisième_Arithmetique
         var nombre;
         while (array.length === 1 || array[array.length - 1] > Constante.PremierCourt[Constante.PremierCourt.length - 1]) {
             nombre = Constante.Randint(min, max);
-            array = Decomposition(nombre);
+            array = Troisième_Arithmetique.Decomposition(nombre);
         }
-        return [nombre.toString(), DecompositionToTxt(array)];
+        return [nombre.toString(), Troisième_Arithmetique.DecompositionToTxt(array)];
     }
 
     // Crée la décomposition d'un nombre sous forme de tableau de nombre
@@ -283,14 +282,14 @@ class Troisième_Arithmetique
             count += 1;
         }
     
-        var fractions = [[num, den], [Constante.Randint(0, nbr), 0]];
+        var fractions = [[num, den], [Constante.Randint(0, nbr - 1), 0]];
         var same = Troisième_Arithmetique.CreateIdentiqueFraction(num, den, pgcd);
         while (same[0] === num)
             same = Troisième_Arithmetique.CreateIdentiqueFraction(num, den, pgcd);
         fractions.push(same);
         for (var i = 0; i < nbr-1; i++) {
             var faussefraction = Troisième_Arithmetique.CreateIdentiqueFraction(num, den, pgcd);
-            faussefraction = Troisième_Arithmetique.ChangeFraction(faussefraction, Constante.Randint(0, 10));
+            faussefraction = Troisième_Arithmetique.ChangeFraction(faussefraction, Constante.Randint(0, 9));
             fractions.push(faussefraction);
         }
     
@@ -303,9 +302,9 @@ class Troisième_Arithmetique
         if (typeMelange === 0)
             return [fraction[1], fraction[0]];
         else if (typeMelange === 1)
-            return [fraction[0] + Constante.Randint(1, 5), fraction[1]];
+            return [fraction[0] + Constante.Randint(1, 4), fraction[1]];
         else if (typeMelange === 2)
-            return [fraction[0], fraction[1] + Constante.Randint(1, 5)];
+            return [fraction[0], fraction[1] + Constante.Randint(1, 4)];
         else if (typeMelange === 3)
             return [fraction[0] * 2, fraction[1]];
         else if (typeMelange === 4)
@@ -319,7 +318,7 @@ class Troisième_Arithmetique
         var coefs = [1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9, 10, 10, 10];
         var coef = pgcd;
         while (coef === pgcd)
-            coef = coefs[Constante.Randint(0, coefs.length)];
+            coef = coefs[Constante.Randint(0, coefs.length - 1)];
     
         return [num * coef, den * coef];
     }
@@ -1272,7 +1271,7 @@ class Troisième_TransformationPlan
         ctx.stroke();
 
         var colors =  ['white', '#FF5555','#55FF55','#FFFF55'];
-        for(i = 0; i < 13; i++) {
+        for(var i = 0; i < 13; i++) {
 
             var txt = Constante.alphabet[i]
             var color = colors[Math.floor(i/3)];
@@ -1311,7 +1310,7 @@ class Troisième_TransformationPlan
         var maxx = -9999999;
         var miny = 999999;
         var maxy = -9999999;
-        for(i = 0; i < points.length; i++) {
+        for(var i = 0; i < points.length; i++) {
             var p = points[i];
             if (p.x < minx)
                 minx = p.x;
@@ -1347,8 +1346,8 @@ class Troisième_TransformationPlan
         var y = margin;
         var id = 0;
         var id2 = 0;
-        for(i = 0; i < (nbr*2-1); i++) {
-            for(j = 0; j < nbr - ((i+1)%2); j++) {
+        for(var i = 0; i < (nbr*2-1); i++) {
+            for(var j = 0; j < nbr - ((i+1)%2); j++) {
                 x = margin + move * 4 * j;
                 y = margin + move * 2 * i;
                 if (i % 2 == 1){
@@ -2495,7 +2494,7 @@ class Cinquième_NombresRlatifs
         var a = Constante.Randint(-20,20);
         var txt = Cinquième_NombresRlatifs.ConvertNombre(a);
         var total = a;
-        for (i = 1; i < nbrterme; i++) {
+        for (var i = 1; i < nbrterme; i++) {
             var cl = Constante.Randint(0,1);
             if (cl === 0)
             {
@@ -2630,3 +2629,83 @@ class Sixième_NombresDecimaux
 
 //#endregion
 
+
+
+
+class HtmlManipulator
+{
+    static LoadOK = false;
+    static Gdocument;
+
+    static SetupExercice(folder){
+        let url = new URL("../Exercice.html", document.location.href);
+        url.searchParams.append('folder', folder);
+        document.location.href = url;
+    }
+
+    static GetscriptFolder(){
+        let params = (new URL(document.location)).searchParams;
+        return params.get('folder');
+    }
+
+    static includeHTML(document) {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) 
+        {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("include-html");
+            if (file) 
+            {
+                /* Make an HTTP request using the attribute value as the file name: */
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) 
+                    {
+                        if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                        if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                        /* Remove the attribute, and call this function once more: */
+                        elmnt.removeAttribute("include-html");
+                        HtmlManipulator.includeHTML();
+                    }
+                }
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /* Exit the function: */
+                return;
+            }
+        }
+    }
+
+
+    static includeHTMLInElement(element) {
+        var xhttp;
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) 
+            {
+                if (this.status == 200) {element.innerHTML = this.responseText;}
+                if (this.status == 404) {element.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                HtmlManipulator.LoadOK = true;
+                HtmlManipulator.includeHTML(document);
+            }
+        }
+        xhttp.open("GET", HtmlManipulator.GetscriptFolder() + "/Content.html", true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+    }
+}
+
+
+
+
+
+class Evaluation
+{
+
+}

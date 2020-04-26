@@ -1,0 +1,62 @@
+    <style>
+        td{
+            border-style: none;
+            padding: 0px;
+        }
+        div{
+            display: block;
+        }
+    </style>
+    <table style="border-collapse: collapse;">
+        <tr>
+            <td style="border: solid white;" id="Colonne1_1">
+                <canvas id="myCanvas" width="300" height="520" style="color: white;stroke: white;">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
+            </td>
+            <td>
+                <p id="Colonne1_3">
+                    <div id="Enonce" class="enonce">
+                        <label>Dans la figure ci-contre, la base (en jaune) est un </label>
+                        <label id="TypeBase"></label><br>
+                        <label>[SH] est sa hauteur, calculer le volume de ce solide.</label>
+                    </div>
+                </p>
+                <p>
+
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: solid white;" id="Colonne1_2"> 
+                <table>
+                    <tr>
+                        <td>
+                            <label>Rotation :</label>
+                        </td>
+                        <td>
+                            <label>Angle de vue :</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="range" id="TestRange" min="-360" max="360" oninput="Redraw();">
+                        </td>
+                        <td>
+                            <input type="range" id="Testview" min="0" max="100" oninput="Redraw();">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <label>V = </label>
+                <input type="text" class="backbutton"  id="Reponse">
+                <label>cm<sup>3</sup></label>
+            </td>
+        </tr>
+    </table>
+    <p>
+    <div>
+        <label id="correctionGlobal"></label><br>
+    </div>
+    </p>

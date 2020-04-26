@@ -1,0 +1,33 @@
+﻿<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../index.css">
+        <script src="../../MenuSetup.js"></script>
+        <script src="../../script.js"></script>
+    </head>
+    <body onload="CreateSidePanel(document, true);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+            <a href="#">Menu principal</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+        
+        <div style="height: 50px;"></div>
+        <p class="soustitre">
+            Niveau 3ème :
+        </p>
+        <h1><b><u>
+            Théorème de Thalès
+        </h1></b></u>
+        <ul>Sélectionner la compétence à travailler
+            <li><a class="button" onclick="HtmlManipulator.SetupExercice('3e/Théorème de Thalès/Utiliser le théorème de Thalès')">Utiliser le théorème de Thalès</a></li>
+            <li><a class="button" onclick="HtmlManipulator.SetupExercice('3e/Théorème de Thalès/Utiliser la réciproque du théorème de Thalès')">Utiliser la réciproque du théorème de Thalès</a></li>
+        </ul>
+        <div style="height: 50px;"></div>
+        <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
+    </body>
+</html>
