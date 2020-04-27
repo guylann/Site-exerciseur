@@ -45,3 +45,23 @@ function Recommencer() {
     document.getElementById("rosesnbr").innerHTML = values[0].toString();
     document.getElementById("margueritesnbr").innerHTML = values[1].toString();
 }
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    var c1 = document.getElementById("check1").checked;
+    var c2 = document.getElementById("check2").checked;
+    var c3 = document.getElementById("check3").checked;
+    var c4 = document.getElementById("check4").checked;
+
+    reponse[0] = "Les bouquets :" + values[0] + " roses et  " + values[1] + "marguerites";
+    reponse[1] = "Tu as choisi : " + document.getElementById("bouquets").value + " bouquets, chacun de :";
+    reponse[1] += document.getElementById("roses").value + " roses et ";
+    reponse[1] += document.getElementById("marguerites").value + " marguerites.";
+
+    reponse[3] = "La bonne réponse était : " + values[2] + "bouquets, chacun de :";
+    reponse[3] += (values[0] / values[2]) + " roses et ";
+    reponse[3] += (values[1] / values[2]) + " marguerites.";
+
+    return reponse
+}

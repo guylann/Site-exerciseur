@@ -65,3 +65,35 @@ function Valider() {
     }
     
 }
+
+function Resume(){
+    var reponse = ["Question","Reponse", "As-tu penser a utiliser les critères de divisibilité ?","Correction"];
+
+    var c1 = document.getElementById("check1").checked;
+    var c2 = document.getElementById("check2").checked;
+    var c3 = document.getElementById("check3").checked;
+    var c4 = document.getElementById("check4").checked;
+
+    reponse[0] = "Trouver les nombres premiers parmis : " + nombre[0] + " ; " + nombre[2] + " ; " + nombre[4] + " ; " + nombre[6];
+    reponse[1] = "";//"Tu as choisi : ";
+    if (c1)
+        reponse[1] += nombre[0] + " ; ";
+    if (c2)
+        reponse[1] += nombre[2] + " ; ";
+    if (c3)
+        reponse[1] += nombre[4] + " ; ";
+    if (c4)
+        reponse[1] += nombre[6];
+    reponse[3] = "La bonne réponse était : ";
+    if (nombre[1])
+        reponse[3] += nombre[0] + " ; ";
+    if (nombre[3])
+        reponse[3] += nombre[2] + " ; ";
+    if (nombre[5])
+        reponse[3] += nombre[4] + " ; ";
+    if (nombre[7])
+        reponse[3] += nombre[6];
+
+
+    return reponse
+}
