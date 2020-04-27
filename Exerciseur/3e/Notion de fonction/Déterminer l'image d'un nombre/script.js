@@ -199,3 +199,13 @@ var typefigure = 0;
             parent.appendChild(ligne1);
             parent.appendChild(ligne2);
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Trouver l'image de " + values.x;
+            reponse[1] = document.getElementById("reponseUser").value;
+            reponse[3] = values.y;
+        
+            return reponse
+        }

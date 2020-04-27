@@ -26,3 +26,13 @@ var values;
 
         function Annuler(){
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Donner l'étendue de " + values.toString();
+            reponse[1] = document.getElementById("fname").value;
+            reponse[3] = Troisième_Statistiques.CalculateEtendue(values).toString();
+        
+            return reponse
+        }

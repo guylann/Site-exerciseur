@@ -83,3 +83,13 @@ var values;
             parent.appendChild(ligne1);
             parent.appendChild(ligne2);
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Donner la moyenne pondérée de " + values.toString() + " par " + coeffi.toString();
+            reponse[1] = document.getElementById("fname").value;
+            reponse[3] = Troisième_Statistiques.CalculateMoyennePondérée(values, coeffi).toString();
+        
+            return reponse
+        }

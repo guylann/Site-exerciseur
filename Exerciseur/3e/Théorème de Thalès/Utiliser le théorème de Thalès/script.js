@@ -195,3 +195,30 @@ var values;
             }
             
         }
+
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            
+            if (typefigure == 0){
+                txt = ["BC = ","DC = ","BD = ","AB = ","ED = ","AE = "];
+                ar = [values[2][1],values[2][2],values[2][5],
+                Constante.Round(values[2][0] - values[2][1]),
+                Constante.Round(values[2][3] - values[2][2]),values[2][4]];
+            }
+            else
+            {
+                txt = ["BC = ","DC = ","BD = ","AC = ","EC = ","AE = "];
+                ar = [values[2][1],values[2][2],values[2][5],
+                      values[2][0],values[2][3],values[2][4]];
+            }
+
+            var txt1 = document.getElementById("reponse1").value;
+            var txt2 = document.getElementById("reponse2").value;
+            reponse[0] = txt[values[0]] + "? et " + txt[3 + values[1]] +"?";
+            reponse[1] = txt[values[0]] + txt1 + " et " + txt[3 + values[1]] + txt2;
+            reponse[3] = txt[values[0]] + ar[values[0]] +" ; " + txt[3 + values[1]] + ar[3 + values[1]];
+        
+            return reponse
+        }

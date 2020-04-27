@@ -142,3 +142,19 @@ var values;
             }
             
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "(AE) et (BD) sont-elles-parallèles ?";
+            if (document.getElementById("reponse1").checked)
+                reponse[1] = "Non";
+            else if (document.getElementById("reponse2").checked)
+                reponse[1] = "Oui";
+            if (values[1] == 0)
+                reponse[3] = "Non";
+            else if (values[1] == 1)
+                reponse[3] = "Oui";
+        
+            return reponse
+        }

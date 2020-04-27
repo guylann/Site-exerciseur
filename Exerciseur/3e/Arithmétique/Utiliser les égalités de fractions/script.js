@@ -113,3 +113,32 @@ function Recommencer() {
         }
     }
 }
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = "Donner la fraction egale à : <br>";
+    reponse[1] = "Tu as choisi : <br>";
+    reponse[3] = "La bonne réponse était : <br>";
+    for (j = 0; j < nbr; j++) {
+        var values = values2[j]
+        reponse[0] += values[0][0] + " / " + values[0][1] + "<br>";
+        var offset = 0;
+        for (i = 0; i < nbr2; i++) {
+            if (i === values[1][0]) {
+                reponse[3] += values[2][0] + " / " + values[2][1] + "<br>";
+                offset = -1;
+            }
+            if (document.getElementById("Rep" + (j+1).toString() + "_F" + (i+1).toString()).checked){
+                if (i === values[1][0]) {
+                    reponse[1] += values[2][0] + " / " + values[2][1] + "<br>"
+                }
+                else {
+                    reponse[1] += values[3 + i + offset][0] + " / " + values[3 + i + offset][1] + "<br>"
+                }
+            }
+        }
+    }
+
+    return reponse
+}

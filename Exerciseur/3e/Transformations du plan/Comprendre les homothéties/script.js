@@ -51,3 +51,24 @@ var values;
         }
 
         function Annuler() {}
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            
+            reponse[0] = "l'image de ABC avec un rapport de " + values[4 + typerapport];
+            if (typerapport == 3)
+                reponse[0] = "l'image de ABC avec un rapport de 1"
+            
+            reponse[1] = document.getElementById("indexFigureImage").value;
+            if (typerapport == 0)
+                reponse[3] = "DEF";
+            else if (typerapport == 1)
+                reponse[3] = "GHI";
+            else if (typerapport == 2)
+                reponse[3] = "JKL";
+            else if (typerapport == 3)
+                reponse[3] = "ABC";
+        
+            return reponse
+        }

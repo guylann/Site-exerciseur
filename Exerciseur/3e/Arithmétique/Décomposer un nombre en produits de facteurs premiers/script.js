@@ -11,6 +11,8 @@ var nombre;
 
 function Valider(){
     var txt = document.getElementById("fname").value;
+    txt = txt.replace(/x/g,"*");
+    txt = txt.replace(/X/g,"*");
     if (nombre[1] == txt) {
         document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
     }
@@ -19,6 +21,16 @@ function Valider(){
         document.getElementById("TextReponse").innerHTML = nombre[1];
     }
 }
+
+function test(tableau){
+    var a = 1
+    for (let index = 0; index < tableau.length; index++) {
+        const element = tableau[index];
+        a *= parseInt(element)
+    }
+    return a;
+}
+
 
 function Recommencer(){
     nombre = Troisième_Arithmetique.CreateDecompBetween(100, 1000);

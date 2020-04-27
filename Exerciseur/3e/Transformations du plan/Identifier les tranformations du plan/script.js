@@ -12,31 +12,7 @@ var premier = true;
             var id = document.getElementById("Propositions").selectedIndex;
             var t;
 
-            var result = -1;
-            var piece = values[1][0];
-            if (id == 0 || id == 1)
-            {
-                var pointa = Constante.alphabet.indexOf(document.getElementById("translation_point1").value);
-                var pointb = Constante.alphabet.indexOf(document.getElementById("translation_point2").value);
-                result = Troisième_TransformationPlan.ApplyTranslation(piece, pointa, pointb);
-            }
-            else if (id == 2){
-                var centre = Constante.alphabet.indexOf(document.getElementById("rotation_center").value);
-                var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
-                var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
-                rotation = (rotation * sens + 360) % 360;
-                result = Troisième_TransformationPlan.ApplyRotation(piece, centre, rotation);
-            }
-            else if (id == 3){
-                var p1 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
-                var p2 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
-                result = Troisième_TransformationPlan.ApplySymetrieAxiale(piece, p1, p2);
-            }
-            else if (id == 4)
-            {
-                var centre2 = Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
-                result = Troisième_TransformationPlan.ApplySymetrieCentrale(piece, centre2);
-            }
+            var result = GetImage(id);
 
 
             if (result == values[1][3])
@@ -66,6 +42,38 @@ var premier = true;
                 }
             }
         }
+
+
+
+        function GetImage(id){
+            var result = -1;
+            var piece = values[1][0];
+            if (id == 0 || id == 1)
+            {
+                var pointa = Constante.alphabet.indexOf(document.getElementById("translation_point1").value);
+                var pointb = Constante.alphabet.indexOf(document.getElementById("translation_point2").value);
+                result = Troisième_TransformationPlan.ApplyTranslation(piece, pointa, pointb);
+            }
+            else if (id == 2){
+                var centre = Constante.alphabet.indexOf(document.getElementById("rotation_center").value);
+                var rotation = 90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1);
+                var sens = (((document.getElementById("rotation_sens").selectedIndex * 2) % 3 )% 2 )* -2 + 1;
+                rotation = (rotation * sens + 360) % 360;
+                result = Troisième_TransformationPlan.ApplyRotation(piece, centre, rotation);
+            }
+            else if (id == 3){
+                var p1 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point1").value);
+                var p2 = Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point2").value);
+                result = Troisième_TransformationPlan.ApplySymetrieAxiale(piece, p1, p2);
+            }
+            else if (id == 4)
+            {
+                var centre2 = Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+                result = Troisième_TransformationPlan.ApplySymetrieCentrale(piece, centre2);
+            }
+        }
+
+
 
         function Recommencer(){
             if(premier)
@@ -114,4 +122,38 @@ var premier = true;
             else if (index == 4){
                 document.getElementById("symétrieCentrale").style.display = "block";
             }
+        }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            
+            reponse[0] = values[1][3] + "est l'image de " + values[1][0] + " par quelle tranformation ?";
+            var id = document.getElementById("Propositions").selectedIndex;
+            if (id == 0 || id == 1)
+            {
+                reponse[1] = "Translation de " + Constante.alphabet.indexOf(document.getElementById("translation_point1").value) + " en " + Constante.alphabet.indexOf(document.getElementById("translation_point2").value)
+            }
+            else if (id == 2){
+                
+                reponse[1] = "Rotation de centre " + Constante.alphabet.indexOf(document.getElementById("rotation_center").value) + 
+                " d'angle " + (90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1)).toString() + " dans le sens "
+                if (document.getElementById("rotation_sens").selectedIndex == 0 || (document.getElementById("rotation_sens").selectedIndex == 1))
+                    reponse[1] += "horaire"
+                else
+                    reponse[1] += "antihoraire"
+            }
+            else if (id == 3){
+                reponse[1] = "Symétrie d'axe (" + Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point1").value) + Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point2").value) + ")";
+            }
+            else if (id == 4)
+            {
+                reponse[1] = "Symétrie centrale de centre " + Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+            }
+            if (GetImage(id) == values[1][3])
+                reponse[3] = "C'est juste";
+            else if (GetImage(id) == values[1][3])
+                reponse[3] = "C'est faux";
+        
+            return reponse
         }

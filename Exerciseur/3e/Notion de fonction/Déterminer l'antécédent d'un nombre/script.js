@@ -199,3 +199,14 @@ var values;
             parent.appendChild(ligne1);
             parent.appendChild(ligne2);
         }
+
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Trouver l'antécédent de " + values.y;
+            reponse[1] = document.getElementById("reponseUser").value;
+            reponse[3] = values.x;
+        
+            return reponse
+        }

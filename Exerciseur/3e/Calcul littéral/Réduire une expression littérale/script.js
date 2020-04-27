@@ -24,3 +24,13 @@ function Valider() {
 }
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = "Réduire " + values[0];
+    reponse[1] = document.getElementById("fname").value;
+    reponse[3] = values[1];
+
+    return reponse
+}

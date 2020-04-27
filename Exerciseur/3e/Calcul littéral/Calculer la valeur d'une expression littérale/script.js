@@ -28,3 +28,13 @@ function Valider() {
 
 function Annuler() {
 }
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = nombre[0] + "  pour x = " + nombre[1];
+    reponse[1] = document.getElementById("fname").value;
+    reponse[3] = nombre[2];
+
+    return reponse
+}

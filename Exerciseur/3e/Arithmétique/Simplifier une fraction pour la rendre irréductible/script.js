@@ -36,3 +36,21 @@ function Recommencer() {
     document.getElementById("numerateur").innerHTML = values[0].toString();
     document.getElementById("denominateur").innerHTML = values[1].toString();
 }
+
+function Resume(){
+    var reponse = ["Question","Reponse", "Ta fraction est-elle bien irréductible ?","Correction"];
+
+    var c1 = document.getElementById("check1").checked;
+    var c2 = document.getElementById("check2").checked;
+    var c3 = document.getElementById("check3").checked;
+    var c4 = document.getElementById("check4").checked;
+
+    reponse[0] = "Donner la fraction irréductible de " + values[0] + " / " + values[1];
+    reponse[1] = document.getElementById("Rep_numerateurs").value;
+    reponse[1] += " / " + document.getElementById("Rep_denominateur").value;
+
+    reponse[3] = "La bonne réponse était : ";
+    reponse[3] += (values[0] / values[2]) + " / " + (values[1] / values[2]);
+
+    return reponse
+}

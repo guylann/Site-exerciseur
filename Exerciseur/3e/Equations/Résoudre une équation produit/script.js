@@ -40,3 +40,13 @@ function Valider() {
 }
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = "Résoudre " + nombre[0];
+    reponse[1] = document.getElementById("fname1").value + " et " + document.getElementById("fname2").value;
+    reponse[3] = nombre[1] + " et " + nombre[2];
+
+    return reponse
+}
