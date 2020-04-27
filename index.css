@@ -145,6 +145,7 @@ td{
     width: 80%;
     transition-duration: 0.4s;
     background-color: transparent;
+    cursor: pointer;
 }
 .button:hover {
     background-color: white;
