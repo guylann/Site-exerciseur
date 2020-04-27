@@ -315,6 +315,7 @@
             var uid = "n:" + identifiant + "t:" + Math.floor(Date.now()/1000).toString(36) + "ip:" + parseInt(ip.replace(/\./g,"")).toString(36);
             console.log(Code(uid));
             document.getElementById("Code").innerHTML = Code(uid);
+            document.getElementById("Quitter").style.display = "inline-block";
         }
 
         function Code(value)
@@ -497,7 +498,7 @@
                 
         </div>
 
-        <p style="font-size: 10pt;">
+        <p style="font-size: 10pt; width: 80%; margin-left: auto; margin-right: auto;">
           <i> Attend que ton code soit générer puis appuie sur le bouton ci-dessous pour copier le résultat de ton évaluation et envoie le à ton professeur via pronote ou l'ENT.</i>  
         </p>
 
@@ -508,7 +509,7 @@
         </p>
 
 
-        <input class="backbutton" type="button" value="Quitter l'évaluation" onclick="history.go(-1)">
+        <input id="Quitter" class="backbutton" type="button" value="Quitter l'évaluation" style="display: none; " onclick="history.go(-1)">
     </div>
 
 
