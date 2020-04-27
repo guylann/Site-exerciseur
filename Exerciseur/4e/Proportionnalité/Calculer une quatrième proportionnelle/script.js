@@ -30,3 +30,13 @@ var values;
             document.getElementById("denominateur").innerHTML = values[1].toString();
             document.getElementById("numerateur2").innerHTML = values[2].toString();
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = values[0].toString() + " pour " + values[1].toString() + " donc " + values[2].toString() + " pour ?";
+            reponse[1] = document.getElementById("Rep").value;
+            reponse[3] = values[3];
+        
+            return reponse
+        }

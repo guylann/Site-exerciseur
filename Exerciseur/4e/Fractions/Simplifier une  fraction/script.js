@@ -35,3 +35,13 @@ var values;
             document.getElementById("numerateur").innerHTML = values[0].toString();
             document.getElementById("denominateur").innerHTML = values[1].toString();
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Simplifier " + values[0].toString() + "/" + values[1].toString();
+            reponse[1] = document.getElementById("Rep_numerateurs").value + "/" + document.getElementById("Rep_denominateurs").value;
+            reponse[3] = (values[0] / values[2]).toString() + "/" + (values[1] / values[2]).toString();
+        
+            return reponse
+        }

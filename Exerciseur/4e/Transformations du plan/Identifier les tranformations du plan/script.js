@@ -115,3 +115,37 @@ var premier = true;
         }
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    
+    reponse[0] = values[1][3] + "est l'image de " + values[1][0] + " par quelle tranformation ?";
+    var id = document.getElementById("Propositions").selectedIndex;
+    if (id == 0 || id == 1)
+    {
+        reponse[1] = "Translation de " + Constante.alphabet.indexOf(document.getElementById("translation_point1").value) + " en " + Constante.alphabet.indexOf(document.getElementById("translation_point2").value)
+    }
+    else if (id == 2){
+        
+        reponse[1] = "Rotation de centre " + Constante.alphabet.indexOf(document.getElementById("rotation_center").value) + 
+        " d'angle " + (90 * Math.max(document.getElementById("rotation_angle").selectedIndex,1)).toString() + " dans le sens "
+        if (document.getElementById("rotation_sens").selectedIndex == 0 || (document.getElementById("rotation_sens").selectedIndex == 1))
+            reponse[1] += "horaire"
+        else
+            reponse[1] += "antihoraire"
+    }
+    else if (id == 3){
+        reponse[1] = "Symétrie d'axe (" + Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point1").value) + Constante.alphabet.indexOf(document.getElementById("symétrieAxial_point2").value) + ")";
+    }
+    else if (id == 4)
+    {
+        reponse[1] = "Symétrie centrale de centre " + Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
+    }
+    if (GetImage(id) == values[1][3])
+        reponse[3] = "C'est juste";
+    else if (GetImage(id) == values[1][3])
+        reponse[3] = "C'est faux";
+
+    return reponse
+}

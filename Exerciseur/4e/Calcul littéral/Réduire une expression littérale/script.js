@@ -26,3 +26,13 @@ var values;
         }
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = "Réduire " + Values[0];
+    reponse[1] = document.getElementById("fname").value;
+    reponse[3] = Values[1];
+
+    return reponse
+}

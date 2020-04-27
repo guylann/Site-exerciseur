@@ -41,3 +41,14 @@ var premier = true;
 
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    
+    reponse[0] = "l'image de " + values[0];
+    reponse[1] = document.getElementById("indexFigureImage").value;
+    reponse[3] = values[3];
+
+    return reponse
+}

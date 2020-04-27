@@ -43,3 +43,22 @@ var values;
             else
                 values = Quatrième_Pythagore.CreateFauxPythagore(param, c);
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "ABC rectangle ?";
+            reponse[1] = "le triangle ABC ";
+            if (document.getElementById("Propositions").selectedIndex == 1)
+                reponse[1] += "est rectangle"
+            else if (document.getElementById("Propositions").selectedIndex == 1)
+                reponse[1] += "n'est pas rectangle"
+
+            reponse[3] = "Le triangle ABC ";
+            if (values[7])
+                reponse[3]  += "est rectangle."
+            else
+                reponse[3]  += "n'est pas rectangle."
+        
+            return reponse
+        }

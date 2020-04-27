@@ -34,3 +34,19 @@ var values = Quatrième_Proportionnalité.CreateSitProp();
             document.getElementById("numerateur3").innerHTML = values[4].toString();
 			document.getElementById("denominateur3").innerHTML = values[5].toString();
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Y-a-t-il proportionnalité ? : " + values[0].toString() + " pour " + values[1].toString() + " ; " + values[2].toString() + " pour " + values[3].toString()+ " ; " + values[4].toString() + " pour " + values[5].toString();
+            if (document.getElementById("oui").checked)
+                reponse[1] = "Oui";
+            else if (document.getElementById("non").checked)
+                reponse[1] = "Non";
+            if (values[6])
+                reponse[3] = "Oui";
+            else
+                reponse[3] = "Non";
+        
+            return reponse
+        }

@@ -44,3 +44,33 @@ var values;
             document.getElementById("Nombre1").innerHTML = nombre1;
             document.getElementById("Nombre2").innerHTML = nombre2;
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = values[0] + "&nbsp;  ?  &nbsp;" +  values[1];
+            reponse[1] = document.getElementById("Rep").value;
+
+            var id = document.getElementById("Propositions").selectedIndex;
+            var Correction = Cinquième_NombresRlatifs.ConvertNombre(values[2]) + " ";
+            if (id == 0 || id == 1)
+                Correction += "="
+            else if (id == 2)
+                Correction += ">"
+            else if (id == 3)
+                Correction += "<"
+            Correction += " " + Cinquième_NombresRlatifs.ConvertNombre(values[3]) ;
+            reponse[1] = Correction;
+
+            Correction = Cinquième_NombresRlatifs.ConvertNombre(values[2]) + " ";
+                if (values[0] === values[1])
+                    Correction += "="
+                else if (values[0] > values[1])
+                    Correction += ">"
+                else if (values[0] < values[1])
+                    Correction += "<"
+                Correction += " " + Cinquième_NombresRlatifs.ConvertNombre(values[3]) ;
+            reponse[3] = Correction;
+        
+            return reponse
+        }

@@ -32,3 +32,13 @@ var values;
             values = Cinquième_NombresRlatifs.GetSomme();
             document.getElementById("Calcul").innerHTML = values[0];
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = values[0];
+            reponse[1] = document.getElementById("Rep").value;
+            reponse[3] = values[1][0];
+        
+            return reponse
+        }

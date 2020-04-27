@@ -43,3 +43,13 @@ var values;
             document.getElementById("denominateur2").innerHTML = values[3].toString();
 			document.getElementById("operation").innerHTML = values[6].toString();
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = values[0].toString() + "/" + values[1].toString() + values[6].toString() + values[2].toString() + "/" + values[3].toString();
+            reponse[1] = document.getElementById("Rep_numerateurs").value + "/" + document.getElementById("Rep_denominateurs").value;
+            reponse[3] = (values[7]).toString() + "/" + (values[8]).toString();
+        
+            return reponse
+        }

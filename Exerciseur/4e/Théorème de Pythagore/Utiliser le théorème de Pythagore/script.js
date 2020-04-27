@@ -92,3 +92,28 @@ var values;
                 document.getElementById("Pythagore_manque").innerHTML = values[2].sommet + values[1].sommet;
             document.getElementById("CorPythagore_manque").innerHTML = document.getElementById("Pythagore_manque").innerHTML;
         }
+
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Rédiger le Th. de Pythagore";
+            reponse[1] = "Dans le triangle ABC, rectangle en ";
+            reponse[1] += document.getElementById("Pythagore_point").value +"le côté le plus long est";
+            reponse[1] += document.getElementById("Pythagore_hyp").value + ".<br>D'après le théorème de pythagore, on a :<br>";
+            reponse[1] += document.getElementById("Pythagore_hyp2").value +"² = ";
+            reponse[1] += document.getElementById("Pythagore_cot1").value +"² + ";
+            reponse[1] += document.getElementById("Pythagore_cot2").value +"² <br>Tout calcul fait, on obtient ";
+            reponse[1] += document.getElementById("Pythagore_manque").value +" = ";
+            reponse[1] += document.getElementById("Pythagore_long").value +" cm";
+
+            reponse[3] = "Dans le triangle ABC, rectangle en ";
+            reponse[3] += document.getElementById("CorPythagore_point").value +"le côté le plus long est";
+            reponse[3] += document.getElementById("CorPythagore_hyp").value + ".<br>D'après le théorème de pythagore, on a :<br>";
+            reponse[3] += document.getElementById("CorPythagore_hyp2").value +"² = ";
+            reponse[3] += document.getElementById("CorPythagore_cot1").value +"² + ";
+            reponse[3] += document.getElementById("CorPythagore_cot2").value +"² <br>Tout calcul fait, on obtient ";
+            reponse[3] += document.getElementById("CorPythagore_manque").value +" = ";
+            reponse[3] += document.getElementById("CorPythagore_long").value +" cm";
+        
+            return reponse
+        }

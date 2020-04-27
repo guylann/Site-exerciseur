@@ -128,3 +128,13 @@ var values;
         }
 
 function Annuler() {}
+
+function Resume(){
+    var reponse = ["Question","Reponse", "","Correction"];
+
+    reponse[0] = "Quelle est du solide";
+    reponse[1] = document.getElementById("Reponse").value.toString().replace(".",",") + "cm<sup>3</sup>";
+    reponse[3] = volume.toString().replace(".",",") + "cm<sup>3</sup>";
+
+    return reponse
+}
