@@ -118,6 +118,10 @@
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
+        function SetEvaluation(){
+            HtmlManipulator.SetupEvaluation(HtmlManipulator.GetscriptFolder())
+        }
+
     </script>
 </head>
 <body onload="CreateSidePanel(document, true); FirstLaunch();">
@@ -126,6 +130,8 @@
     <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
     <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
     <!-- Fin Side Panel -->
+    
+    <input class="backbuttonred" style="position: fixed; top: 0; right: 0; z-index: 1;" TYPE="button" VALUE="   Evaluation   " onclick="SetEvaluation()">
 
     <div style="height: 50px;"></div>
     <b><u style="color: white;"><h1 id="Titre">

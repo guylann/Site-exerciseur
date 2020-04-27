@@ -2648,6 +2648,14 @@ class HtmlManipulator
         return params.get('folder');
     }
 
+
+    static SetupEvaluation(folder)
+    {
+        let url = new URL("Evaluation.html", document.location.href); //"../Evaluation.html"
+        url.searchParams.append('folder', folder);
+        document.location.href = url;
+    }
+
     static includeHTML(document) {
         var z, i, elmnt, file, xhttp;
         /* Loop through a collection of all HTML elements: */
@@ -2679,7 +2687,6 @@ class HtmlManipulator
         }
     }
 
-
     static includeHTMLInElement(element) {
         var xhttp;
         /* Make an HTTP request using the attribute value as the file name: */
@@ -2699,6 +2706,9 @@ class HtmlManipulator
         /* Exit the function: */
         return;
     }
+
+
+    
 }
 
 

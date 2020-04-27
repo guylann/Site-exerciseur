@@ -1,36 +1,512 @@
-<!DOCTYPE html>
-<html id="MainBody">
-    <head>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <link rel="import" href="/path/to/file.html">
-        <script src="MenuSetup.js"></script>
-        <div style="position: relative; overflow: hidden; height: 296px;">
-            <img src="BackgroundHead.png" class="imagecenter"
-              alt="" title="Site Exerciseur" id="Titre"><br>
-        </div>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script src="../MenuSetup.js"></script>
+    <script src="../script.js"></script>
 
-        <style>
-            td{
-                border: none;
-                padding: 0px;
-            }
-            div{
-                display: block;
-            }
-        </style>
-    </head>
-    <body onload="CreateMenu(); CreateSidePanel(document);">
 
-        <!-- Side Panel -->
-        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
-        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
-        <!-- Fin Side Panel -->
+    <script>function ChangeMenu(){}</script>
+    <script id="loadedscript"></script>
+    <script>
+        HtmlManipulator.Gdocument = document;
+        var src = HtmlManipulator.GetscriptFolder() + "/script.js";
+        document.getElementById("loadedscript").setAttribute("src", src);
+    </script>
 
-        
-    </body>
 
 
     <script>
-        HtmlManipulator.includeHTML(document);
-    </script> 
+        async function FirstLaunch()
+        {
+            document.getElementById("Titre").innerHTML = Titre;
+            document.getElementById("Consigne").innerHTML = "Consigne : " + Consigne;
+            HtmlManipulator.includeHTMLInElement(document.getElementById("Content"));
+            
+            while (HtmlManipulator.LoadOK == false)
+            {
+                await sleep(20);
+            }
+            createComboBox();
+            Recommencer();
+            UpdateUI();
+        }
+
+        function createComboBox(){
+            var x, i, j, selElmnt, a, b, c;
+            /*look for any elements with the class "custom-select":*/
+            x = document.getElementsByClassName("custom-select");
+            for (i = 0; i < x.length; i++) {
+                selElmnt = x[i].getElementsByTagName("select")[0];
+                /*for each element, create a new DIV that will act as the selected item:*/
+                a = document.createElement("DIV");
+                a.setAttribute("class", "select-selected");
+                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                x[i].appendChild(a);
+                /*for each element, create a new DIV that will contain the option list:*/
+                b = document.createElement("DIV");
+                b.setAttribute("class", "select-items select-hide");
+                for (j = 1; j < selElmnt.length; j++) {
+                    /*for each option in the original select element,
+                    create a new DIV that will act as an option item:*/
+                    c = document.createElement("DIV");
+                    c.innerHTML = selElmnt.options[j].innerHTML;
+                    c.addEventListener("click", function(e) {
+                        /*when an item is clicked, update the original select box,
+                        and the selected item:*/
+                        var y, i, k, s, h;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            for (k = 0; k < y.length; k++) {
+                            y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                        }
+                        h.click();
+                        ChangeMenu();
+                    });
+                    b.appendChild(c);
+                }
+                x[i].appendChild(b);
+                a.addEventListener("click", function(e) {
+                    /*when the select box is clicked, close any other select boxes,
+                    and open/close the current select box:*/
+                    e.stopPropagation();
+                    closeAllSelect(this);
+                    this.nextSibling.classList.toggle("select-hide");
+                    this.classList.toggle("select-arrow-active");
+                    ChangeMenu();
+                });
+            }
+            function closeAllSelect(elmnt) {
+                /*a function that will close all select boxes in the document,
+                except the current select box:*/
+                var x, y, i, arrNo = [];
+                x = document.getElementsByClassName("select-items");
+                y = document.getElementsByClassName("select-selected");
+                for (i = 0; i < y.length; i++) {
+                    if (elmnt == y[i]) {
+                    arrNo.push(i)
+                    } else {
+                    y[i].classList.remove("select-arrow-active");
+                    }
+                }
+                for (i = 0; i < x.length; i++) {
+                    if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                    }
+                }
+            }
+            /*if the user clicks anywhere outside the select box,
+            then close all select boxes:*/
+            document.addEventListener("click", closeAllSelect);
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function CopieEffectué(){
+            if (document.getElementById("Code").innerHTML == "")
+                return;
+            document.getElementById("TextCopier").style.color = "rgba(255,255,255,255)";
+            await sleep(2000);
+            fadeout = 255;
+            FadeOut();
+        }
+
+        var fadeout = 255;
+        var fading = false;
+        async function FadeOut(){
+            if (fading)
+                return;
+            fading = true;
+            while (fadeout > 0)
+            {
+                document.getElementById("TextCopier").style.color = "rgba(255,255,255," + (fadeout / 255.0).toString() + ")";
+                fadeout -= 5;
+                await sleep(20);
+            }
+            fading = false;
+        }
+
+
+        var actualState = -1;
+        var reponses = [];
+        var actualvalues = [];
+        var identifiant = "";
+
+        function Modifier(){
+            actualState -= 1;
+            document.getElementById("Resume").style.display = "none";
+            UpdateUI();
+        }
+
+
+        function UpdateUI(){
+            ShowHideButton();
+            ShowHideEnonce();
+            ModifieCircle();
+        }
+
+        function Valider2(){
+            if (actualState < 0)
+            {
+                identifiant = document.getElementById("IdField").value;
+                actualState += 1;
+                Recommencer();
+                document.getElementById("Consigne").innerHTML = "Consigne : " + Consigne;
+                document.getElementById("ExerciceNumber").innerHTML = "Question " + ((actualState / 2) + 1);
+            }
+            else if (actualState % 2 == 0)
+            {
+                actualvalues = Resume();
+                document.getElementById("Resume_Question").innerHTML = actualvalues[0];
+                document.getElementById("Resume_Reponse").innerHTML = actualvalues[1];
+                document.getElementById("Resume_Aide").innerHTML = actualvalues[2];
+                
+                actualState += 1;
+            }
+            else 
+            {
+                reponses.push(actualvalues);
+                actualState += 1;
+                Recommencer();
+                if (actualState < 8)
+                    document.getElementById("ExerciceNumber").innerHTML = "Question " + ((actualState / 2) + 1);
+                else
+                    document.getElementById("ExerciceNumber").innerHTML = "";
+            }
+            UpdateUI();
+            if (actualState == 8)
+                ShowEnd();
+        }
+
+        function ShowHideEnonce(){
+            if (actualState < 0)
+            {
+                document.getElementById("IdentifiantCheck").style.display = "block";
+                document.getElementById("EndResume").style.display = "none";
+                document.getElementById("Consigne").style.display = "none";
+                document.getElementById("Content").style.display = "none";
+                document.getElementById("Resume").style.display = "none";
+            }
+            else if (actualState >= 8)
+            {
+                document.getElementById("IdentifiantCheck").style.display = "none";
+                document.getElementById("EndResume").style.display = "block";
+                document.getElementById("Consigne").style.display = "none";
+                document.getElementById("Content").style.display = "none";
+                document.getElementById("Resume").style.display = "none";
+            }
+            else if (actualState % 2 == 0)
+            {
+                document.getElementById("IdentifiantCheck").style.display = "none";
+                document.getElementById("EndResume").style.display = "none";
+                document.getElementById("Consigne").style.display = "block";
+                document.getElementById("Content").style.display = "block";
+                document.getElementById("Resume").style.display = "none";
+            }
+            else if (actualState % 2 == 1)
+            {
+                document.getElementById("IdentifiantCheck").style.display = "none";
+                document.getElementById("EndResume").style.display = "none";
+                document.getElementById("Consigne").style.display = "none";
+                document.getElementById("Content").style.display = "none";
+                document.getElementById("Resume").style.display = "block";
+            }
+        }
+
+        function ShowHideButton(){
+            if (actualState < 0)
+            {
+                document.getElementById("Button_Mod").style.display = "none";
+                document.getElementById("Button_Val").style.display = "inline-block";
+                document.getElementById("Button_Ann").style.display = "none";
+            }
+            else if (actualState >= 8)
+            {
+                document.getElementById("Button_Mod").style.display = "none";
+                document.getElementById("Button_Val").style.display = "none";
+                document.getElementById("Button_Ann").style.display = "none";
+            }
+            else if (actualState % 2 == 0)
+            {
+                document.getElementById("Button_Mod").style.display = "none";
+                document.getElementById("Button_Val").style.display = "inline-block";
+                document.getElementById("Button_Ann").style.display = "inline-block";
+            }
+            else if (actualState % 2 == 1)
+            {
+                document.getElementById("Button_Mod").style.display = "inline-block";
+                document.getElementById("Button_Val").style.display = "inline-block";
+                document.getElementById("Button_Ann").style.display = "none";
+            }
+        }
+
+        function ModifieCircle(){
+            if (actualState == 0)
+                document.getElementById("Cercle1").setAttribute("fill", "transparent");
+            else if(actualState == 1)
+                document.getElementById("Cercle1").setAttribute("fill", "#FFFFFF80");
+            else if(actualState > 1)
+                document.getElementById("Cercle1").setAttribute("fill", "white");
+
+            
+            if (actualState == 2)
+                document.getElementById("Cercle2").setAttribute("fill", "transparent");
+            else if(actualState == 3)
+                document.getElementById("Cercle2").setAttribute("fill", "#FFFFFF80");
+            else if (actualState > 3)
+                document.getElementById("Cercle2").setAttribute("fill", "white");
+            
+            if (actualState == 4)
+                document.getElementById("Cercle3").setAttribute("fill", "transparent");
+            else if(actualState == 5)
+                document.getElementById("Cercle3").setAttribute("fill", "#FFFFFF80");
+            else if (actualState > 5)
+                document.getElementById("Cercle3").setAttribute("fill", "white");
+            
+            if (actualState == 6)
+                document.getElementById("Cercle4").setAttribute("fill", "transparent");
+            else if(actualState == 7)
+                document.getElementById("Cercle4").setAttribute("fill", "#FFFFFF80");
+            else if (actualState > 7)
+                document.getElementById("Cercle4").setAttribute("fill", "white");
+        }
+
+        function ShowEnd(){
+            GetIP(CreateUID);
+            document.getElementById("Question 1").innerHTML = reponses[0][0];
+            document.getElementById("Question 2").innerHTML = reponses[1][0];
+            document.getElementById("Question 3").innerHTML = reponses[2][0];
+            document.getElementById("Question 4").innerHTML = reponses[3][0];
+            document.getElementById("Réponse 1").innerHTML = reponses[0][1];
+            document.getElementById("Réponse 2").innerHTML = reponses[1][1];
+            document.getElementById("Réponse 3").innerHTML = reponses[2][1];
+            document.getElementById("Réponse 4").innerHTML = reponses[3][1];
+            document.getElementById("Correction 1").innerHTML = reponses[0][3];
+            document.getElementById("Correction 2").innerHTML = reponses[1][3];
+            document.getElementById("Correction 3").innerHTML = reponses[2][3];
+            document.getElementById("Correction 4").innerHTML = reponses[3][3];
+        }
+
+        function GetIP(callback){
+            
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    callback(xmlhttp.responseText);
+                }
+            }
+            xmlhttp.open("GET", "https://api.ipify.org/?format=txt", true );
+            xmlhttp.send(null); 
+        }
+
+        function CreateUID(ip){
+            var uid = "n:" + identifiant + "t:" + Math.floor(Date.now()/1000).toString(36) + "ip:" + parseInt(ip.replace(/\./g,"")).toString(36);
+            console.log(Code(uid));
+            document.getElementById("Code").innerHTML = Code(uid);
+        }
+
+        function Code(value)
+        {
+            var coded = "";
+            for (let index = 0; index < value.length; index++) {
+                coded += String.fromCharCode(value.charCodeAt(index) + 1);
+            }
+            return coded;
+        }
+
+        function SaveFinal(){
+            selectText("EndResume_copy");
+            CopieEffectué();
+        }
+
+        function selectText(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select();
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+            }
+            document.execCommand("copy");
+            document.selection
+            
+            if (window.getSelection) {window.getSelection().removeAllRanges();}
+            else if (document.selection) {document.selection.empty();}
+        }
+
+
+    </script>
+
+    <style>
+        td, tr, table{
+            border: none;
+        }
+        table{
+            width: 100%;
+        }
+        td{
+            width: 33%;
+        }
+        .cor{
+            color: #FF5555;
+        }
+    </style>
+
+</head>
+<body onload="CreateSidePanel(document, true); FirstLaunch();">
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+
+    <div style="height: 50px;"></div>
+    <div>
+        <svg height="12" width="48">
+            <circle id="Cercle1" cx="6" cy="6" r="5" stroke="white" stroke-width="1" fill="transparent"/>
+            <circle id="Cercle2" cx="18" cy="6" r="5" stroke="white" stroke-width="1" fill="transparent"/>
+            <circle id="Cercle3" cx="30" cy="6" r="5" stroke="white" stroke-width="1" fill="transparent"/>
+            <circle id="Cercle4" cx="42" cy="6" r="5" stroke="white" stroke-width="1" fill="transparent"/>
+        </svg> 
+    </div>
+    <b><u style="color: white;"><h1 id="Titre">
+        
+    </h1></b></u>
+    <b><u style="color: white;"><h2 id="ExerciceNumber">
+    </h2></b></u>
+    <p id="Consigne">
+        Consigne : 
+    </p>
+    <div id="Content">
+        
+    </div>
+
+    <div id="IdentifiantCheck">
+        <p>
+            Entre ton nom et prénom dans la case ci-dessous.
+        </p>
+        <input id="IdField" type="text" class="backbutton">
+    </div>
+
+    <div id="Resume">
+        <i><p id="Resume_Question">
+
+        </p></i>
+        <u><p> Ta réponse :</p></u>
+        <p id="Resume_Reponse">
+
+        </p>
+        <i><p id="Resume_Aide">
+
+        </p></i>
+    </div>
+    
+    <div id="EndResume">
+
+        <div id="EndResume_copy">
+            <div style="border-radius: 8px; border: solid; stroke: white; padding: 3px;">
+                <div style="border-radius: 4px; background-color: white; padding: 2px;">
+                    <label style="color: #1D7F56;">Ton code : </label>
+                </div>
+                <label id="Code"></label>
+                        
+            </div>
+            <div style="height: 50px;"></div>
+            <table>
+                <tbody >
+                    <tr>
+                        <td>
+                            <i><label> Question : </label></i>
+                        </td>
+                        <td>
+                            <label> Ta réponse :</label>
+                        </td>
+                        <td>
+                            <i><label  class="cor"> Correction : </label></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i><label id="Question 1"> </label></i>
+                        </td>
+                        <td>
+                            <label id="Réponse 1"> </label>
+                        </td>
+                        <td>
+                            <i><label id="Correction 1" class="cor"> </label></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i><label id="Question 2"> </label></i>
+                        </td>
+                        <td>
+                            <label id="Réponse 2"> </label>
+                        </td>
+                        <td>
+                            <i><label id="Correction 2" class="cor"> </label></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i><label id="Question 3"> </label></i>
+                        </td>
+                        <td>
+                            <label id="Réponse 3"> </label>
+                        </td>
+                        <td>
+                            <i><label id="Correction 3" class="cor"> </label></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i><label id="Question 4"> </label></i>
+                        </td>
+                        <td>
+                            <label id="Réponse 4"> </label>
+                        </td>
+                        <td>
+                            <i><label id="Correction 4" class="cor"> </label></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+                
+        </div>
+
+        <p style="font-size: 10pt;">
+          <i> Attent que ton code soit générer puis appuie sur le bouton ci-dessous pour copier le résultat de ton évaluation et envoie le à ton professeur via pronote ou l'ENT.</i>  
+        </p>
+
+        <input class="backbutton" type="button" value="Telecharger" onclick="SaveFinal()">
+
+        <p style="font-size: 10pt; color: #FFFFFF00;" id="TextCopier">
+            <i> Le texte a été copié.</i>  
+        </p>
+
+
+        <input class="backbutton" type="button" value="Quitter l'évaluation" onclick="history.go(-1)">
+    </div>
+
+
+    <br>
+    <input id="Button_Mod" class="backbutton" TYPE="button" NAME="nom" VALUE=" Modifier " onclick="Modifier()">
+    <input id="Button_Val" class="backbutton" TYPE="button" NAME="nom" VALUE=" Valider "  onclick="Valider2()">
+    <input id="Button_Ann" class="backbutton" TYPE="button" NAME="nom" VALUE=" Annuler "  onclick="Annuler()">
+
+</body>
 </html>

@@ -31,3 +31,14 @@ function Recommencer(){
 function Annuler(){
 
 }
+
+
+function Resume(){
+    var reponse = ["Question","Reponse", "Tes nombres sont-ils tous premiers ?","Correction"];
+
+    reponse[0] = "Décomposer " +nombre[0] + " en produits de facteurs premiers";
+    reponse[1] = document.getElementById("fname").value;
+    reponse[3] = "La bonne réponse était : " + nombre[1];
+
+    return reponse
+}

@@ -1,0 +1,57 @@
+<html>
+<head>
+
+<script>
+
+    function Decode(){
+        var code = document.getElementById("Code").value;
+        var decoded = deco(code);
+        var name = "";
+        var time = "";
+        var ip = 0;
+        let indextime = 0;
+        console.log(decoded);
+
+        for (let index = 2; index < decoded.length; index++) {
+            if (decoded.substring(index-2,index) == "t:")
+            {
+                name = decoded.substring(2,index - 2);
+                indextime = index;
+            }
+            if (decoded.substring(index-3,index) == "ip:")
+            {
+                time = parseInt(decoded.substring(indextime,index -3),36);;
+                ip = parseInt(decoded.substring(index, decoded.length),36);;
+            }
+        }
+
+        var date = new Date(70,0,0,2,0,0,time * 1000);
+
+
+        document.getElementById("CodeShow").innerHTML = "Nom : " + name + " <br>Date : " + date.toString() + " <br>IP : " + ip;
+    }
+
+    function deco(value){
+        
+        var coded = "";
+        for (let index = 0; index < value.length; index++) {
+            coded += String.fromCharCode(value.charCodeAt(index) - 1);
+        }
+        return coded;
+    }
+
+</script>
+
+</head>
+<body>
+
+<div>
+    <input id="Code" type="text" />
+    <input type="button" value="Decode" onclick="Decode()"><br>
+    <label id="CodeShow"></label>
+        
+</div>
+
+</body>
+
+</html>
