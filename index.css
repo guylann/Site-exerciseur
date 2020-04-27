@@ -32,10 +32,12 @@ h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 0px;
     width: 80%;
+    text-align: center;
 }
 .soustitre{
     margin-top: 0px;
     width: 80%;
+    text-align: center;
 }
 .titredesclasses{
     font-size: 24pt;
