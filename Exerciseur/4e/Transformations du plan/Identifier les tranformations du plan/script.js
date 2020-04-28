@@ -142,9 +142,9 @@ function Resume(){
     {
         reponse[1] = "Symétrie centrale de centre " + Constante.alphabet.indexOf(document.getElementById("symétrieCentrale_centre").value);
     }
-    if (GetImage(id) == values[1][3])
+    if (Quatrième_TranformationPlan.GetImage(id) == values[1][3])
         reponse[3] = "C'est juste";
-    else if (GetImage(id) != values[1][3])
+    else if (Quatrième_TranformationPlan.GetImage(id) != values[1][3])
         reponse[3] = "C'est faux";
 
     return reponse
