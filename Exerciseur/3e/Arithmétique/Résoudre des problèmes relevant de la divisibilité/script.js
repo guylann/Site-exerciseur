@@ -47,12 +47,7 @@ function Recommencer() {
 }
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
-
-    var c1 = document.getElementById("check1").checked;
-    var c2 = document.getElementById("check2").checked;
-    var c3 = document.getElementById("check3").checked;
-    var c4 = document.getElementById("check4").checked;
+    var reponse = ["Question","Reponse", "Tu as bien donné le nombre MAXIMUM de bouquet ?","Correction"];
 
     reponse[0] = "Les bouquets :" + values[0] + " roses et  " + values[1] + "marguerites";
     reponse[1] = "Tu as choisi : " + document.getElementById("bouquets").value + " bouquets, chacun de :";

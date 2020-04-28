@@ -144,7 +144,7 @@ function Resume(){
     }
     if (GetImage(id) == values[1][3])
         reponse[3] = "C'est juste";
-    else if (GetImage(id) == values[1][3])
+    else if (GetImage(id) != values[1][3])
         reponse[3] = "C'est faux";
 
     return reponse

@@ -1,5 +1,5 @@
-var Titre = "Utiliser les égalités de fractions.";
-var Consigne =  "Dans chacun des cas, selectionner la fraction égale."
+var Titre = "Identifier les transformaitons du plan";
+var Consigne =  "Compléter la phrase ci-dessous en vous aidant de la figure. Attention les noms de points sont à mettre en majuscule."
 
 var document = HtmlManipulator.Gdocument;
 
@@ -152,7 +152,7 @@ var premier = true;
             }
             if (GetImage(id) == values[1][3])
                 reponse[3] = "C'est juste";
-            else if (GetImage(id) == values[1][3])
+            else if (GetImage(id) != values[1][3])
                 reponse[3] = "C'est faux";
         
             return reponse
