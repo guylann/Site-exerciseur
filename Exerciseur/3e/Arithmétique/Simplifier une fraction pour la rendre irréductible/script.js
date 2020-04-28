@@ -42,7 +42,7 @@ function Resume(){
 
     reponse[0] = "Donner la fraction irréductible de " + values[0] + " / " + values[1];
     reponse[1] = document.getElementById("Rep_numerateurs").value;
-    reponse[1] += " / " + document.getElementById("Rep_denominateur").value;
+    reponse[1] += " / " + document.getElementById("Rep_denominateurs").value;
 
     reponse[3] = "La bonne réponse était : ";
     reponse[3] += (values[0] / values[2]) + " / " + (values[1] / values[2]);
