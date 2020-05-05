@@ -85,7 +85,7 @@ var values;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien associé le coefficient avec son effectif ?","Correction"];
         
             reponse[0] = "Donner la moyenne pondérée de " + values.toString() + " par " + coeffi.toString();
             reponse[1] = document.getElementById("fname").value;

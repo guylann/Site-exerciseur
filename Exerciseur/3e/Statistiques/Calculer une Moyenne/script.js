@@ -28,7 +28,7 @@ var values;
         function Annuler(){}
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien fait attention aux priorités en tapant sur ta calculatrice ?","Correction"];
         
             reponse[0] = "Donner la moyenne de " + values.toString();
             reponse[1] = document.getElementById("fname").value;

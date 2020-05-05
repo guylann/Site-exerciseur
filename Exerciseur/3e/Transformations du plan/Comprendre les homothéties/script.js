@@ -53,7 +53,7 @@ var values;
         function Annuler() {}
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien regardé le signe du rapport ? Est-il plus grand ou plus petit que 1 ?","Correction"];
         
             
             reponse[0] = "l'image de ABC avec un rapport de " + values[4 + typerapport];

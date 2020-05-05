@@ -31,7 +31,7 @@ function Annuler() {
 }
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
+    var reponse = ["Question","Reponse", "Tu as bien distribué les nombres à tous ceux de la parenthèse ?","Correction"];
 
     reponse[0] = "Développer " + nombre[0];
     reponse[1] = document.getElementById("fname").value;

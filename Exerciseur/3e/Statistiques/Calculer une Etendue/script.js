@@ -28,7 +28,7 @@ var values;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien pris les deux bonnes valeurs pour ton calcul ?","Correction"];
         
             reponse[0] = "Donner l'étendue de " + values.toString();
             reponse[1] = document.getElementById("fname").value;

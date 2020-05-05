@@ -42,7 +42,7 @@ var premier = true;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien fais glisser ta figure ?","Correction"];
         
             
             reponse[0] = "l'image de " + values[0];

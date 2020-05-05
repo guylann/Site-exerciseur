@@ -201,7 +201,7 @@ var typefigure = 0;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Ne confonds pas l'image avec l'antécédent.","Correction"];
         
             reponse[0] = "Trouver l'image de " + values.x;
             reponse[1] = document.getElementById("reponseUser").value;

@@ -125,7 +125,7 @@ var premier = true;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as pensé à toutes les possibilités ?","Correction"];
         
             
             reponse[0] = values[1][3] + "est l'image de " + values[1][0] + " par quelle tranformation ?";

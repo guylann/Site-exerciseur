@@ -30,7 +30,7 @@ function Annuler() {
 }
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
+    var reponse = ["Question","Reponse", "Tu as bien remplacé TOUTES les lettres par leur valeur ? N'oublie pas les multiplications.","Correction"];
 
     reponse[0] = nombre[0] + "  pour x = " + nombre[1];
     reponse[1] = document.getElementById("fname").value;

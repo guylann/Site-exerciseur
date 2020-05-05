@@ -202,7 +202,7 @@ var values;
 
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Ne confonds pas l'antécédent avec l'image.","Correction"];
         
             reponse[0] = "Trouver l'antécédent de " + values.y;
             reponse[1] = document.getElementById("reponseUser").value;

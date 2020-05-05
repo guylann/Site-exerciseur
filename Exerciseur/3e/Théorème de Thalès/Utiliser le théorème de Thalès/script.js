@@ -198,7 +198,7 @@ var values;
 
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as pris les bonnes fractions ? Tes longueurs sont bien des côtés de triangles ?","Correction"];
         
             
             if (typefigure == 0){

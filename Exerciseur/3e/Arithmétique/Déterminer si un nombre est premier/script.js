@@ -67,7 +67,7 @@ function Valider() {
 }
 
 function Resume(){
-    var reponse = ["Question","Reponse", "As-tu penser a utiliser les critères de divisibilité ?","Correction"];
+    var reponse = ["Question","Reponse", "As-tu penser à utiliser les critères de divisibilité ?","Correction"];
 
     var c1 = document.getElementById("check1").checked;
     var c2 = document.getElementById("check2").checked;

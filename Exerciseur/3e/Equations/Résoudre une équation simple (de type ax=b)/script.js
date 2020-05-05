@@ -30,7 +30,7 @@ function Valider() {
 function Annuler() {}
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
+    var reponse = ["Question","Reponse", "Tu as pensé à remplacer la lettre par ta réponse pour vérifier ?","Correction"];
 
     reponse[0] = "Résoudre " + nombre[0];
     reponse[1] = document.getElementById("fname").value;

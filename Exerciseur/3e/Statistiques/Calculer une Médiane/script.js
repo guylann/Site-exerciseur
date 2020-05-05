@@ -29,7 +29,7 @@ var values;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as bien pensé à ordonner tes nombres ?","Correction"];
         
             reponse[0] = "Donner la médiane de " + values.toString();
             reponse[1] = document.getElementById("fname").value;

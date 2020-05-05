@@ -62,7 +62,7 @@ var premier = true;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as appliqué le bon type de symétrie ?","Correction"];
         
             
             reponse[0] = "l'image de " + values[1][0];

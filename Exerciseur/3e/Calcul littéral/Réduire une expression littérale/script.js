@@ -26,7 +26,7 @@ function Valider() {
 function Annuler() {}
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
+    var reponse = ["Question","Reponse", "Tu as bien rassemblé tout ce qui va ensemble et uniquement ce qui va ensemble ?","Correction"];
 
     reponse[0] = "Réduire " + values[0];
     reponse[1] = document.getElementById("fname").value;

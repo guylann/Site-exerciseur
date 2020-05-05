@@ -115,7 +115,7 @@ function Recommencer() {
 }
 
 function Resume(){
-    var reponse = ["Question","Reponse", "","Correction"];
+    var reponse = ["Question","Reponse", "Tu multiplie ou divise par le MEME nombre le numérateur et dénominateur ?","Correction"];
 
     reponse[0] = "Donner la fraction egale à : <br>";
     reponse[1] = "Tu as choisi : <br>";

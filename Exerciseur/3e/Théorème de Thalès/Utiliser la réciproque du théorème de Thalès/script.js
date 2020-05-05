@@ -144,7 +144,7 @@ var values;
         }
 
         function Resume(){
-            var reponse = ["Question","Reponse", "","Correction"];
+            var reponse = ["Question","Reponse", "Tu as pris les bonnes fractions ? Tes longueurs sont bien des côtés de triangles ?","Correction"];
         
             reponse[0] = "(AE) et (BD) sont-elles-parallèles ?";
             if (document.getElementById("reponse1").checked)
