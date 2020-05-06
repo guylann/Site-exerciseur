@@ -2475,7 +2475,7 @@ class Quatrième_Puissances
 			var rep = x*Math.pow(10,-reppow) + "*10^" + reppow;
 		else
 			var rep = x*Math.pow(10,reppow) + "*10^" + reppow;
-		return [x,rep.toString()]
+		return [x.toString(),rep.toString()]
 	}
 }
 //#endregion
