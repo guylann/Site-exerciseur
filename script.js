@@ -2454,7 +2454,7 @@ class Quatrième_Puissances
         else if (a === 1)
             txt +=" / "
         else if (a === 2) {
-            txt = "(10^" + b.toString() + ")^" + c.toString()
+            txt = "(10^" + b.toString() + ")^" + c.toString() + "="
 			return txt
 		}
         if (c < 0)
@@ -2468,13 +2468,13 @@ class Quatrième_Puissances
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
 		var nb = Constante.Randint(0,500);
-		var pow = Constante.Randint(-10,10);
+		var pow = Constante.Randint(-8,8);
 		var x = nb*Math.pow(10,pow);
 		var reppow = Math.floor(Math.log(nb))
 		if (x < 1)
-			var rep = x*Math.pow(10,(reppow-1)) + "*10^" + reppow;
+			var rep = x*Math.pow(10,(reppow)) + "*10^" + reppow;
 		else
-			var rep = x*Math.pow(10,-(reppow-1)) + "*10^" + reppow;
+			var rep = x*Math.pow(10,-(reppow)) + "*10^" + reppow;
 		return [x,rep.toString()]
 	}
 }
