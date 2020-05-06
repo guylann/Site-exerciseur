@@ -2467,14 +2467,14 @@ class Quatrième_Puissances
 	
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
-		var nb = Constante.Randint(0,50);
+		var nb = Constante.Randint(1,50);
 		var pow = Constante.Randint(-8,8);
 		var x = nb*Math.pow(10,pow);
-		var reppow = Math.floor(Math.log(x))
+		var reppow = Math.abs(Math.round(Math.log(x)))
 		if (x < 1)
-			var rep = x*Math.pow(10,-reppow) + "*10^" + reppow;
-		else
 			var rep = x*Math.pow(10,reppow) + "*10^" + reppow;
+		else
+			var rep = x*Math.pow(10,-reppow) + "*10^" + reppow;
 		return [x.toString(),rep.toString()]
 	}
 }
