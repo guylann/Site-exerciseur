@@ -2441,7 +2441,7 @@ class Quatrième_Puissances
 		else 
 			var sol = x1*x0
 		var rep = "10^" + sol
-        return [Quatrième_NombresRelatifs.CreateCalc(calc,x1,x0), rep.toString()];
+        return [Quatrième_Puissances.CreateCalc(calc,x1,x0), rep.toString()];
 
     }
 
@@ -2465,9 +2465,9 @@ class Quatrième_Puissances
 	
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
-		var nb = Constante.Randint(0,1000)*pow(10,Constante.Randint(-10,10));
+		var nb = Constante.Randint(0,1000)*Math.pow(10,Constante.Randint(-10,10));
 		var pow = Math.log(nb)
-		var rep = nb*pow(10,pow-1) + "*10^" + pow;
+		var rep = nb*Math.pow(10,pow-1) + "*10^" + pow;
 		return [nb,rep.toString()]
 	}
 }
