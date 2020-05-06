@@ -2470,11 +2470,11 @@ class Quatrième_Puissances
 		var nb = Constante.Randint(1,9999);
 		var pow = Constante.Randint(-5,5);
 		var x = nb*Math.pow(10,pow);
-		var reppow = Math.abs(Math.round(Math.log(x)))
+		var reppow = Math.abs(Math.round(Math.log(x)))+pow
 		if (x < 1)
-			var rep = x*Math.pow(10,pow) + "*10^" + pow;
+			var rep = x*Math.pow(10,reppow) + "*10^" + reppow;
 		else
-			var rep = x*Math.pow(10,-pow) + "*10^" + pow;
+			var rep = x*Math.pow(10,-reppow) + "*10^" + reppow;
 		return [x,rep.toString()]
 	}
 }
