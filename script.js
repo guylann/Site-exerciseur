@@ -2458,7 +2458,7 @@ class Quatrième_Puissances
         if (c < 0)
             txt +="10^("+c.toString()+")";
         else 
-            txt += "10^"c.toString();	
+            txt += "10^"+c.toString();	
         txt +=" = ";
         return txt;
     }
