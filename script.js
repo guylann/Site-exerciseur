@@ -2422,6 +2422,55 @@ class Quatrième_TranformationPlan
     }
 }
 
+// Puissances
+class Quatrième_Puissances
+{
+    // Crée une opération
+    static CreateOp() {
+        var x1 = Constante.Randint(-30,30);
+        while (x1 === 0)
+            var x1 = Constante.Randint(-30,30);
+        var x0 = Constante.Randint(-30,30);
+        while (x0 === 0)
+            var x0 = Constante.Randint(-30,30);
+        var calc = Constante.Randint(0,2);
+        if (calc === 0)
+            var sol = x1+x0;
+        else if (calc === 1)
+            var sol = x1-x0
+		else 
+			var sol = x1*x0
+		var rep = "10^" + sol
+        return [Quatrième_NombresRelatifs.CreateCalc(calc,x1,x0), rep.toString()];
+
+    }
+
+    // Crée l'écriture de l'opération
+    static CreateCalc(a,b,c){
+        var txt = "10^";
+        txt += b.toString();
+        if(a === 0) 
+            txt += " * "
+        else if (a === 1)
+            txt +=" / "
+        else if (a === 2)
+            txt = "(10^" + b.toString() + ")^"
+        if (c < 0)
+            txt +="("+c.toString()+")";
+        else 
+            txt += c.toString();	
+        txt +=" = ";
+        return txt;
+    }
+	
+	//Crée un nombre et son écriture scientifique
+	static EcritureScientifique () {
+		var nb = Constante.Randint(0,1000)*pow(10,Constante.Randint(-10,10));
+		var pow = Math.log(nb)
+		var rep = nb*pow(10,pow-1) + "*10^" + pow;
+		return [nb,rep.toString()]
+	}
+}
 //#endregion
 
 
