@@ -7,7 +7,7 @@ var nombre;
 
         function Recommencer() {
             nombre = Quatrième_Puissances.EcritureScientifique();
-            document.getElementById("TextQuestion").innerHTML = nombre[0];
+            document.getElementById("TextQuestion").innerHTML = nombre[0]+"=";
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";
             document.getElementById("fname").value = "";

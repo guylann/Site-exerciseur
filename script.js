@@ -2467,10 +2467,9 @@ class Quatrième_Puissances
 	
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
-		var nb = Constante.Randint(1,9);
-		var pow = Constante.Randint(-10,10);
+		var nb = Constante.Randint(1,9999);
+		var pow = Constante.Randint(-5,5);
 		var x = nb*Math.pow(10,pow);
-		console.log[nb,pow,x];
 		var reppow = Math.abs(Math.round(Math.log(x)))
 		if (x < 1)
 			var rep = x*Math.pow(10,pow) + "*10^" + pow;
