@@ -2472,9 +2472,9 @@ class Quatrième_Puissances
 		var x = nb*Math.pow(10,pow);
 		var reppow = Math.abs(Math.round(Math.log(x)))+pow
 		if (x < 1)
-			var rep = x*Math.pow(10,reppow) + "*10^" + reppow;
+			var rep = x*Math.pow(10,reppow-1) + "*10^" + reppow;
 		else
-			var rep = x*Math.pow(10,-reppow) + "*10^" + reppow;
+			var rep = x*Math.pow(10,-reppow-1) + "*10^" + reppow;
 		return [x,rep.toString()]
 	}
 }
