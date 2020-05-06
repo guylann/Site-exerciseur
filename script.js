@@ -2456,19 +2456,24 @@ class Quatrième_Puissances
         else if (a === 2)
             txt = "(10^" + b.toString() + ")^"
         if (c < 0)
-            txt +="("+c.toString()+")";
+            txt +="10^("+c.toString()+")";
         else 
-            txt += c.toString();	
+            txt += "10^"c.toString();	
         txt +=" = ";
         return txt;
     }
 	
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
-		var nb = Constante.Randint(0,1000)*Math.pow(10,Constante.Randint(-10,10));
-		var pow = Math.log(nb)
-		var rep = nb*Math.pow(10,pow-1) + "*10^" + pow;
-		return [nb,rep.toString()]
+		var nb = Constante.Randint(0,500);
+		var pow = Constante.Randint(-10,10);
+		var x = nb*Math.pow(10,pow);
+		var reppow = Math.log(nb)
+		if (x < 1)
+			var rep = x*Math.pow(10,-(reppow-1)) + "*10^" + reppow;
+		else
+			var rep = x*Math.pow(10,reppow-1) + "*10^" + reppow;
+		return [x,rep.toString()]
 	}
 }
 //#endregion
