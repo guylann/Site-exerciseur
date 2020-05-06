@@ -2453,8 +2453,10 @@ class Quatrième_Puissances
             txt += " * "
         else if (a === 1)
             txt +=" / "
-        else if (a === 2)
+        else if (a === 2) {
             txt = "(10^" + b.toString() + ")^"
+			return txt
+		}
         if (c < 0)
             txt +="10^("+c.toString()+")";
         else 
@@ -2468,7 +2470,7 @@ class Quatrième_Puissances
 		var nb = Constante.Randint(0,500);
 		var pow = Constante.Randint(-10,10);
 		var x = nb*Math.pow(10,pow);
-		var reppow = Math.log(nb)
+		var reppow = Math.floor(Math.log(nb))
 		if (x < 1)
 			var rep = x*Math.pow(10,-(reppow-1)) + "*10^" + reppow;
 		else
