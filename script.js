@@ -2468,13 +2468,13 @@ class Quatrième_Puissances
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
 		var nb = Constante.Randint(1,9999);
-		var pow = Constante.Randint(-5,5);
+		var pow1 = Constante.Randint(-5,5);
 		var x = nb*Math.pow(10,pow);
-		var reppow = Math.abs(Math.round(Math.log(x)))+pow
+		var pow2 = Math.abs(Math.round(Math.log(x)))+pow
 		if (x < 1)
-			var rep = x*Math.pow(10,reppow-1) + "*10^" + reppow;
+			var rep = x*Math.pow(10,(pow2-1)) + "*10^" + pow2;
 		else
-			var rep = x*Math.pow(10,-reppow-1) + "*10^" + reppow;
+			var rep = x*Math.pow(10,(-pow2-1)) + "*10^" + pow2;
 		return [x,rep.toString()]
 	}
 }
