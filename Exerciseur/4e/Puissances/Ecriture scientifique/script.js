@@ -1,5 +1,5 @@
 var Titre = "Ecriture scientifique";
-var Consigne =  "Donner l'écriture scientifique du nombre suivant. ATTENTION : Pour écrire une puissance en informatique, on utilise ^. Par exemple : 10 puissance 3 s'écrit 10^3."
+var Consigne =  "Donner l'écriture scientifique du nombre suivant. ATTENTION : Pour écrire une puissance en informatique, on utilise ^. Par exemple : 10<sup>3</sup> s'écrit 10^3."
 
 var document = HtmlManipulator.Gdocument;
 

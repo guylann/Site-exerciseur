@@ -2467,16 +2467,56 @@ class Quatrième_Puissances
 	
 	//Crée un nombre et son écriture scientifique
 	static EcritureScientifique () {
-		var nb = Constante.Randint(1,9999);
-		var pow1 = Constante.Randint(-5,5);
-		var x = nb*Math.pow(10,pow1);
-		var pow2 = Math.abs(Math.round(Math.log(x)))+pow1
-		if (x < 1)
-			var rep = x*Math.pow(10,(pow2-1)) + "*10^" + pow2;
-		else
-			var rep = x*Math.pow(10,(-pow2-1)) + "*10^" + pow2;
+		var unit = Constante.Randint(1,9);
+        var virgule = Constante.Randint(0,999);
+        
+        var pow1 = Constante.Randint(-8,8);
+        
+        var x = Quatrième_Puissances.ConvertNumberPuissance(unit, virgule, pow1);
+        
+        var con = unit.toString() + "," + virgule.toString() 
+        while (con.slice(-1) == "0" || con.slice(-1) == ",")
+            con = con.substring(0,con.length-1);
+		var rep = con + "*10<sup>" + pow1 + "</sup>" + " ou " + con + "*10^" + pow1;
 		return [x,rep.toString()]
-	}
+    }
+    
+
+    static ConvertNumberPuissance(unit, virgule, pow)
+    {
+        var s;
+        if (pow > 0)
+        {
+            s = unit.toString() + virgule.toString();
+            s = s.padEnd(pow+1, "0");
+            if (s.length > pow +1)
+            {
+                s = Quatrième_Puissances.insert(pow + 1, s, ",")
+            }
+        }
+        else if (pow < 0)
+        {
+            s = unit.toString();
+            s = s.padStart(Math.abs(pow) + 1, "0");
+            s = s + virgule.toString()
+            s = Quatrième_Puissances.insert(1, s, ",")
+            while (s.slice(-1) == "0" || s.slice(-1) == ",")
+            s = s.substring(0,s.length-1);
+        }
+        else
+        {
+            s = unit.toString() + "," + virgule.toString();
+            while (s.slice(-1) == "0" || s.slice(-1) == ",")
+            s = s.substring(0,s.length-1);
+        }
+        return s;
+    }
+
+    static insert(idx, target, str) {
+        return target.slice(0, idx) + str + target.slice(idx);
+    }
+
+
 }
 //#endregion
 

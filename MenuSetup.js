@@ -23,7 +23,7 @@ const Page = {
                 ["Pyramide et cône",                    "Exerciseur/4e/Pyramide et cône.html"],
                 ["Théorème de Pythagore",               "Exerciseur/4e/Théorème de Pythagore.html"],
                 ["Transformations du plan",             "Exerciseur/4e/Transformations du plan.html"],
-				["Puissances",							"Exerciseur/4e/Puissances"]],
+				["Puissances",							"Exerciseur/4e/Puissances.html"]],
 
     cinquième:	["Cinquième",
                 ["Nombres relatifs",                    "Exerciseur/5e/Nombres relatifs.html"]],
