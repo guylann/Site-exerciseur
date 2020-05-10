@@ -2739,6 +2739,18 @@ class HtmlManipulator
         document.location.href = url;
     }
 
+    static SetupExerciceBrevet(folder, file){
+        let url = new URL("ExerciceBrevet.html", document.location.href);
+        url.searchParams.append('folder', folder);
+        url.searchParams.append('file', file);
+        document.location.href = url;
+    }
+
+    static GetscriptFile(){
+        let params = (new URL(document.location)).searchParams;
+        return params.get('file');
+    }
+
     static GetscriptFolder(){
         let params = (new URL(document.location)).searchParams;
         return params.get('folder');

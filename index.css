@@ -8,9 +8,20 @@
     margin: auto;
 }
 
+.imagecenterLeftRight{
+  text-align: center;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
 /* Base content */
 :root{
   
+  background-color: #1D7F56; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, #146640, #1D7F56, #146640); /* Standard syntax (must be last) */
+}
+.Tablebackground{
   background-color: #1D7F56; /* For browsers that do not support gradients */
   background-image: linear-gradient(to right, #146640, #1D7F56, #146640); /* Standard syntax (must be last) */
 }
@@ -296,7 +307,7 @@ td{
 .sidepanel  {
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     height: 100%;
     top: 0;
     left: 0;
@@ -371,6 +382,7 @@ td{
     top: 0;
     left: 0;
     font-size: 20px;
+    z-index: 1;
     position: fixed;
     cursor: pointer;
     background-color: #111;

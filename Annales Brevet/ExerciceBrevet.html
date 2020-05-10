@@ -1,0 +1,66 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script src="../MenuSetup.js"></script>
+    <script src="../script.js"></script>
+
+
+    <script>function ChangeMenu(){}</script>
+    <script id="loadedscript"></script>
+    <script>
+        HtmlManipulator.Gdocument = document;
+        var src = HtmlManipulator.GetscriptFolder() + "/script.js";
+        document.getElementById("loadedscript").setAttribute("src", src);
+    </script>
+
+
+
+    <script>
+        var exercicelink
+
+        async function FirstLaunch()
+        {
+            var fold = HtmlManipulator.GetscriptFolder();
+            var file = HtmlManipulator.GetscriptFile();
+
+            document.getElementById("Titre").innerHTML = fold + " Exercice " + file;
+            document.getElementById("Exercice").src = "Contenue/" + fold + "/Exercice " + file + ".png";
+            document.getElementById("Exercice").title = fold + " Exercice " + file;
+            document.getElementById("Corriger").src = "Contenue/" + fold + "/Exercice " + file + " Correction.png";
+            document.getElementById("Corriger").title = fold + " Correction exercice " + file;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function Showcorrection(){
+            document.getElementById("Corriger").style.display = "block";
+        }
+
+    </script>
+
+</head>
+<body onload="CreateSidePanel(document, true); FirstLaunch();" >
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+    
+            
+    <div style="height: 30px;"></div>
+    <b><u style="color: white;"><h1 id="Titre">
+        
+    </h1></b></u>
+    
+    <img src="BackgroundHead.png" class="imagecenterLeftRight"
+              alt="" title="Site Exerciseur" id="Exercice">
+
+    <input type="button" value="Voir la correction" class="backbutton" onclick="Showcorrection()"/>
+
+    <img src="BackgroundHead.png" class="imagecenterLeftRight" style="display: none;"
+              alt="" title="Site Exerciseur" id="Corriger">
+
+</body>
+</html>

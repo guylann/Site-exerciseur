@@ -283,6 +283,7 @@
 
         function ShowEnd(){
             GetIP(CreateUID);
+            document.getElementById("EndResume_Competence").innerHTML = Titre;
             document.getElementById("Question 1").innerHTML = reponses[0][0];
             document.getElementById("Question 2").innerHTML = reponses[1][0];
             document.getElementById("Question 3").innerHTML = reponses[2][0];
@@ -427,6 +428,11 @@
     <div id="EndResume">
 
         <div id="EndResume_copy">
+            <div>
+                <p id="EndResume_Competence">
+
+                </p>
+            </div><br>
             <div style="border-radius: 8px; border: solid; stroke: white; padding: 3px;">
                 <div style="border-radius: 4px; background-color: white; padding: 2px;">
                     <label style="color: #1D7F56;">Ton code : </label>
@@ -501,7 +507,7 @@
           <i> Attend que ton code soit générer puis appuie sur le bouton ci-dessous pour copier le résultat de ton évaluation et envoie le à ton professeur via pronote ou l'ENT.</i>  
         </p>
 
-        <input class="backbutton" type="button" value="Telecharger" onclick="SaveFinal()">
+        <input class="backbutton" type="button" value="Copier" onclick="SaveFinal()">
 
         <p style="font-size: 10pt; color: #FFFFFF00;" id="TextCopier">
             <i> Le texte a été copié.</i>  
