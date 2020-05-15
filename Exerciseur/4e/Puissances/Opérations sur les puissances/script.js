@@ -1,5 +1,5 @@
 var Titre = "Opérations sur les puissances.";
-var Consigne =  "Réaliser l'opération suivante. La calculatrice est FORTEMENT déconseillée. ATTENTION : Pour écrire une puissance en informatique, on utilise ^. Par exemple : 10 puissance 3 s'écrit 10^3."
+var Consigne =  "Réaliser l'opération suivante. La calculatrice est FORTEMENT déconseillée. ATTENTION : Pour écrire une puissance en informatique, on utilise ^. Par exemple : 10<sup>3</sup> s'écrit 10^3."
 
 var document = HtmlManipulator.Gdocument;
 

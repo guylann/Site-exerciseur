@@ -232,7 +232,7 @@ class Troisième_Arithmetique
     static DecompositionToTxt(array) {
         var txt = array[0].toString();
         for (var i = 1; i < array.length; i++) {
-            txt += "*" + array[i].toString();
+            txt += "&times;" + array[i].toString();
         }
         return txt;
     }
@@ -394,7 +394,7 @@ class Troisième_CalculLittéral
     static DecompositionToTxt(array) {
         var txt = array[0].toString();
         for (i = 1; i < array.length; i++) {
-            txt += "*" + array[i].toString();
+            txt += "&times;" + array[i].toString();
         }
         return txt;
     }
@@ -1610,7 +1610,7 @@ class Quatrième_Fractions
         if (calc === 0){
             var sol1 = x1*y1;
             var sol0 = x0*y0
-            var op="*"
+            var op="&times;"
         }
         else {
             var sol1 = x1*y0;
@@ -1629,7 +1629,7 @@ class Quatrième_Fractions
         else if (a === 1)
             txt +="-"
         else if (a === 2)
-            txt += "*"
+            txt += "&times;"
         else if (a === 3)
             txt +="/"
         if (c < 0)
@@ -1687,7 +1687,7 @@ class Quatrième_NombresRelatifs
         else if (a === 1)
             txt +=" - "
         else if (a === 2)
-            txt += " * "
+            txt += " &times; "
         else if (a === 3)
             txt +=" / "
         if (c < 0)
@@ -2440,27 +2440,27 @@ class Quatrième_Puissances
             var sol = x1-x0
 		else 
 			var sol = x1*x0
-		var rep = "10^" + sol
+		var rep = "10<sup>" + sol + "</sup>" + " ou " + "10^" + sol;
         return [Quatrième_Puissances.CreateCalc(calc,x1,x0), rep.toString()];
 
     }
 
     // Crée l'écriture de l'opération
     static CreateCalc(a,b,c){
-        var txt = "10^";
-        txt += b.toString();
+        var txt = "10<sup>";
+        txt += b.toString() + "</sup>";
         if(a === 0) 
-            txt += " * "
+            txt += " &times; "
         else if (a === 1)
             txt +=" / "
         else if (a === 2) {
-            txt = "(10^" + b.toString() + ")^" + c.toString() + "="
+            txt = "(10<sup>" + b.toString() + "</sup>)<sup>" + c.toString() + "</sup>="
 			return txt
 		}
         if (c < 0)
-            txt +="10^("+c.toString()+")";
+            txt +="10<sup>"+c.toString()+"</sup>";
         else 
-            txt += "10^"+c.toString();	
+            txt += "10<sup>"+c.toString()+"</sup>";	
         txt +=" = ";
         return txt;
     }
@@ -2477,7 +2477,7 @@ class Quatrième_Puissances
         var con = unit.toString() + "," + virgule.toString() 
         while (con.slice(-1) == "0" || con.slice(-1) == ",")
             con = con.substring(0,con.length-1);
-		var rep = con + "*10<sup>" + pow1 + "</sup>" + " ou " + con + "*10^" + pow1;
+		var rep = con + "&times;10<sup>" + pow1 + "</sup>" + " ou " + con + "&times;10^" + pow1;
 		return [x,rep.toString()]
     }
     
