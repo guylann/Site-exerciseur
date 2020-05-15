@@ -111,37 +111,40 @@ function Rechercher(texte)
         titre = titre.replace("ï", "i");
         titre = titre.replace("ù", "u");
         textes.forEach(txt => {
-            txt1 = txt;
-            txt = txt.toLowerCase();
-            txt = txt.replace("é", "e");
-            txt = txt.replace("è", "e");
-            txt = txt.replace("ê", "e");
-            txt = txt.replace("à", "a");
-            txt = txt.replace("ï", "i");
-            txt = txt.replace("ù", "u");
+            if (txt != "")
+            {
+                txt1 = txt;
+                txt = txt.toLowerCase();
+                txt = txt.replace("é", "e");
+                txt = txt.replace("è", "e");
+                txt = txt.replace("ê", "e");
+                txt = txt.replace("à", "a");
+                txt = txt.replace("ï", "i");
+                txt = txt.replace("ù", "u");
 
-            let Regex = RegExp('(' + txt + ')+');
-            if (Regex.test(titre))
-            {
-                if (textes.indexOf(txt1) == 0)
-                    Add(l, count('(' + txt + ')+', titre) + 1);
-                else
-                    Add(l, txt.length / titre.length);
-            }
-            for(var i = 0; i<ListExercices[l][2].length; i++)
-            {
-                var tagname = ListExercices[l][2][i];
-                if (!Tags.hasOwnProperty(tagname))
-                    continue;
-                for(var j = 0; j < Tags[tagname].length; j++)
+                let Regex = RegExp('(' + txt + ')+');
+                if (Regex.test(titre))
                 {
-                    let globalRegex = RegExp('(' + txt + ')+');
-                    let element = Tags[tagname][j];
-
-                    if (globalRegex.test(element))
-                        Add(l, txt.length / element.length);
+                    if (textes.indexOf(txt1) == 0 && txt.length > 5)
+                        Add(l, count('(' + txt + ')+', titre) + 1);
+                    else
+                        Add(l, count('(' + txt + ')+', titre) * txt.length / titre.length);
                 }
-            };
+                for(var i = 0; i<ListExercices[l][2].length; i++)
+                {
+                    var tagname = ListExercices[l][2][i];
+                    if (!Tags.hasOwnProperty(tagname))
+                        continue;
+                    for(var j = 0; j < Tags[tagname].length; j++)
+                    {
+                        let globalRegex = RegExp('(' + txt + ')+');
+                        let element = Tags[tagname][j];
+
+                        if (globalRegex.test(element))
+                            Add(l, count('(' + txt + ')+', element) * txt.length / element.length);
+                    }
+                };
+            }
         });
     }
     CreateListe();
