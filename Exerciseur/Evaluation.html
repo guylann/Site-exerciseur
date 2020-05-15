@@ -301,12 +301,19 @@
         function GetIP(callback){
             
             var xmlhttp = new XMLHttpRequest();
+            xmlhttp.timeout = 5000;
             xmlhttp.onreadystatechange=function()
             {
                 if (xmlhttp.readyState==4 && xmlhttp.status==200)
                 {
                     callback(xmlhttp.responseText);
                 }
+            }
+            xmlhttp.ontimeout = function(){
+                callback("0");
+            }
+            xmlhttp.onerror = function(){
+                callback("0");
             }
             xmlhttp.open("GET", "https://api.ipify.org/?format=txt", true );
             xmlhttp.send(null); 
@@ -317,6 +324,7 @@
             console.log(Code(uid));
             document.getElementById("Code").innerHTML = Code(uid);
             document.getElementById("Quitter").style.display = "inline-block";
+            document.getElementById("Loadingcircle").style.display = "none";
         }
 
         function Code(value)
@@ -438,7 +446,7 @@
                     <label style="color: #1D7F56;">Ton code : </label>
                 </div>
                 <label id="Code"></label>
-                        
+                <img id="Loadingcircle" src="loading.gif" style="width: 20px;height: 20px;vertical-align: sub;"/>
             </div>
             <div style="height: 50px;"></div>
             <table class="Endtable">
