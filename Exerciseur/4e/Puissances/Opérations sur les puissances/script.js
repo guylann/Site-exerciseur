@@ -17,12 +17,12 @@ var nombre;
         function Valider() {
             var txt = document.getElementById("fname").value;
             document.getElementById("TextReponse").innerHTML = "";
-            if (nombre[1] == txt) {
+            if (nombre[1] == txt || nombre[2] == txt) {
                 document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
             }
             else {
                 document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était : ";
-                document.getElementById("TextReponse").innerHTML = nombre[1];
+                document.getElementById("TextReponse").innerHTML = nombre[1] + " ou " + nombre[2];
             }
         }
 
