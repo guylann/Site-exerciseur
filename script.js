@@ -2441,7 +2441,7 @@ class Quatrième_Puissances
 		else 
 			var sol = x1*x0
 		var rep1 = "10<sup>" + sol + "</sup>";
-		var rep2 = "10^" + sol:
+		var rep2 = "10^" + sol;
         return [Quatrième_Puissances.CreateCalc(calc,x1,x0), rep1.toString(), rep2.toString()];
 
     }
