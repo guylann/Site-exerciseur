@@ -13,13 +13,19 @@ function Valider(){
     var txt = document.getElementById("fname").value;
     txt = txt.replace(/x/g,"*");
     txt = txt.replace(/X/g,"*");
-    if (nombre[1] == txt) {
+    if (Résultat()) {
         document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
     }
     else {
         document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
         document.getElementById("TextReponse").innerHTML = nombre[1];
     }
+}
+
+
+function Résultat()
+{
+    return nombre[1] == txt;
 }
 
 function test(tableau){
