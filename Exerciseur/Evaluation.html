@@ -342,12 +342,13 @@
         }
 
         function selectText(containerid) {
+            ChangeColor(containerid, "black", false);
+            document.getElementById(containerid)
             if (document.selection) {
                 var range = document.body.createTextRange();
                 range.moveToElementText(document.getElementById(containerid));
                 range.select();
             } else if (window.getSelection) {
-                console.log("Copy Windows");
                 var range = document.createRange();
                 range.selectNode(document.getElementById(containerid));
                 window.getSelection().addRange(range);
@@ -357,6 +358,45 @@
             
             if (window.getSelection) {window.getSelection().removeAllRanges();}
             else if (document.selection) {document.selection.empty();}
+            ChangeColor(containerid, "", true);
+        }
+
+
+        var count = 0;
+        var position = 0;
+        function ChangeColor(containerid, color, resume)
+        {
+            count = 0;
+            ChangeColorNode(document.getElementById(containerid), color, resume == true)
+        }
+
+        function ChangeColorNode(node, color, resume)
+        {
+            if (node.nodeName.toLowerCase() == 'label') {
+                if (node.style.color === "rgb(29, 127, 86)" && resume == false)
+                    position = count;
+                if (resume == true && position == count)
+                    node.style.color = "#1D7F56";
+                else
+                    node.style.color = color;
+                node.style.background = "transparent";
+            }
+            if (node.nodeName.toLowerCase() == 'div') {
+                if (node.style.backgroundColor === "white")
+                    node.style.backgroundColor = "white";
+                else
+                    node.style.background = "transparent";
+                node.style.color = color;
+            }
+            if (node.nodeName.toLowerCase() == 'p') {
+                node.style.background = "transparent";
+                node.style.color = color;
+            }
+            var nodes = node.childNodes;
+            for(var i = 0; i<nodes.length; i++) {
+                count += 1;
+                ChangeColorNode(nodes[i], color, resume)
+            }
         }
 
 
@@ -436,14 +476,14 @@
     
     <div id="EndResume">
 
-        <div id="EndResume_copy">
+        <div id="EndResume_copy" style="background-color: transparent;">
             <div>
                 <p id="EndResume_Competence">
 
                 </p>
             </div><br>
             <div style="border-radius: 8px; border: solid; stroke: white; padding: 3px;">
-                <div style="border-radius: 4px; background-color: white; padding: 2px;">
+                <div id="CodeDiv" style="border-radius: 4px; background-color: white; padding: 2px;">
                     <label style="color: #1D7F56;">Ton code : </label>
                 </div>
                 <label id="Code"></label>
