@@ -1,0 +1,224 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script src="../MenuSetup.js"></script>
+    <script src="../script.js"></script>
+
+
+    <script>function ChangeMenu(){}</script>
+    <script id="loadedscript"></script>
+    <script>
+
+    </script>
+
+
+
+    <script>
+        var exercicelink
+
+        async function FirstLaunch()
+        {
+
+        }
+
+        function GenAleatoire()
+        {
+            document.getElementById("X1").value = Constante.Randint(-10, 10);
+            document.getElementById("X2").value = Constante.Randint(-10, 10);
+            document.getElementById("Resultat").value = Constante.Randint(-10, 10);
+            Generer();
+        }
+
+        function Generer(){
+            var a = parseInt(document.getElementById("X1").value);
+            var b = parseInt(document.getElementById("X2").value);
+            var z = parseInt(document.getElementById("Resultat").value) * 3;
+            var c = z - b - a;
+
+            document.getElementById("Num1").innerHTML = a.toString();
+            document.getElementById("Num2").innerHTML = b;
+            document.getElementById("Num3").innerHTML = c;
+            document.getElementById("Num4").innerHTML = (z - 3 * a + 3 * c) / 3;
+            document.getElementById("Num5").innerHTML = z / 3;
+            document.getElementById("Num6").innerHTML = (z + 3 * a - 3 * c) / 3;
+            document.getElementById("Num7").innerHTML = (2 * z - 3 * c) / 3;
+            document.getElementById("Num8").innerHTML = -(z - 3 * a - 3 * c) / 3;
+            document.getElementById("Num9").innerHTML = (2 * z - 3 * a) / 3;
+        }
+
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function Showcorrection(){
+            document.getElementById("Corriger").style.display = "block";
+        }
+
+    </script>
+
+</head>
+<body onload="CreateSidePanel(document, true); FirstLaunch();" >
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+    
+            
+    <div style="height: 30px;"></div>
+    <b><u style="color: white;"><h1 id="Titre">
+        
+    </h1></b></u>
+    
+    <input class="backbutton" type="number" id="X1" style="width: 75px;">
+    <input class="backbutton" type="number" id="X2" style="width: 75px;">
+    <input class="backbutton" type="number" id="Resultat" style="width: 75px;">
+    <input type="button" value="Generer" class="backbutton" onclick="Generer()"/>
+    <input type="button" value="Aléatoire" class="backbutton" onclick="GenAleatoire()"/>
+
+    <div id="Exercice" style="display: block;">
+        <table style=" border-collapse: collapse;">
+            <tbody>
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num1" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num2" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num3" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num4" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num5" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num6" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num7" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num8" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num9" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <input type="button" value="Voir la correction" class="backbutton" onclick="Showcorrection()"/>
+
+    <div id="Corriger" style="display: none;">
+        <table style=" border-collapse: collapse;">
+            <tbody>
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num1" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num2" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num3" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num4" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num5" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num6" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="text-align: center; border-color: white; border-style: solid;">
+                        <div style="padding: 15px;">
+                            <label id="Num7" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num8" >
+                            </label>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border-color: white; border-style: solid">
+                        <div style="padding: 15px;">
+                            <label id="Num9" >
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+    <img src="BackgroundHead.png" class="imagecenterLeftRight" style="display: none;"
+              alt="" title="Site Exerciseur" id="Corriger">
+
+</body>
+</html>
