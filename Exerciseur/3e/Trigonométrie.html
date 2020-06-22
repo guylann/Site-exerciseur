@@ -1,0 +1,36 @@
+﻿<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../index.css">
+        <script src="../../MenuSetup.js"></script>
+        <script src="../../script.js"></script>
+    </head>
+    <body onload="CreateSidePanel(document, true);">
+
+        <!-- Side Panel -->
+        <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)">
+            <a href="#">Menu principal</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+        <!-- Fin Side Panel -->
+
+        <div style="height: 50px;"></div>
+        <p class="soustitre">
+            Niveau 3ème :
+        </p>
+        <h1><b><u>
+            Arithmétique
+        </h1></b></u>
+        <ul>Sélectionner la compétence à travailler
+            <li><input class="button" type="button" onclick="HtmlManipulator.SetupExercice('3e/Arithmétique/Décomposer un nombre en produits de facteurs premiers')" value="Décomposer un nombre en produits de facteurs premiers"></li>
+            <li><input class="button" type="button" onclick="HtmlManipulator.SetupExercice('3e/Arithmétique/Déterminer si un nombre est premier')" value="Déterminer si un nombre est premier"></li>
+            <li><input class="button" type="button" onclick="HtmlManipulator.SetupExercice('3e/Arithmétique/Simplifier une fraction pour la rendre irréductible')" value="Simplifier une fraction pour la rendre irréductible"></li>
+            <li><input class="button" type="button" onclick="HtmlManipulator.SetupExercice('3e/Arithmétique/Résoudre des problèmes relevant de la divisibilité')" value="Résoudre des problèmes relevant de la divisibilité"></li>
+            <li><input class="button" type="button" onclick="HtmlManipulator.SetupExercice('3e/Arithmétique/Utiliser les égalités de fractions')" value="Utiliser les égalités de fractions"></li>
+        </ul>
+        <div style="height: 50px;"></div>
+        <input type="button" class="backbutton" value="Retour" onclick="history.go(-1)">
+    </body>
+</html>
