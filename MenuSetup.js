@@ -14,7 +14,7 @@ const Page = {
                 ["Statistiques",                        "Exerciseur/3e/Statistiques.html"],
                 ["Théorème de Thalès",                  "Exerciseur/3e/Théorème de Thalès.html"],
                 ["Transformations du plan",             "Exerciseur/3e/Transformations du plan.html"]
-				["Trigonométrie",						"Exerciseur/3e/trigonométrie.html"]],
+				["Trigonométrie",						"Exerciseur/3e/Trigonométrie.html"]],
 
     quatrième: 	["Quatrième",
                 ["Calcul littéral",                     "Exerciseur/4e/Calcul littéral.html"],
