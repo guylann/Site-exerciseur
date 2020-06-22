@@ -13,7 +13,8 @@ const Page = {
                 ["Notion de fonction",                  "Exerciseur/3e/Notion de fonction.html"],
                 ["Statistiques",                        "Exerciseur/3e/Statistiques.html"],
                 ["Théorème de Thalès",                  "Exerciseur/3e/Théorème de Thalès.html"],
-                ["Transformations du plan",             "Exerciseur/3e/Transformations du plan.html"]],
+                ["Transformations du plan",             "Exerciseur/3e/Transformations du plan.html"]
+				["Trigonométrie",						"Exerciseur/3e/trigonométrie.html"]],
 
     quatrième: 	["Quatrième",
                 ["Calcul littéral",                     "Exerciseur/4e/Calcul littéral.html"],
