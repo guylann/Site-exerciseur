@@ -282,7 +282,11 @@
         }
 
         function ShowEnd(){
-            GetIP(CreateUID);
+            //GetIP(CreateUID);
+            CreateUID(reponses[0][1][reponses[0][1].length-1].toString()  + 
+            reponses[1][1][reponses[1][1].length-1].toString() +
+            reponses[2][1][reponses[2][1].length-1].toString() +
+            reponses[3][1][reponses[3][1].length-1].toString());
             document.getElementById("EndResume_Competence").innerHTML = Titre;
             document.getElementById("Question 1").innerHTML = reponses[0][0];
             document.getElementById("Question 2").innerHTML = reponses[1][0];
@@ -320,7 +324,7 @@
         }
 
         function CreateUID(ip){
-            var uid = "n:" + identifiant + "t:" + Math.floor(Date.now()/1000).toString(36) + "ip:" + parseInt(ip.replace(/\./g,"")).toString(36);
+            var uid = "n:" + identifiant + "t:" + Math.floor(Date.now()/1000).toString(36) + "ip:" + ip;
             console.log(Code(uid));
             document.getElementById("Code").innerHTML = Code(uid);
             document.getElementById("Quitter").style.display = "inline-block";
@@ -330,6 +334,7 @@
         function Code(value)
         {
             var coded = "";
+            coded
             for (let index = 0; index < value.length; index++) {
                 coded += String.fromCharCode(value.charCodeAt(index) + 1);
             }

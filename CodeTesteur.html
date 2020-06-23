@@ -21,7 +21,7 @@
             if (decoded.substring(index-3,index) == "ip:")
             {
                 time = parseInt(decoded.substring(indextime,index -3),36);;
-                ip = parseInt(decoded.substring(index, decoded.length),36);;
+                ip = decoded.substring(index, decoded.length);
             }
         }
 

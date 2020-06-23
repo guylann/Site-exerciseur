@@ -5,56 +5,77 @@ var document = HtmlManipulator.Gdocument;
 
 
 
-var nombre;
+var values;
+        var param;
 
-function Valider(){
-    var txt = document.getElementById("fname").value;
-    txt = txt.replace(/x/g,"*");
-    txt = txt.replace(/X/g,"*");
-    if (Résultat()) {
-        document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
-    }
-    else {
-        document.getElementById("Resultat").innerHTML = "C'est loupé pour cette fois, la bonne réponse était :";
-        document.getElementById("TextReponse").innerHTML = nombre[1];
-    }
-}
+        function Valider() {
+            var e = document.getElementById("Trigonometrie_long").value;
+            document.getElementById("correctionGlobal").innerHTML = "";
+            document.getElementById("Correction").style.display = "none";
+            var erreur = true;
+            if (param.find == 0 && values[6].toString() == e){
+                erreur = false;
+                document.getElementById("correctionGlobal").innerHTML = "Bravo c'est correct";
+            }
+            else if (param.find == 1 && values[4].toString() == e){
+                erreur = false;
+                document.getElementById("correctionGlobal").innerHTML = "Bravo c'est correct";
+            }
+            else if (param.find == 2 && values[5].toString() == e){
+                erreur = false;
+                document.getElementById("correctionGlobal").innerHTML = "Bravo c'est correct";
+            }
+            if (erreur) {
+                document.getElementById("correctionGlobal").innerHTML = "Oups, ce n'est pas la réponse attendue ...";
+                document.getElementById("Correction").style.display = "block";
+                
+                if (param.find == 0){
+                    document.getElementById("CorTrigonometrie_long").innerHTML = values[6];
+                }
+                else if (param.find == 1){
+                    document.getElementById("CorTrigonometrie_long").innerHTML = values[4];
+                }
+                else if (param.find == 2){
+                    document.getElementById("CorTrigonometrie_long").innerHTML = values[5];
+                }
+
+            }
+        }
+
+        function Annuler() {
+            document.getElementById("Trigonometrie_long").value = "";
+            document.getElementById("correctionGlobal").innerHTML = "";
+            document.getElementById("Correction").style.display = "none";
+        }
 
 
-function Résultat()
-{
-    return nombre[1] == txt;
-}
+        function Recommencer() {
+            Annuler();
+            var c = document.getElementById("myCanvas");
+            let show = Constante.Randint(0,2);
+            let cherche = show;
+            while(cherche == show)
+                cherche = Constante.Randint(0,2)
+            param = {longueurmin: 2, longueurmax: 8, arrondi: 10, hide: show,find: cherche, angledroit: true, angle: true, anglepos: Constante.Randint(0,1)};
+            values = Troisième_Trigonométrie.CreateTrigonometrie(param, c);
+            if (param.find == 0)
+                document.getElementById("Trigonometrie_manque").innerHTML = values[0].sommet + values[1].sommet;
+            else if(param.find == 1)
+                document.getElementById("Trigonometrie_manque").innerHTML = values[0].sommet + values[2].sommet;
+            else if(param.find == 2)
+                document.getElementById("Trigonometrie_manque").innerHTML = values[2].sommet + values[1].sommet;
+            document.getElementById("CorTrigonometrie_manque").innerHTML = document.getElementById("Trigonometrie_manque").innerHTML;
+        }
 
-function test(tableau){
-    var a = 1
-    for (let index = 0; index < tableau.length; index++) {
-        const element = tableau[index];
-        a *= parseInt(element)
-    }
-    return a;
-}
+        function Resume(){
+            var reponse = ["Question","Reponse", "","Correction"];
+        
+            reponse[0] = "Calculer la longueur d'un côté.";
+            reponse[1] = document.getElementById("Trigonometrie_manque").value +" = ";
+            reponse[1] += document.getElementById("Trigonometrie_long").value +" cm";
 
-
-function Recommencer(){
-    nombre = Troisième_Arithmetique.CreateDecompBetween(100, 1000);
-    document.getElementById("TextQuestion").innerHTML = nombre[0];
-    document.getElementById("Resultat").innerHTML = "";
-    document.getElementById("TextReponse").innerHTML = "";
-    document.getElementById("fname").value = "";
-}
-
-function Annuler(){
-
-}
-
-
-function Resume(){
-    var reponse = ["Question","Reponse", "Tes nombres sont-ils tous premiers ?","Correction"];
-
-    reponse[0] = "Décomposer " +nombre[0] + " en produits de facteurs premiers";
-    reponse[1] = document.getElementById("fname").value;
-    reponse[3] = "La bonne réponse était : " + nombre[1];
-
-    return reponse
-}
+            reponse[3] = document.getElementById("CorTrigonometrie_manque").value +" = ";
+            reponse[3] += document.getElementById("CorTrigonometrie_long").value +" cm";
+        
+            return reponse
+        }

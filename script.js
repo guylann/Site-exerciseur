@@ -1481,6 +1481,224 @@ class Troisième_TransformationPlan
     }
 }
 
+
+// Trigonométrie
+class Troisième_Trigonométrie
+{
+
+    static CreateTriangle(){
+        var size = 240
+        var d = Math.PI/180;
+        var angle = 10 + Constante.Randint(10,70);
+        var sommets = ["A","B","C"]
+        var i = Constante.Randint(0,2);
+        var a = {x: 0, y: size / 2,sommet: sommets[i]};
+        var b = {x: size, y: size / 2,sommet: sommets[(i+1) % 3]};
+        var c = {x: size * Math.cos(d * angle) * Math.cos(d * angle) , y: size / 2 - size * Math.cos(d * angle) * Math.sin(d * angle),sommet: sommets[(i+2) % 3]};
+        return [a,b,c, angle];
+    }
+    
+    static CreateTrigonometrie(param, c){
+        var d = Math.PI/180;
+        var triangle = Troisième_Trigonométrie.CreateTriangle();
+    
+        var angle = triangle[3];
+        var cotemin = Constante.Randint(param.longueurmin * param.arrondi, param.longueurmax * param.arrondi) / param.arrondi;
+        var cotemin2 = Math.round(Math.tan(d * angle) * cotemin * param.arrondi) / param.arrondi;
+        var cotemax = Math.round(cotemin / Math.cos(d * angle) * param.arrondi) / param.arrondi;
+    
+        triangle.push(cotemin);
+        triangle.push(cotemin2);
+        triangle.push(cotemax);
+        triangle.push(true);
+    
+        Troisième_Trigonométrie.Drawtriangle(param, triangle, c);
+
+        if (param.angle == false)
+        {
+            if (param.anglepos == 0)
+            {
+                if (param.hide == 0)
+                    triangle[3] = Math.round(Math.atan(triangle[5] / triangle[4]) * 180 / Math.PI* param.arrondi) / param.arrondi;
+                else if (param.hide == 1)
+                    triangle[3] = Math.round(Math.asin(triangle[5] / triangle[6]) * 180 / Math.PI* param.arrondi) / param.arrondi;
+                else if (param.hide == 2)
+                    triangle[3] = Math.round(Math.acos(triangle[4] / triangle[6]) * 180 / Math.PI* param.arrondi) / param.arrondi;
+            }
+            else if (param.anglepos == 1)
+            {
+                if (param.hide == 0)
+                    triangle[3] = Math.round(Math.atan(triangle[4] / triangle[5]) * 180 / Math.PI * param.arrondi) / param.arrondi;
+                else if (param.hide == 1)
+                    triangle[3] = Math.round(Math.acos(triangle[5] / triangle[6]) * 180 / Math.PI * param.arrondi) / param.arrondi;
+                else if (param.hide == 2)
+                    triangle[3] = Math.round(Math.asin(triangle[4] / triangle[6]) * 180 / Math.PI * param.arrondi) / param.arrondi;
+            }
+            console.log("#######")
+            console.log(param.anglepos)
+            console.log(param.hide)
+            console.log(triangle[4])
+            console.log(triangle[3])
+        }
+
+    
+        return triangle;
+    }
+    
+    static Drawtriangle(param, triangle, c){
+        var ctx = c.getContext("2d");
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, c.width, c.height);
+        var w = c.width - 40;
+        var h = c.height - 40;
+        var offw = 20;
+        var offh = 20;
+    
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = 'white';
+        ctx.lineCap = 'round';
+        ctx.lineJoint = 'round';
+        ctx.lineWidth = 1.0;
+        ctx.font = "10px Arial";
+        ctx.textAlign="center";
+    
+        ctx.beginPath();
+        ctx.moveTo(offw + triangle[0].x, offh + triangle[0].y);
+        ctx.lineTo(offw + triangle[1].x, offh + triangle[1].y);
+        ctx.lineTo(offw + triangle[2].x, offh + triangle[2].y);
+        ctx.closePath();
+        ctx.stroke();
+    
+        var vector1 = {x: (triangle[0].x - triangle[2].x)/Constante.distanceP(triangle[0],triangle[2]) * 10,
+                       y: (triangle[0].y - triangle[2].y)/Constante.distanceP(triangle[0],triangle[2]) * 10};
+        var vector2 = {x: (triangle[1].x - triangle[2].x)/Constante.distanceP(triangle[1],triangle[2]) * 10,
+                       y: (triangle[1].y - triangle[2].y)/Constante.distanceP(triangle[1],triangle[2]) * 10};
+    
+    
+        if (param.angledroit)
+        {
+            ctx.beginPath();
+            ctx.moveTo(offw + triangle[2].x + vector1.x, offh + triangle[2].y + vector1.y);
+            ctx.lineTo(offw + triangle[2].x + vector1.x + vector2.x, offh + triangle[2].y + vector1.y + vector2.y);
+            ctx.lineTo(offw + triangle[2].x + vector2.x, offh + triangle[2].y + vector2.y);
+            ctx.stroke();
+        }
+
+        if (param.anglepos == 1)
+        {
+            ctx.beginPath();
+            ctx.moveTo(offw + triangle[1].x, offh + triangle[1].y);
+            ctx.arc(offw + triangle[1].x, offh + triangle[1].y, 20, Math.PI, Math.PI + (90-triangle[3]) * Math.PI / 180);
+            ctx.stroke();
+        }
+        else{
+            ctx.beginPath();
+            ctx.moveTo(offw + triangle[0].x, offh + triangle[0].y);
+            ctx.arc(offw + triangle[0].x, offh + triangle[0].y, 20, 2 * Math.PI - triangle[3] * Math.PI / 180, 2 * Math.PI);
+            ctx.stroke();
+        }
+    
+        Troisième_Trigonométrie.drawPoint(offw + triangle[0].x, offh + triangle[0].y, triangle[0].sommet, c,7, 90);
+        Troisième_Trigonométrie.drawPoint(offw + triangle[1].x, offh + triangle[1].y, triangle[1].sommet, c,7, 270);
+        Troisième_Trigonométrie.drawPoint(offw + triangle[2].x, offh + triangle[2].y, triangle[2].sommet, c,7, 0);
+    
+        ctx.fillStyle = "white";
+        ctx.font = "14px Arial";
+        ctx.textAlign="center";
+
+        if (param.anglepos == 0)
+        {
+            if (param.angle == true)
+                ctx.fillText(triangle[3] +  "°", offw + triangle[0].x, offh + triangle[0].y + 20);
+            else
+                ctx.fillText("? °", offw + triangle[0].x, offh + triangle[0].y + 20);
+        }
+        else{
+            if (param.angle == true)
+                ctx.fillText((90-triangle[3]) +  "°", offw + triangle[1].x, offh + triangle[1].y + 20);
+            else
+                ctx.fillText("? °", offw + triangle[1].x, offh + triangle[1].y + 20);
+        }
+
+        if ((param.hide != 0 && param.angle == false) || (param.hide == 0 && param.angle == true))
+            ctx.fillText(triangle[6] + "cm", 150, 155);
+        if ((param.find == 0 && param.angle == true))
+            ctx.fillText("? cm", 150, 155);
+        ctx.rotate(-triangle[3] * Math.PI / 180);
+        var vectormiddle = {x: (triangle[2].x + triangle[0].x)/2 + 15, y: (triangle[2].y + triangle[0].y)/2 + 15};
+        var newvector = Constante.rotateP(vectormiddle,{x: 0, y: 0}, -triangle[3]);
+        if ((param.hide != 1 && param.angle == false) || (param.hide == 1 && param.angle == true))
+            ctx.fillText(triangle[4] + "cm", newvector.x, newvector.y);
+        if ((param.find == 1 && param.angle == true))
+            ctx.fillText("? cm", newvector.x, newvector.y);
+        
+        var angle1 = (90-triangle[3])
+        vectormiddle = {x: (triangle[1].x + triangle[2].x)/2 + 20, y: (triangle[1].y + triangle[2].y)/2 + 10};
+        newvector = Constante.rotateP(vectormiddle,{x: 0, y: 0}, angle1);
+        ctx.rotate(+triangle[3] * Math.PI / 180);
+        ctx.rotate(angle1 * Math.PI / 180);
+        if ((param.hide != 2 && param.angle == false) || (param.hide == 2 && param.angle == true))
+            ctx.fillText(triangle[5] + "cm", newvector.x, newvector.y);
+        if ((param.find == 2 && param.angle == true))
+            ctx.fillText("? cm", newvector.x, newvector.y);
+    
+    }
+
+    static drawPoint(x,y, name, c,distance = 7, angle = 0)
+    {
+        var d = -Math.PI/180;
+
+        var ctx = c.getContext("2d");
+
+        var pointsize = 4;
+        ctx.beginPath();
+        ctx.fillStyle = "transparent";
+        ctx.strokeStyle = "white";
+        ctx.moveTo(x - pointsize / 2,       y - pointsize / 2);
+        ctx.lineTo(x + pointsize / 2,       y + pointsize / 2);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - pointsize / 2,       y + pointsize / 2);
+        ctx.lineTo(x + pointsize / 2,       y - pointsize / 2);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.fillStyle = "white";
+        ctx.font = "12px Arial";
+        ctx.textAlign="center";
+        ctx.fillText(name, x + distance * Math.sin(d * angle) - 1, y - distance * Math.cos(d * angle) );
+
+    }
+
+    static drawPointColor(x,y, name, color, c)
+    {
+        var ctx = c.getContext("2d");
+
+        var pointsize = 4;
+        ctx.beginPath();
+        ctx.fillStyle = "transparent";
+        ctx.strokeStyle = color;
+        ctx.moveTo(x - pointsize / 2,       y - pointsize / 2);
+        ctx.lineTo(x + pointsize / 2,       y + pointsize / 2);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - pointsize / 2,       y + pointsize / 2);
+        ctx.lineTo(x + pointsize / 2,       y - pointsize / 2);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.font = "12px Arial";
+        ctx.textAlign="center";
+        ctx.fillText(name, x - 1, y - 7);
+
+    }
+
+}
+
+
 //#endregion
 
 
