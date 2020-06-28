@@ -2965,6 +2965,13 @@ class HtmlManipulator
         document.location.href = url;
     }
 
+    static SetupFicheExercice(folder, file){
+        let url = new URL("Exercice.html", document.location.href);
+        url.searchParams.append('folder', folder);
+        url.searchParams.append('file', file);
+        document.location.href = url;
+    }
+
     static GetscriptFile(){
         let params = (new URL(document.location)).searchParams;
         return params.get('file');

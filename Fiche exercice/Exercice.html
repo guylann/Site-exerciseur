@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script src="../MenuSetup.js"></script>
+    <script src="../script.js"></script>
+
+    <script>function ChangeMenu(){}</script>
+    <script id="loadedscript"></script>
+    <script>
+        HtmlManipulator.Gdocument = document;
+        var src = HtmlManipulator.GetscriptFolder() + "/script.js";
+        document.getElementById("loadedscript").setAttribute("src", src);
+    </script>
+
+
+    <title id="Titre">Fichier_client_micronet.pdf</title>
+    <style type="text/css">
+      html, body, div, object, p {
+        margin:auto;
+        padding:0;
+        border:0;
+        width:100%;
+        height:100%;
+        text-align: center;
+        align-content: center;
+      }
+ 
+      object {
+        display:block;
+        width: 100%;
+      }
+
+
+    </style>
+
+    <script>
+        async function FirstLaunch()
+        {
+            var fold = HtmlManipulator.GetscriptFolder();
+            var file = HtmlManipulator.GetscriptFile();
+
+
+
+            document.getElementById("PdfContainer").data = "Contenue/" + fold + "/" +  file + ".pdf";
+            document.getElementById("Telechargement").href = "Contenue/" + fold + "/" + file + ".pdf";
+            document.getElementById("Titre").innerHTML =  file + ".pdf";
+        }
+    </script>
+  </head>
+  <body onload="FirstLaunch(); CreateSidePanel(document, true);">
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+
+    <div >
+      <object id="PdfContainer" data="Fichier_client_micronet.pdf" type="application/pdf">
+        <p>Télécharger : <a href="Fichier_client_micronet.pdf" id="Telechargement">Fichier_client_micronet.pdf</a></p>
+      </object>
+    </div>
+  </body>
+</html>

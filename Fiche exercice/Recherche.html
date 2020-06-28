@@ -1,0 +1,157 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script src="../MenuSetup.js"></script>
+    <script src="../script.js"></script>
+    <script src="Recherche.js"></script>
+
+
+    <script>function ChangeMenu(){}</script>
+    <script id="loadedscript"></script>
+    <script>
+        HtmlManipulator.Gdocument = document;
+        var src = HtmlManipulator.GetscriptFolder() + "/script.js";
+        document.getElementById("loadedscript").setAttribute("src", src);
+    </script>
+
+
+
+    <script>
+        async function FirstLaunch()
+        {
+            document.getElementById("recherche").onkeyup = KeyDown;
+            Rechercher("");
+        }
+
+        function SelectExercice(elmt){
+            if (tagsclick)
+            {
+                tagsclick = false;
+                return;
+            }
+
+            var fold = elmt.id;
+            var file = elmt.name;
+
+            HtmlManipulator.SetupFicheExercice(fold, file);
+        }
+
+
+        function KeyDown(e){
+            Rechercher(document.getElementById('recherche').value)
+        }
+
+    </script>
+
+    <style>
+        .Result{
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 10px;
+            text-align: left;
+            width: 95%;
+            max-width: 1200px;
+            margin-bottom: 5px;
+            display: inline-block;
+            transition-duration: 0.4s;
+        }
+        .Result a{
+            color: black;
+        }
+
+        .Result:hover{
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .Result:active{
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .tag{
+            background-color: rgba(200, 200, 200, 0.75);
+            border-radius: 5px;
+            padding: 2px;
+            text-align: left;
+            margin-right: 2px;
+            transition-duration: 0.4s;
+        }
+        .tag label{
+            color: purple;
+        }
+        .tag:hover{
+            background-color: rgba(200, 128, 200, 0.75);
+        }
+
+        html {
+        --scrollbarBG: transparent;
+        --thumbBG: rgba(100, 200, 100, 0.3);
+        }
+        #Resultats {
+            scrollbar-width: thin;
+            scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+            overflow-y: auto;
+            padding: 10px;
+            border: solid;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 1200px;
+            top: 200px;
+            bottom: 20px;
+            position: fixed;
+            display: block;
+        }
+        #Resultats::-webkit-scrollbar {
+            width: 11px;
+        }
+        #Resultats::-webkit-scrollbar-track {
+            background: var(--scrollbarBG);
+        }
+        #Resultats::-webkit-scrollbar-thumb {
+            background-color: var(--thumbBG) ;
+            border-radius: 6px;
+            border: 3px solid var(--scrollbarBG);
+        }
+    </style>
+
+
+</head>
+<body onload="CreateSidePanel(document, true); FirstLaunch();" >
+
+    <!-- Side Panel -->
+    <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
+    <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
+    <!-- Fin Side Panel -->
+    
+    <div style="width: 100%;">
+        <div style="height: 30px;"></div>
+        <u style="color: white;"><b><h1>
+            Recherche d'exercice Brevet.
+        </h1></b></u><br>
+        <div style="text-align: left; width: 100%; ">
+            <table style="width: 100%; padding: 0px;">
+                <tr>
+                    <td style="width: 33px; border: none; padding: 0px;">
+                        <button style="background-color: transparent; border: none; padding: 0px; cursor: pointer; vertical-align: middle;" onclick="Rechercher(document.getElementById('recherche').value)">
+                            <svg width="33" height="33">
+                                <rect x="0" y="0" rx="5" ry="5" width="33" height="33"
+                                    style="fill:white;stroke:none;stroke-width:0;" />
+                                <circle cx="13" cy="13" r="6" stroke="#1D7F56" stroke-width="2" fill="transparent"/>
+                                <line x1="17" y1="17" x2="26" y2="26" style="stroke:#1D7F56;stroke-width:2"/>
+                            </svg>
+                        </button>
+                    </td>
+                    <td style="border: none; padding: 0px; margin: 0px;">
+                        <input id="recherche" class="backbutton" style="vertical-align: middle; text-align: left; width: 100%;" type="text" placeholder="Rechercher ..." onkeydown="KeyDown" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div style="height: 20px;"></div>
+    <div id="Resultats"> 
+    </div>
+    
+
+</body>
+</html>
