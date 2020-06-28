@@ -30,12 +30,16 @@ const Page = {
                 ["Nombres relatifs",                    "Exerciseur/5e/Nombres relatifs.html"]],
 
     sixième:    ["Sixième",
-				["Nombres décimaux",                    "Exerciseur/6e/Nombres décimaux.html"]],
+                ["Nombres décimaux",                    "Exerciseur/6e/Nombres décimaux.html"]],
+                
+    fiche:      ["Fiches exercices",
+                ["Exercice Brevet",                     "Annales Brevet/Recherche.html"],
+                ["Fiches",                              "Fiche exercice/Recherche.html"]]
 
 }
 
 var nav = false;
-var Developpedfields = [false,false,false,false];
+var Developpedfields = [false,false,false,false,false,false];
 
 function ChangeNav(document){
     
@@ -77,11 +81,14 @@ function AddDependency(document){
         head.appendChild(a);
     }
 }
-
+/*
+<br>
+        
+*/
 function CreateSidePanel(document, global = false){
     AddDependency(document);
     nav = false;
-    Developpedfields = [false,false,false,false];
+    Developpedfields = [false,false,false,false,false,false];
     var Sidepanel = document.getElementById("Sidepanel");
     Sidepanel.innerHTML = "";
 
@@ -99,6 +106,7 @@ function CreateSidePanel(document, global = false){
         if (Page.ordre[i] == 2){data.push(Page.quatrième);}
         if (Page.ordre[i] == 3){data.push(Page.troisième);}
     }
+    data.push(Page.fiche);
 
     for(var l = 0; l < data.length; l++)
     {
@@ -115,8 +123,8 @@ function CreateSidePanel(document, global = false){
 
         var ul = document.createElement("div");
         ul.setAttribute("id", "SidePanelField" + l.toString());
-        ul.style.heigth = "0";
         ul.style.display = "block";
+        ul.style.height = "0";
 
         for(var i = 1; i < data[l].length; i++){
             var lien = document.createElement("a");
@@ -131,5 +139,18 @@ function CreateSidePanel(document, global = false){
         ligneblock.appendChild(ul);
         Sidepanel.appendChild(ligneblock);
     }
+
+    Sidepanel.innerHTML += "<br><br>";
+    var img = document.createElement("img");
+    img.alt = "Licence Creative Commons";
+    img.style.borderWidth = 0;
+    img.src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png";
+    var cc = document.createElement("a");
+    cc.rel = "license";
+    cc.href = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
+    cc.target = "_blank";
+    cc.appendChild(img);
+    
+    Sidepanel.appendChild(cc);
 }
 

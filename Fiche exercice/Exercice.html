@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" dir="ltr">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" dir="ltr" class="recherche">
   <head>
     <link rel="stylesheet" type="text/css" href="../index.css">
     <script src="../MenuSetup.js"></script>
@@ -16,7 +16,8 @@
 
     <title id="Titre">Fichier_client_micronet.pdf</title>
     <style type="text/css">
-      html, body, div, object, p {
+
+      .recherche{
         margin:auto;
         padding:0;
         border:0;
@@ -48,16 +49,16 @@
         }
     </script>
   </head>
-  <body onload="FirstLaunch(); CreateSidePanel(document, true);">
+  <body onload="FirstLaunch(); CreateSidePanel(document, true);" class="recherche">
 
     <!-- Side Panel -->
     <div id="Sidepanel" class="sidepanel" onload="CreateSidePanel(document)"></div>
     <button id="buttonSidepanel" class="openbtn" onclick="ChangeNav(document)">☰</button>
     <!-- Fin Side Panel -->
 
-    <div >
-      <object id="PdfContainer" data="Fichier_client_micronet.pdf" type="application/pdf">
-        <p>Télécharger : <a href="Fichier_client_micronet.pdf" id="Telechargement">Fichier_client_micronet.pdf</a></p>
+    <div class="recherche">
+      <object id="PdfContainer" data="Fichier_client_micronet.pdf" type="application/pdf" class="recherche">
+        <p class="recherche">Télécharger : <a href="Fichier_client_micronet.pdf" id="Telechargement">Fichier_client_micronet.pdf</a></p>
       </object>
     </div>
   </body>
