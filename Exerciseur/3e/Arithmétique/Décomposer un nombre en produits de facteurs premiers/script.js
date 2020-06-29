@@ -47,7 +47,9 @@ function Recommencer(){
 }
 
 function Annuler(){
-
+	document.getElementById("Resultat").innerHTML = "";
+    document.getElementById("TextReponse").innerHTML = "";
+    document.getElementById("fname").value = "";
 }
 
 
