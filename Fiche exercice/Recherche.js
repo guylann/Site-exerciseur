@@ -29,17 +29,17 @@ const Tags = {
 const ListExercices = [
   //["Dossier", "Nom fiche", ["Liste des Tags"]],
     ["Fractions","Somme de fraction", ["4ème", "Fraction"]],
-	["Fonctions","Brevet notion de fonction",["3ème", "Fonction", "Tâche complexe"]]
-	["Fonctions","Images et antécédents",["3ème", "Fonction,"]]
-	["Calcul littéral","Calcul littéral révision",["3ème", "Expressions litterales"]]
-	["Calcul littéral","Equations simples",["3ème","Expressions litterales"]]
-	["Géométrie","Calculer des aires",["3ème", "Géométrie"]]
-	["Géométrie","Calculer des volumes",["3ème", "Géométrie"]]
-	["Géométrie","Translation",["3ème", "Géométrie"]]
-	["Géométrie","Pythagore",["3ème", "Pythagore"]]
-	["Géométrie","Réciproque du théorème de Thalès",["3ème", "Thalès"]]
-	["Géométrie","Théorème de Thalès",["3ème", "Thalès"]]
-	["Arithmétique","Problème relevant de la divisibilité",["3ème", "Arithmétique"]]
+	["Fonctions","Brevet notion de fonction",["3ème", "Fonction", "Tâche complexe"]],
+	["Fonctions","Images et antécédents",["3ème", "Fonction,"]],
+	["Calcul littéral","Calcul littéral révision",["3ème", "Expressions litterales"]],
+	["Calcul littéral","Equations simples",["3ème","Expressions litterales"]],
+	["Géométrie","Calculer des aires",["3ème", "Géométrie"]],
+	["Géométrie","Calculer des volumes",["3ème", "Géométrie"]],
+	["Géométrie","Translation",["3ème", "Géométrie"]],
+	["Géométrie","Pythagore",["3ème", "Pythagore"]],
+	["Géométrie","Réciproque du théorème de Thalès",["3ème", "Thalès"]],
+	["Géométrie","Théorème de Thalès",["3ème", "Thalès"]],
+	["Arithmétique","Problème relevant de la divisibilité",["3ème", "Arithmétique"]],
 ]
 
 
