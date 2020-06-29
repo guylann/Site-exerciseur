@@ -36,7 +36,7 @@ const ListExercices = [
 	["Fonctions","GC - Images et antécédents",["3ème", "Fonction"]],
 	["Calcul littéral","GC - Calcul littéral révision",["3ème", "Expressions litterales"]],
 	["Calcul littéral","GC - Equations simples",["3ème","Expressions litterales"]],
-	["Calcul littéral","GC - Réduire et évaluer une expression littérale",["4ème","Expressions litterales"],
+	["Calcul littéral","GC - Réduire et évaluer une expression littérale",["4ème","Expressions litterales"]],
 	["Géométrie","GC - Calculer des aires",["3ème", "Géométrie"]],
 	["Géométrie","GC - Calculer des volumes",["3ème", "Géométrie", "Solide"]],
 	["Géométrie","GC - Translation",["3ème", "Géométrie"]],
