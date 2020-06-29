@@ -13,7 +13,7 @@ function Valider(){
     var txt = document.getElementById("fname").value;
     txt = txt.replace(/x/g,"*");
     txt = txt.replace(/X/g,"*");
-    if (Résultat()) {
+    if (nombre[1] == txt) {
         document.getElementById("Resultat").innerHTML = "Bravo c'est la bonne réponse";
     }
     else {
