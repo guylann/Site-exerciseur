@@ -8,12 +8,12 @@ const Tags = {
     "Fonction":                 ["fonction", "affine", "lineaire", "graphique", "courbe", "abscisse", "ordonnee", "reperage"],
     "Probabilités":             ["probabilites", "chance"],
     "Puissances":               ["puissances", "exposant"],
-    "Expressions litterales":   ["expressions litterales", "x", "developpement", "factorisation", "reduction", "equation"],
+    "Expressions litterales":   ["expressions litterales", "x", "developpement", "factorisation", "reduction", "equation","calcul litteral"],
     "Vrai faux":                ["vrai faux"],
     "Proportionnalité":         ["proportionnalite", "tableau", "produit en croix", "pourcentage", "echelle", "ratio"],
     "Statistique":              ["statistique", "graphique", "diagramme", "courbe", "moyenne", "mediane", "etendue", "frequence", "serie"],
     "Solide":                   ["solide", "volume", "sphere", "boule", "pyramide", "cube", "pave droit", "prisme"],
-    "Géométrie":                ["geometrie", "pavage", "transformation du plan", "homothetie", "translation", "rotation", "symetrie", "cercle", "aire", "perimetre", "semblable"],
+    "Géométrie":                ["geometrie", "pavage", "transformation du plan", "homothetie", "translation", "rotation", "symetrie", "cercle", "aire", "perimetre", "semblable","volume"],
     "Scratch":                  ["scratch", "ordinateur", "algorithme", "programmation"],
     "Tableur":                  ["tableur", "ordinateur", "cellule"],
     "Arithmétique":             ["arithmetique", "nombres premiers", "premiers", "diviseur", "multiple", "decomposition", "facteurs"],
@@ -29,6 +29,17 @@ const Tags = {
 const ListExercices = [
   //["Dossier", "Nom fiche", ["Liste des Tags"]],
     ["Fractions","Somme de fraction", ["4ème", "Fraction"]],
+	["Fonctions","Brevet notion de fonction",["3ème", "Fonction", "Tâche complexe"]]
+	["Fonctions","Images et antécédents",["3ème", "Fonction,"]]
+	["Calcul littéral","Calcul littéral révision",["3ème", "Expressions litterales"]]
+	["Calcul littéral","Equations simples",["3ème","Expressions litterales"]]
+	["Géométrie","Calculer des aires",["3ème", "Géométrie"]]
+	["Géométrie","Calculer des volumes",["3ème", "Géométrie"]]
+	["Géométrie","Translation",["3ème", "Géométrie"]]
+	["Géométrie","Pythagore",["3ème", "Pythagore"]]
+	["Géométrie","Réciproque du théorème de Thalès",["3ème", "Thalès"]]
+	["Géométrie","Théorème de Thalès",["3ème", "Thalès"]]
+	["Arithmétique","Problème relevant de la divisibilité",["3ème", "Arithmétique"]]
 ]
 
 
