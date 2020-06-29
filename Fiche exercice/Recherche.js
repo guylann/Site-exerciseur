@@ -8,7 +8,7 @@ const Tags = {
 	"Nombre relatif":			["nombres", "relatif", "calcul"],
     "Fonction":                 ["fonction", "affine", "lineaire", "graphique", "courbe", "abscisse", "ordonnee", "reperage"],
     "Probabilités":             ["probabilites", "chance"],
-    "Puissances":               ["puissances", "exposant"],
+    "Puissances":               ["puissances", "exposant","préfixe","notation","scientifique"],
     "Expressions litterales":   ["expressions litterales", "x", "developpement", "factorisation", "reduction", "equation","calcul litteral"],
     "Vrai faux":                ["vrai faux"],
     "Proportionnalité":         ["proportionnalite", "tableau", "produit en croix", "pourcentage", "echelle", "ratio","grandeurs"],
@@ -62,6 +62,11 @@ const ListExercices = [
 	["Proportionnalité","GC - Problèmes proportionnalité avec correction",["3ème", "Proportionnalité"]],
 	["Probabilités et statistiques","GC - Calcul de probabilités avec correction",["3ème", "Probabilités"]],
 	["Probabilités et statistiques","GC - Lien entre probabilité et fréquence avec correction",["3ème", "Probabilités"]],
+	["Puissances de 10","GC - Puissances de 10 positives avec correction",["4ème","Puissances"]],
+	["Puissances de 10","GC - Puissances de 10 négatives avec correction",["4ème","Puissances"]],
+	["Puissances de 10","GC - Opérations sur les puissances avec correction",["4ème","Puissances"]],
+	["Puissances de 10","GC - Préfixes avec correction",["4ème","Puissances"]],
+	["Puissances de 10","GC - Notation scientifique avec correction",["4ème","Puissances"]],
 ]
 
 
