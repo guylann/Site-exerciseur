@@ -6,7 +6,7 @@ var document = HtmlManipulator.Gdocument;
 var nombre;
 
         function Recommencer() {
-            nombre = Quatriè_Pourcentage();
+            nombre = Quatrième_Pourcentage();
             document.getElementById("TextQuestion").innerHTML = nombre[0];
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";
