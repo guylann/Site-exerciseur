@@ -1983,7 +1983,7 @@ class Quatrième_Proportionnalité
 		var p = Constante.Randint(0,99);
 		var a = Constante.Randint(100,1000);
 		var r = Constante.Round(a*p/100,1);
-		var q = "Que représente " + a + "% de " + a;
+		var q = "Que représente " + p + "% de " + a;
 		return [q,r]
 	}
 }
