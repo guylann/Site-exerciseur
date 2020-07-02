@@ -1,4 +1,4 @@
-var Titre = "Calculer le pourcentage d'un nombre";
+var Titre = "Calculer une augmentation ou réduction";
 var Consigne =  "Réaliser l'opération suivante. Arrondir le résultat au dixième."
 
 var document = HtmlManipulator.Gdocument;
@@ -6,7 +6,7 @@ var document = HtmlManipulator.Gdocument;
 var nombre;
 
         function Recommencer() {
-            nombre = Quatrième_Proportionnalité.Pourcentage();
+            nombre = Quatrième_Proportionnalité.Augmentation();
             document.getElementById("TextQuestion").innerHTML = nombre[0];
             document.getElementById("Resultat").innerHTML = "";
             document.getElementById("TextReponse").innerHTML = "";
