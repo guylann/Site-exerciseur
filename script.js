@@ -1990,17 +1990,17 @@ class Quatrième_Proportionnalité
 	static Augmentation()
 	{
 		var p = Constante.Randint(0,99);
-		var a = Constante.Randint(100,1000);
+		var nb = Constante.Randint(100,1000);
 		var a = Constante.Randint(0,1);
 		if (a == 1)
 		{
-			var r = Constante.Round(a*(1+p/100),1);
+			var r = Constante.Round(nb*(1+p/100),1);
 			var q = "Que représente une augmentation de " + p + "% sur " + a;
 		}
 		else
 		{
-			var r = Constante.Round(a*(1-p/100),1);
-			var q = "Que représente une réduction de " + p + "% sur " + a;
+			var r = Constante.Round(nb*(1-p/100),1);
+			var q = "Que représente une réduction de " + p + "% sur " + nb;
 		}
 	return [q,r]
 	}
