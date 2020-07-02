@@ -1986,6 +1986,23 @@ class Quatrième_Proportionnalité
 		var q = "Que représente " + p + "% de " + a;
 		return [q,r]
 	}
+	
+	static Augmentation()
+	{
+		var p = Constante.Randint(0,99);
+		var a = Constante.Randint(100,1000);
+		var a = Constante.Randint(0,1);
+		if (a == 1)
+		{
+			var r = Constante.Round(a*(1+p/100),1);
+			var q = "Que représente une augmentation de " + p + "% sur " + a;
+		}
+		else
+		{
+			var r = Constante.Round(a*(1-p/100),1);
+			var q = "Que représente une réduction de " + p + "% sur " + a;
+		}
+	return [q,r]
 }
 
 // Pyramide et Cône
