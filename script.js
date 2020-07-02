@@ -2003,6 +2003,7 @@ class Quatrième_Proportionnalité
 			var q = "Que représente une réduction de " + p + "% sur " + a;
 		}
 	return [q,r]
+	}
 }
 
 // Pyramide et Cône
