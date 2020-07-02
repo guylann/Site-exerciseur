@@ -1995,7 +1995,7 @@ class Quatrième_Proportionnalité
 		if (a == 1)
 		{
 			var r = Constante.Round(nb*(1+p/100),1);
-			var q = "Que représente une augmentation de " + p + "% sur " + a;
+			var q = "Que représente une augmentation de " + p + "% sur " + nb;
 		}
 		else
 		{
