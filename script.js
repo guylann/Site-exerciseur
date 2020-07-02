@@ -1977,6 +1977,15 @@ class Quatrième_Proportionnalité
         else
             return [a, b, e, f, c, d, sol];
     }
+	
+	static Pourcentage()
+	{
+		var p = Constante.Randint(0,99);
+		var a = Constante.Randint(100,1000);
+		var r = Constante.Round(a*p/100,1);
+		var q = "Que représente " + a + "% de " + a;
+		return [q,r]
+	}
 }
 
 // Pyramide et Cône
@@ -2735,14 +2744,6 @@ class Quatrième_Puissances
         return target.slice(0, idx) + str + target.slice(idx);
     }
 
-	static Pourcentage()
-	{
-		var p = Constante.Randint(0,99);
-		var a = Constante.Randint(100,1000);
-		var r = Constante.Round(a*p/100,1);
-		var q = "Que représente " + a + "% de " + a;
-		return [q,r]
-	}
 
 }
 //#endregion
