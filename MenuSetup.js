@@ -147,7 +147,7 @@ function CreateSidePanel(document, global = false){
     img.style.borderWidth = 0;
     img.src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png";
     var cc = document.createElement("a");
-    cc.rel = "license";
+    cc.rel = "license noopener noreferrer";
     cc.href = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
     cc.target = "_blank";
     cc.appendChild(img);
