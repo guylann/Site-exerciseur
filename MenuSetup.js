@@ -27,7 +27,8 @@ const Page = {
 				["Puissances",							"Exerciseur/4e/Puissances.html"]],
 
     cinquième:	["Cinquième",
-                ["Nombres relatifs",                    "Exerciseur/5e/Nombres relatifs.html"]],
+                ["Nombres relatifs",                    "Exerciseur/5e/Nombres relatifs.html"],
+				["Fractions",							"Exerciseur/5e/Fractions"]],
 
     sixième:    ["Sixième",
                 ["Nombres décimaux",                    "Exerciseur/6e/Nombres décimaux.html"]],
