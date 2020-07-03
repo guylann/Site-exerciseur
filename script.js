@@ -2888,18 +2888,18 @@ class Cinquième_Fractions
 	    // Crée une opération additive
 
     static CreateAdd() {
-        var x1 = Constante.Randint(-30,30);
+        var x1 = Constante.Randint(0,30);
         while (x1 === 0)
-            var x1 = Constante.Randint(-30,30);
-        var x0 = Constante.Randint(-15,15);
+            var x1 = Constante.Randint(0,30);
+        var x0 = Constante.Randint(0,15);
         while (x0 === 0)
-            var x0 = Constante.Randint(-15,15);
-        var y1 = Constante.Randint(-30,30);
+            var x0 = Constante.Randint(0,15);
+        var y1 = Constante.Randint(0,30);
         while (y1 === 0)
-            var y1 = Constante.Randint(-30,30);
-        var y0 = x0*Constante.Randint(-5,5);
+            var y1 = Constante.Randint(0,30);
+        var y0 = x0*Constante.Randint(0,5);
         while (y0 === 0)
-            var y0 = x0*Constante.Randint(-5,5);
+            var y0 = x0*Constante.Randint(0,5);
         var calc = Constante.Randint(0,1);
         if (calc === 0){
             var sol1 = x1*y0+x0*y1;
