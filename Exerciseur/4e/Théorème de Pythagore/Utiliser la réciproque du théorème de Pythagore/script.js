@@ -1,5 +1,5 @@
 var Titre = "Utiliser la réciproque du théorème de Pythagore.";
-var Consigne =  "Compléter la rédaction du théorème de Pythagore ci-dessous. Attention, les points doivent être en majuscules."
+var Consigne =  "Choisir si le triangle est rectangle ou non."
 
 var document = HtmlManipulator.Gdocument;
 
